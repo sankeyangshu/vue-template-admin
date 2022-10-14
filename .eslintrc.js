@@ -3,7 +3,7 @@
  * @Author: 三棵杨树
  * @Date: 2022-10-14 19:27:13
  * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-10-14 20:21:05
+ * @LastEditTime: 2022-10-14 20:59:48
  */
 module.exports = {
   env: {
@@ -16,7 +16,6 @@ module.exports = {
     'standard-with-typescript',
     'plugin:prettier/recommended', // 添加 prettier 插件
   ],
-  parser: 'vue-eslint-parser',
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
