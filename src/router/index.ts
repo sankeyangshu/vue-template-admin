@@ -10,7 +10,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/about',
     name: 'about',
-    component: async () => await import('../views/AboutView.vue'),
+    component: () => import('../views/AboutView.vue'),
   },
 ];
 

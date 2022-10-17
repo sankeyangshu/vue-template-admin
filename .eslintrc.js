@@ -3,7 +3,7 @@
  * @Author: 三棵杨树
  * @Date: 2022-10-14 19:27:13
  * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-10-14 20:59:48
+ * @LastEditTime: 2022-10-17 20:22:25
  */
 module.exports = {
   env: {
@@ -13,18 +13,18 @@ module.exports = {
   },
   extends: [
     'plugin:vue/vue3-essential',
-    'standard-with-typescript',
+    'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended', // 添加 prettier 插件
   ],
+  parser: 'vue-eslint-parser',
   overrides: [],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
-    project: ['./tsconfig.json'],
-    tsconfigRootDir: __dirname,
-    extraFileExtensions: ['.vue'],
   },
   plugins: ['vue', '@typescript-eslint'],
-  rules: {},
+  rules: {
+    '@typescript-eslint/promise-function-async': 'off',
+  },
 };
