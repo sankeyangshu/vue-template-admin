@@ -3,22 +3,17 @@
  * @Author: 三棵杨树
  * @Date: 2022-10-14 19:27:13
  * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-10-22 20:20:33
+ * @LastEditTime: 2022-10-27 20:36:08
  */
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 
-const routes: RouteRecordRaw[] = [
+const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'home',
     component: HomeView,
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   component: () => import('../views/AboutView.vue'),
-  // },
 ];
 
 const router = createRouter({
