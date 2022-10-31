@@ -3,13 +3,14 @@
  * @Author: 三棵杨树
  * @Date: 2022-10-14 19:27:13
  * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-10-28 20:55:19
+ * @LastEditTime: 2022-10-31 19:37:34
  */
 import { createApp } from 'vue';
 import { setupStore } from '@/store';
 import { setupRouter } from '@/router';
 import App from './App.vue';
 import 'normalize.css'; // 统一各个浏览器之间的显示差异
+import './styles/index.scss'; // 全局css
 import setupElementPlus from '@/plugins/element'; // 导入element
 
 function bootstrap() {
