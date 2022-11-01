@@ -3,18 +3,17 @@
  * @Author: 三棵杨树
  * @Date: 2022-10-14 19:27:13
  * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-10-28 20:48:28
+ * @LastEditTime: 2022-10-31 19:54:34
  */
 
 import { App } from 'vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView,
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/Login/index.vue'),
   },
 ];
 

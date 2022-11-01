@@ -3,7 +3,7 @@
  * @Author: 三棵杨树
  * @Date: 2022-10-14 19:27:13
  * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-10-27 21:01:31
+ * @LastEditTime: 2022-10-31 19:33:49
  */
 module.exports = {
   env: {
@@ -28,5 +28,6 @@ module.exports = {
     '@typescript-eslint/ban-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/promise-function-async': 'off',
+    'vue/multi-word-component-names': 'off',
   },
 };
