@@ -3,7 +3,7 @@
  * @Author: 三棵杨树
  * @Date: 2022-10-31 19:32:43
  * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-11-01 19:27:33
+ * @LastEditTime: 2022-11-02 20:54:36
 -->
 <template>
   <div class="login-container">
@@ -23,7 +23,8 @@
           type="text"
         >
           <template #prefix>
-            <el-icon><User /></el-icon>
+            <!-- <el-icon><User /></el-icon> -->
+            <svg-icon icon="user" />
           </template>
         </el-input>
       </el-form-item>
@@ -38,7 +39,8 @@
           show-password
         >
           <template #prefix>
-            <el-icon><Lock /></el-icon>
+            <!-- <el-icon><Lock /></el-icon> -->
+            <svg-icon icon="password" />
           </template>
         </el-input>
       </el-form-item>
