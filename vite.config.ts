@@ -1,10 +1,3 @@
-/*
- * @Description: vite 配置文件
- * @Author: 三棵杨树
- * @Date: 2022-10-27 20:59:20
- * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-11-02 20:37:09
- */
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
@@ -34,10 +27,10 @@ export default defineConfig({
     //   ],
     //   dts: resolve('src/types/components.d.ts'),
     // }),
-    // * 使用 svg 图标
+    //  使用 svg 图标
     createSvgIconsPlugin({
       // 指定需要缓存的图标文件夹
-      iconDirs: [path.resolve(process.cwd(), 'src/icons/svg')],
+      iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
       // 指定symbolId格式
       symbolId: 'icon-[dir]-[name]',
     }),

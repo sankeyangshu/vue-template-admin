@@ -4,7 +4,7 @@ import { setupRouter } from '@/router';
 import App from './App.vue';
 import './styles/index.scss'; // 统一各个浏览器之间的显示差异
 import 'virtual:svg-icons-register'; // svg-icons注册导入
-import setupSvgIcons from '@/icons'; // 导入svg图标组件
+import setupSvgIcons from '@/plugins/icons'; // 导入svg图标组件
 import setupElementPlus from '@/plugins/element'; // 导入element plus
 
 function bootstrap() {
