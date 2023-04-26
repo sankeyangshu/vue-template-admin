@@ -1,0 +1,36 @@
+/* 自定义 default 默认样式 */
+$light-bg-color: #ffffff;
+$light-main-bg-color: #f0f2f5;
+$light-border-color: #e4e7ed;
+$light-border-header-color: #f6f6f6;
+$light-text-color: rgba(0, 0, 0, 0.85);
+$light-shadow-color: 0 0 12px #0000000d;
+$light-scrollbar-bg-color: #dddee0;
+
+/* 需要自定义覆盖的样式 */
+body {
+  background-color: $light-bg-color !important;
+  #driver-highlighted-element-stage {
+    background-color: #fff !important;
+  }
+}
+
+/* login container（先固定样式） */
+.login-container {
+  background-color: #eeeeee !important;
+  .login-box {
+    background-color: hsl(0deg 0% 100% / 80%) !important;
+    .login-form {
+      background-color: transparent !important;
+      box-shadow: 2px 3px 7px rgb(0 0 0 / 20%) !important;
+      .login-logo {
+        .logo-text {
+          color: #475768 !important;
+        }
+      }
+      .el-button--primary {
+        color: #ffffff !important;
+      }
+    }
+  }
+}
