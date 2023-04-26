@@ -1,11 +1,3 @@
-/*
- * @Description: element plus 插件配置文件
- * @Author: 三棵杨树
- * @Date: 2022-10-28 20:48:49
- * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-10-28 20:52:18
- */
-
 import { App } from 'vue';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';

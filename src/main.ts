@@ -1,10 +1,3 @@
-/*
- * @Description: 项目入口文件
- * @Author: 三棵杨树
- * @Date: 2022-10-14 19:27:13
- * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-11-02 21:02:31
- */
 import { createApp } from 'vue';
 import { setupStore } from '@/store';
 import { setupRouter } from '@/router';

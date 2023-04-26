@@ -1,10 +1,3 @@
-<!--
- * @Description: svg图标组件
- * @Author: 三棵杨树
- * @Date: 2022-11-02 19:50:51
- * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-11-02 20:08:30
--->
 <template>
   <!-- svg图标组件 开始 -->
   <svg :class="svgClass" aria-hidden="true">

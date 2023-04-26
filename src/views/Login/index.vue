@@ -1,10 +1,3 @@
-<!--
- * @Description: 登录页面
- * @Author: 三棵杨树
- * @Date: 2022-10-31 19:32:43
- * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-11-02 20:54:36
--->
 <template>
   <div class="login-container">
     <!--登录功能-->

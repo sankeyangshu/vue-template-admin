@@ -1,11 +1,3 @@
-/*
- * @Description: 路由配置文件
- * @Author: 三棵杨树
- * @Date: 2022-10-14 19:27:13
- * @LastEditors: 三棵杨树
- * @LastEditTime: 2022-10-31 19:54:34
- */
-
 import { App } from 'vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 
