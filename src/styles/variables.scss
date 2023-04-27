@@ -13,7 +13,7 @@ $menu-bg: #304156;
 $menu-hover: #263445;
 
 // 侧边菜单设置
-$sub-benu-active-text: #f4f4f5;
+$sub-menu-active-text: #f4f4f5;
 $sub-menu-bg: #1f2d3d;
 $sub-menu-hover: #001528;
 
@@ -21,22 +21,25 @@ $sub-menu-hover: #001528;
 $base-z-index: 999;
 
 // 纵向布局时左侧导航未折叠时的宽度
-$base-side-bar-width: 256px;
+$side-bar-width: 210px;
+
+// 纵向布局时左侧导航收回动画时间
+$side-bar-duration: 0.28s;
 
 // 纵向布局时左侧导航未折叠时右侧内容的宽度
-$base-right-content-width: calc(100% - #{$base-side-bar-width});
+$right-content-width: calc(100% - #{$side-bar-width});
 
 // 纵向布局时左侧导航已折叠时的宽度
-$base-side-bar-width-min: 64px;
+$side-bar-width-min: 54px;
 
 // 纵向布局时左侧导航已折叠时右侧内容的宽度
-$base-right-content-width-min: calc(100% - #{$base-side-bar-width-min});
+$right-content-width-min: calc(100% - #{$side-bar-width-min});
 
 // 顶部nav-bar的高度
-$base-nav-bar-height: 60px;
+$nav-bar-height: 60px;
 
 // 顶部多标签页tabs-bar的高度
-$base-tabs-bar-height: 55px;
+$tabs-bar-height: 55px;
 
 // app-main的高度
-$base-app-main-height: calc(100vh - $base-nav-bar-height - $base-tabs-bar-height - 56px - 40px);
+$app-main-height: calc(100vh - $nav-bar-height - $tabs-bar-height - 56px - 40px);

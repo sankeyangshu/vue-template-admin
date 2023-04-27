@@ -1,7 +1,8 @@
 <template>
   <div class="layout-wrapper">
     <!-- 左侧 SubMenu -->
-    <LayoutSideBar></LayoutSideBar>
+    <LayoutSideBar class="sidebar-container"></LayoutSideBar>
+
     <div class="layout-main">
       <div class="layout-header fixed-header">
         <!-- 顶部 Header -->
@@ -28,31 +29,21 @@ import LayoutNavBar from './components/NavBar/index.vue';
   top: 0;
   right: 0;
   z-index: $base-z-index - 2;
-  width: calc(100% - $base-side-bar-width);
+  width: calc(100% - $side-bar-width);
+  transition: width #{$side-bar-duration};
 }
 .layout-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: auto;
-  .layout-main {
-    min-height: 100%;
-    margin-left: $base-side-bar-width;
+  .layout-header {
+    box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+    &.fixed-header {
+      @include fix-header;
+    }
     &.is-collapse {
-      margin-left: $base-side-bar-width-min;
-      border-right: 0;
-    }
-    .layout-header {
-      box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
-      &.fixed-header {
-        @include fix-header;
-      }
-      &.is-collapse {
-        width: calc(100% - $base-side-bar-width-min);
-      }
-    }
-    .app-main-container {
-      padding: 20px;
+      width: calc(100% - $side-bar-width-min);
     }
   }
 }

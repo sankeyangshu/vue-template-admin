@@ -1,7 +1,8 @@
-@use './reset.scss' as *;
-@use './theme//theme-default.scss' as *;
-@use './theme/theme-dark.scss' as *;
-@use './variables.scss' as *;
+@import './variables.scss';
+@import './reset.scss';
+@import './theme//theme-default.scss';
+@import './theme/theme-dark.scss';
+@import './sidebar.scss';
 
 html,
 body {
