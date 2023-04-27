@@ -41,4 +41,12 @@ export default defineConfig({
       '@': resolve('src'),
     },
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        javascriptEnabled: true,
+        additionalData: `@use "./src/styles/variables.scss" as *;`,
+      },
+    },
+  },
 });

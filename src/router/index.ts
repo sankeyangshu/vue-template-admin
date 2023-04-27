@@ -1,11 +1,18 @@
 import { App } from 'vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import Layout from '@/layouts/index.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/login',
     name: 'Login',
     component: () => import('@/views/Login/index.vue'),
+  },
+  {
+    path: '/',
+    name: 'layout',
+    component: Layout,
+    meta: { title: '首页', icon: 'House' },
   },
 ];
 

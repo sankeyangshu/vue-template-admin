@@ -1,6 +1,7 @@
 @use './reset.scss' as *;
 @use './theme//theme-default.scss' as *;
 @use './theme/theme-dark.scss' as *;
+@use './variables.scss' as *;
 
 html,
 body {
