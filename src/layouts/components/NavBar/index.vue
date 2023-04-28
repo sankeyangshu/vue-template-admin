@@ -3,7 +3,8 @@
     <el-row :gutter="15">
       <el-col :sm="12" :md="12" :lg="12" :xl="12">
         <div class="left-nav-bar">
-          <CollapseIcon></CollapseIcon>
+          <CollapseIcon />
+          <Breadcrumb />
         </div>
       </el-col>
       <el-col :sm="12" :md="12" :lg="12" :xl="12">
@@ -19,6 +20,7 @@
 
 <script lang="ts" setup>
 import CollapseIcon from './components/CollapseIcon.vue';
+import Breadcrumb from './components/Breadcrumb.vue';
 import User from './components/User.vue';
 </script>
 
