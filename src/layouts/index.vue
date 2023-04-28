@@ -1,13 +1,10 @@
 <template>
   <div class="layout-wrapper">
     <!-- 左侧 SubMenu -->
-    <LayoutSideBar
-      class="sidebar-container"
-      :style="{ backgroundColor: '#304156' }"
-    ></LayoutSideBar>
+    <LayoutSideBar></LayoutSideBar>
 
-    <div class="layout-main">
-      <div class="layout-header fixed-header">
+    <div class="layout-main" :class="{ 'is-collapse': isCollapse }">
+      <div class="layout-header fixed-header" :class="{ 'is-collapse': isCollapse }">
         <!-- 顶部 Header -->
         <LayoutNavBar />
       </div>
@@ -21,9 +18,17 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue';
+import { useSettingStore } from '@/store/modules/setting';
 import LayoutMain from './components/Main/index.vue';
 import LayoutSideBar from './components/Sidebar/index.vue';
 import LayoutNavBar from './components/NavBar/index.vue';
+
+// 获取全局设置
+const settingStore = useSettingStore();
+
+// 是否折叠
+const isCollapse = computed(() => settingStore.isCollapse);
 </script>
 
 <style lang="scss" scoped>
@@ -40,13 +45,23 @@ import LayoutNavBar from './components/NavBar/index.vue';
   width: 100%;
   height: 100%;
   overflow: auto;
-  .layout-header {
-    box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
-    &.fixed-header {
-      @include fix-header;
-    }
+  .layout-main {
+    min-height: 100%;
+    transition: margin-left #{$side-bar-duration};
+    margin-left: $side-bar-width;
+    position: relative;
     &.is-collapse {
-      width: calc(100% - $side-bar-width-min);
+      margin-left: $side-bar-width-min;
+      border-right: 0;
+    }
+    .layout-header {
+      box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+      &.fixed-header {
+        @include fix-header;
+      }
+      &.is-collapse {
+        width: calc(100% - $side-bar-width-min);
+      }
     }
   }
 }

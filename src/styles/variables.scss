@@ -20,6 +20,12 @@ $sub-menu-hover: #001528;
 // 默认层级
 $base-z-index: 999;
 
+// 默认paddiing
+$base-padding: 20px;
+
+// 默认阴影
+$base-box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
+
 // 纵向布局时左侧导航未折叠时的宽度
 $side-bar-width: 210px;
 
@@ -30,7 +36,7 @@ $side-bar-duration: 0.28s;
 $right-content-width: calc(100% - #{$side-bar-width});
 
 // 纵向布局时左侧导航已折叠时的宽度
-$side-bar-width-min: 54px;
+$side-bar-width-min: 63px;
 
 // 纵向布局时左侧导航已折叠时右侧内容的宽度
 $right-content-width-min: calc(100% - #{$side-bar-width-min});
