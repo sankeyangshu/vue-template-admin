@@ -19,7 +19,7 @@
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { filterRoutes, generateMenus } from '@/utils/routers';
-import SubMenu from './components/SubMenu/SubMenu.vue';
+import SubMenu from './components/SubMenu.vue';
 
 // 获取路由实例
 const router = useRouter();
