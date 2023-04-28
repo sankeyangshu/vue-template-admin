@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
+    "@vueuse/core": "^10.1.0",
     "element-plus": "^2.3.4",
     "path-browserify": "^1.0.1",
     "pinia": "^2.0.35",

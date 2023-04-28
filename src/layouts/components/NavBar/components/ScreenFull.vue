@@ -1,0 +1,28 @@
+<template>
+  <div class="screenful">
+    <el-tooltip effect="dark" :content="!isFullscreen ? '全屏' : '收起'" placement="bottom">
+      <svg-icon
+        :icon="isFullscreen ? 'exit-fullscreen' : 'fullscreen'"
+        className="screenful-icon"
+        @click="toggle"
+      ></svg-icon>
+    </el-tooltip>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { useFullscreen } from '@vueuse/core';
+
+const { toggle, isFullscreen } = useFullscreen();
+</script>
+
+<style lang="scss" scoped>
+.screenful {
+  padding-right: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  .screenful-icon {
+    font-size: 24px;
+  }
+}
+</style>

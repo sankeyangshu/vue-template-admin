@@ -3,15 +3,18 @@
     <el-row :gutter="15">
       <el-col :sm="12" :md="12" :lg="12" :xl="12">
         <div class="left-nav-bar">
+          <!-- 左侧菜单收缩 -->
           <CollapseIcon />
+          <!-- 面包屑 -->
           <Breadcrumb />
         </div>
       </el-col>
       <el-col :sm="12" :md="12" :lg="12" :xl="12">
         <div class="right-nav-bar">
-          <!-- 用户信息 开始 -->
+          <!-- 全屏 -->
+          <ScreenFull />
+          <!-- 用户信息 -->
           <User />
-          <!-- 用户信息 结束 -->
         </div>
       </el-col>
     </el-row>
@@ -21,6 +24,7 @@
 <script lang="ts" setup>
 import CollapseIcon from './components/CollapseIcon.vue';
 import Breadcrumb from './components/Breadcrumb.vue';
+import ScreenFull from './components/ScreenFull.vue';
 import User from './components/User.vue';
 </script>
 
