@@ -1,5 +1,6 @@
 <template>
   <div class="sidebar-container" :class="{ 'is-collapse': isCollapse }">
+    <Logo :isCollapse="isCollapse"></Logo>
     <el-scrollbar>
       <el-menu
         :unique-opened="true"
@@ -21,6 +22,7 @@ import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { filterRoutes, generateMenus } from '@/utils/routers';
 import { useSettingStore } from '@/store/modules/setting';
+import Logo from './components/Logo.vue';
 import SubMenu from './components/SubMenu.vue';
 
 // 获取路由实例
