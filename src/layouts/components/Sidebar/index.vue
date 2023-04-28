@@ -2,10 +2,10 @@
   <div>
     <el-scrollbar>
       <el-menu
+        :unique-opened="true"
         background-color="#001529"
         text-color="#fff"
         active-text-color="#ffd046"
-        :unique-opened="true"
       >
         <SubMenu></SubMenu>
       </el-menu>

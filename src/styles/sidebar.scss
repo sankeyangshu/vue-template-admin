@@ -14,8 +14,9 @@
     top: 0;
     bottom: 0;
     left: 0;
-    z-index: 1001;
+    z-index: $base-z-index;
     overflow: hidden;
+    box-shadow: 2px 0 6px rgb(0 21 41 / 35%);
 
     // 重置 element-plus 的css
     .horizontal-collapse-transition {

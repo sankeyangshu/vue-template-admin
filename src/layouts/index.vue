@@ -1,7 +1,10 @@
 <template>
   <div class="layout-wrapper">
     <!-- 左侧 SubMenu -->
-    <LayoutSideBar class="sidebar-container"></LayoutSideBar>
+    <LayoutSideBar
+      class="sidebar-container"
+      :style="{ backgroundColor: '#304156' }"
+    ></LayoutSideBar>
 
     <div class="layout-main">
       <div class="layout-header fixed-header">
