@@ -1,23 +1,37 @@
 <template>
-  <el-sub-menu index="1">
-    <template #title>
-      <el-icon><location /></el-icon>
-      <span>Navigator One</span>
-    </template>
-    <el-menu-item-group title="Group One">
-      <el-menu-item index="1-1">item one</el-menu-item>
-      <el-menu-item index="1-2">item two</el-menu-item>
-    </el-menu-item-group>
-    <el-menu-item-group title="Group Two">
-      <el-menu-item index="1-3">item three</el-menu-item>
-    </el-menu-item-group>
-    <el-sub-menu index="1-4">
-      <template #title>item four</template>
-      <el-menu-item index="1-4-1">item one</el-menu-item>
+  <template v-for="subItem in menuList" :key="subItem.path">
+    <el-sub-menu v-if="subItem.children && subItem.children.length > 0" :index="subItem.path">
+      <template #title>
+        <el-icon>
+          <component :is="subItem.meta?.icon"></component>
+        </el-icon>
+        <span>{{ subItem.meta?.title }}</span>
+      </template>
+      <!-- 有children递归本次组件 -->
+      <SubMenu :menuList="subItem.children" />
     </el-sub-menu>
-  </el-sub-menu>
+
+    <el-menu-item v-else :index="subItem.path">
+      <el-icon>
+        <component :is="subItem.meta?.icon"></component>
+      </el-icon>
+      <template #title>
+        <span>{{ subItem.meta?.title }}</span>
+      </template>
+    </el-menu-item>
+  </template>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { RouteRecordRaw } from 'vue-router';
+
+// 获取父组件传递的值
+defineProps({
+  menuList: {
+    type: Array<RouteRecordRaw>,
+    default: () => [],
+  },
+});
+</script>
 
 <style lang="scss" scoped></style>
