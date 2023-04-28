@@ -1,0 +1,11 @@
+// 全局动画 css
+
+// logo动画
+.sidebarLogoFade-enter-active {
+  transition: opacity 2s;
+}
+
+.sidebarLogoFade-enter-from,
+.sidebarLogoFade-leave-to {
+  opacity: 0;
+}

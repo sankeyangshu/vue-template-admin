@@ -1,6 +1,6 @@
 <template>
   <div class="logo-container">
-    <transition name="sidebarLogoFadeCl">
+    <transition name="sidebarLogoFade">
       <router-link v-if="isCollapse" key="collapse" class="sidebar-logo-link" to="/">
         <img src="@/assets/images/logo.png" class="sidebar-logo" />
       </router-link>
@@ -46,13 +46,5 @@ defineProps({ isCollapse: Boolean });
       vertical-align: middle;
     }
   }
-}
-
-.sidebarLogoFadeCl-enter-active {
-  transition: opacity 2s;
-}
-.sidebarLogoFadeCl-enter-from,
-.sidebarLogoFadeCl-leave-to {
-  opacity: 0;
 }
 </style>
