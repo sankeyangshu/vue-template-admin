@@ -11,6 +11,8 @@
       </el-col>
       <el-col :sm="12" :md="12" :lg="12" :xl="12">
         <div class="right-nav-bar">
+          <!-- 搜索 -->
+          <HeaderSearch />
           <!-- 全屏 -->
           <ScreenFull />
           <!-- 用户信息 -->
@@ -24,6 +26,7 @@
 <script lang="ts" setup>
 import CollapseIcon from './components/CollapseIcon.vue';
 import Breadcrumb from './components/Breadcrumb.vue';
+import HeaderSearch from './components/HeaderSearch.vue';
 import ScreenFull from './components/ScreenFull.vue';
 import User from './components/User.vue';
 </script>
