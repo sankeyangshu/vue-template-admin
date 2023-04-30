@@ -30,15 +30,15 @@ import { ref } from 'vue';
 // 是否显示搜索弹出框
 const isShowSearchDialog = ref(false);
 
-// 搜索关键词
-const search = ref('');
-
 /**
  * 显示/隐藏搜索框
  */
 const onClickShowSearch = () => {
   isShowSearchDialog.value = !isShowSearchDialog.value;
 };
+
+// 搜索关键词
+const search = ref('');
 
 /**
  * 搜索方法
