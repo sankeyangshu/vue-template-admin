@@ -2,6 +2,7 @@ import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import path from 'path';
+import VueI18nPlugin from '@intlify/unplugin-vue-i18n/vite';
 // 按需加载 Element Plus
 // import AutoImport from 'unplugin-auto-import/vite';
 // import Components from 'unplugin-vue-components/vite';
@@ -34,11 +35,17 @@ export default defineConfig({
       // 指定symbolId格式
       symbolId: 'icon-[dir]-[name]',
     }),
+    // 配置i18n
+    VueI18nPlugin({
+      // 指定需要导入的语言包文件夹
+      include: path.resolve(__dirname, './src/i18n/lang/**'),
+    }),
   ],
   // 配置别名
   resolve: {
     alias: {
       '@': resolve('src'),
+      'vue-i18n': 'vue-i18n/dist/vue-i18n.runtime.esm-bundler.js',
     },
   },
   css: {

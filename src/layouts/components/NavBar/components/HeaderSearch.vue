@@ -1,6 +1,6 @@
 <template>
   <div class="header-search">
-    <el-tooltip effect="dark" content="菜单搜索" placement="bottom">
+    <el-tooltip effect="dark" :content="$t('navBar.headerSearch')" placement="bottom">
       <el-icon size="22px" class="bell header-icon" @click="onClickShowSearch">
         <Search />
       </el-icon>

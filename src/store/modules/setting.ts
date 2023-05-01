@@ -7,6 +7,7 @@ export const useSettingStore = defineStore({
   // state: 返回对象的函数
   state: () => ({
     isCollapse: false, // 是否收缩左侧菜单栏
+    language: 'zhCn', // 国际化-默认是zhCn
     themeConfig: {
       isDark: false, // 深色模式 切换暗黑模式
     }, // 主题设置
@@ -17,6 +18,10 @@ export const useSettingStore = defineStore({
     // 设置左侧菜单的展开与收缩
     setCollapse(value: boolean) {
       this.isCollapse = value;
+    },
+    // 设置国际化
+    setLanguage(value: string) {
+      this.language = value;
     },
     // TODO设置主题
     setThemeConfig(val: any) {

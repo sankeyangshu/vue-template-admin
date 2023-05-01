@@ -15,6 +15,8 @@
           <HeaderSearch />
           <!-- 全屏 -->
           <ScreenFull />
+          <!-- 国际化 -->
+          <LangSelect />
           <!-- 用户信息 -->
           <User />
         </div>
@@ -28,6 +30,7 @@ import CollapseIcon from './components/CollapseIcon.vue';
 import Breadcrumb from './components/Breadcrumb.vue';
 import HeaderSearch from './components/HeaderSearch.vue';
 import ScreenFull from './components/ScreenFull.vue';
+import LangSelect from './components/LangSelect.vue';
 import User from './components/User.vue';
 </script>
 

@@ -1,6 +1,10 @@
 <template>
   <div class="screenful">
-    <el-tooltip effect="dark" :content="!isFullscreen ? '全屏' : '收起'" placement="bottom">
+    <el-tooltip
+      effect="dark"
+      :content="!isFullscreen ? $t('navBar.screenfull') : $t('navBar.screenfullRetract')"
+      placement="bottom"
+    >
       <svg-icon
         :icon="isFullscreen ? 'exit-fullscreen' : 'fullscreen'"
         className="screenful-icon"
