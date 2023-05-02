@@ -7,7 +7,7 @@
         class="avatar"
         src="https://img.yzcdn.cn/vant/cat.jpeg"
       />
-      <div class="user-name">用户名</div>
+      <div class="user-name">{{ $t('navBar.user') }}</div>
       <el-icon class="up-down">
         <ArrowDown />
       </el-icon>
@@ -16,11 +16,11 @@
       <el-dropdown-menu>
         <el-dropdown-item>
           <el-icon> <Edit /> </el-icon>
-          <span>修改密码</span>
+          <span>{{ $t('navBar.changePassword') }}</span>
         </el-dropdown-item>
         <el-dropdown-item divided>
           <el-icon> <SwitchButton /> </el-icon>
-          <span>退出登陆</span>
+          <span>{{ $t('navBar.logout') }}</span>
         </el-dropdown-item>
       </el-dropdown-menu>
     </template>
