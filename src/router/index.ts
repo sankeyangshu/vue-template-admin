@@ -8,7 +8,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'layout',
     component: Layout,
-    meta: { title: '首页', icon: 'House' },
+    meta: { title: 'home', icon: 'House' },
   },
   ...constantRoutes,
 ];

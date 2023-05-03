@@ -14,18 +14,28 @@
         filterable
         default-first-option
         remote
-        placeholder="菜单搜索 ：支持菜单名称、路径"
+        :placeholder="$t('navBar.headerSearchText')"
         class="header-search-select"
         @change="onChangeSelect"
       >
-        <el-option v-for="item in 5" :key="item" :value="item" :label="item"> </el-option>
+        <el-option
+          v-for="option in searchOptions"
+          :key="option.item.path"
+          :label="option.item.title.join('>')"
+          :value="option.item"
+        >
+        </el-option>
       </el-select>
     </el-dialog>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { filterRoutes } from '@/utils/routers';
+import { generateRoutes, filterRouteType } from '@/utils/FuseData';
+import Fuse from 'fuse.js'; // https://fusejs.io/ fuse.js文档
 
 // 是否显示搜索弹出框
 const isShowSearchDialog = ref(false);
@@ -37,21 +47,74 @@ const onClickShowSearch = () => {
   isShowSearchDialog.value = !isShowSearchDialog.value;
 };
 
+// 获取路由实例
+const router = useRouter();
+
+// 数据源
+let searchPool = computed(() => {
+  const routes = filterRoutes(router.getRoutes());
+  return generateRoutes(routes);
+});
+
+/**
+ * 搜索库相关
+ */
+let fuse: Fuse<filterRouteType>;
+
+/**
+ * @description: 初始化fuse模糊搜索配置
+ * @param {filterRouteType[]} searchPool 搜索的数据源
+ */
+const initFuse = (searchPool: filterRouteType[]) => {
+  fuse = new Fuse(searchPool, {
+    // 是否按优先级进行排序
+    shouldSort: true,
+    // 匹配长度超过这个值的才会被认为是匹配的
+    minMatchCharLength: 1,
+    // 将被搜索的键列表。 这支持嵌套路径、加权搜索、在字符串和对象数组中搜索。
+    // name：搜索的键
+    // weight：对应的权重
+    keys: [
+      {
+        name: 'title',
+        weight: 0.7,
+      },
+      {
+        name: 'path',
+        weight: 0.3,
+      },
+    ],
+  });
+};
+
+// 初始化fuse
+initFuse(searchPool.value);
+
+// 搜索结果
+const searchOptions = ref<Fuse.FuseResult<filterRouteType>[]>([]);
+
+/**
+ * @description: 搜索方法
+ * @param {string} query 搜索值
+ */
+const querySearch = (query: string) => {
+  if (query !== '') {
+    searchOptions.value = fuse.search(query);
+  } else {
+    searchOptions.value = [];
+  }
+};
+
 // 搜索关键词
 const search = ref('');
 
 /**
- * 搜索方法
+ * @description: 选中搜索结果-并跳转到具体页面
+ * @param {filterRouteType} val 路由对象
  */
-const querySearch = () => {
-  console.log('搜索');
-};
-
-/**
- * 选中搜索结果
- */
-const onChangeSelect = () => {
-  console.log('123');
+const onChangeSelect = (val: filterRouteType) => {
+  search.value = val.title.join('>');
+  router.push(val.path);
 };
 </script>
 

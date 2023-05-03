@@ -6,7 +6,7 @@ import './styles/index.scss'; // 导入默认样式
 import 'virtual:svg-icons-register'; // svg-icons注册导入
 import setupSvgIcons from '@/plugins/icons'; // 导入svg图标组件
 import setupElementPlus from '@/plugins/element'; // 导入element plus
-import setupI18n from '@/i18n'; // 导入i18n
+import { setupI18n } from '@/i18n'; // 导入i18n
 
 function bootstrap() {
   // 创建实例

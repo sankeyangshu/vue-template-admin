@@ -6,6 +6,7 @@ export default {
     passwordRule: 'Password cannot be less than 6 digits',
   },
   route: {
+    home: 'Home',
     profile: 'Profile',
     user: 'user',
     excelImport: 'ExcelImport',
@@ -18,6 +19,8 @@ export default {
     articleCreate: 'ArticleCreate',
     articleDetail: 'ArticleDetail',
     articleEditor: 'ArticleEditor',
+    404: '404',
+    403: '403',
   },
   toast: {
     switchLangSuccess: 'Switch Language Success',
@@ -39,6 +42,7 @@ export default {
   navBar: {
     themeChange: 'Theme Modification',
     headerSearch: 'Menu Search',
+    headerSearchText: 'Menu search: supports menu names and paths',
     screenfull: 'Full Screen',
     screenfullRetract: 'Full Screen Retract',
     lang: 'Globalization',

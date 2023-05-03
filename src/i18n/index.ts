@@ -22,6 +22,8 @@ const i18n = createI18n({
 });
 
 // 配置i18n国际化
-export default (app: App<Element>) => {
+export function setupI18n(app: App<Element>) {
   app.use(i18n);
-};
+}
+
+export { i18n };

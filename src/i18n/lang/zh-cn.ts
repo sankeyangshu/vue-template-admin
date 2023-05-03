@@ -6,6 +6,7 @@ export default {
     passwordRule: '密码不能少于6位',
   },
   route: {
+    home: '首页',
     profile: '个人中心',
     user: '用户',
     excelImport: 'Excel导入',
@@ -18,6 +19,8 @@ export default {
     articleCreate: '创建文章',
     articleDetail: '文章详情',
     articleEditor: '文章编辑',
+    404: '404',
+    403: '403',
   },
   toast: {
     switchLangSuccess: '切换语言成功',
@@ -39,6 +42,7 @@ export default {
   navBar: {
     themeChange: '主题修改',
     headerSearch: '菜单搜索',
+    headerSearchText: '菜单搜索 ：支持菜单名称、路径',
     screenfull: '全屏',
     screenfullRetract: '收起',
     lang: '国际化',
