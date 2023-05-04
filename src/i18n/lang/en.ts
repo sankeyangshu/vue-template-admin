@@ -24,6 +24,10 @@ export default {
   },
   toast: {
     switchLangSuccess: 'Switch Language Success',
+    noAuth403Title: 'You do not have access rights!',
+    noAuth403Info:
+      'Please check if the URL address is correct, or click to return to the homepage.',
+    noAuthBackHome: 'Back Home',
   },
   tagsView: {
     refresh: 'Refresh',

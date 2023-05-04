@@ -23,3 +23,21 @@ html {
 #app {
   height: 100%;
 }
+
+.app-container {
+  height: 100%;
+  width: 100%;
+  padding: 10px 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container-inner {
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+  background: white;
+  padding: 20px;
+  box-sizing: border-box;
+}
