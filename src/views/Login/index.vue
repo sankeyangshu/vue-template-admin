@@ -22,7 +22,7 @@
               placeholder="请输入用户名"
               autoComplete="on"
               style="position: relative"
-              v-model="loginForm.userName"
+              v-model="loginForm.username"
               type="text"
             >
               <template #prefix>
@@ -47,7 +47,11 @@
           </el-form-item>
           <!-- 密码 结束 -->
 
-          <el-button type="primary" style="width: 100%; height: 47px; margin-top: 20px">
+          <el-button
+            type="primary"
+            style="width: 100%; height: 47px; margin-top: 20px"
+            @click="onClickSubmit"
+          >
             登录
           </el-button>
         </el-form>
@@ -59,13 +63,18 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue';
+import { postLoginAPI } from '@/api/user';
 import SwitchDark from '@/components/SwitchDark/index.vue';
 
 // 用户账户密码
 const loginForm = reactive({
-  userName: '', // 用户名
+  username: '', // 用户名
   password: '', // 密码
 });
+
+const onClickSubmit = async () => {
+  await postLoginAPI(loginForm);
+};
 </script>
 
 <style lang="scss" scoped>

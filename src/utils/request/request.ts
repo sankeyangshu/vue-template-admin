@@ -24,7 +24,7 @@ service.interceptors.request.use(
     }
     // 数据转换,判断数据格式为formdata还是json格式
     // json格式
-    config.data = JSON.stringify(config.data);
+    // config.data = JSON.stringify(config.data);
     return config;
   },
   (error: AxiosError) => {
