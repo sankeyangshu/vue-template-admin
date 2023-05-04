@@ -5,13 +5,13 @@
         <div class="http">
           <div class="http-img">
             <img class="img-parent" src="@/assets/images/403.png" alt="403" />
-            <img class="img-child left" src="@/assets/images/403_cloud.png" alt="403" />
-            <img class="img-child mid" src="@/assets/images/403_cloud.png" alt="403" />
-            <img class="img-child right" src="@/assets/images/403_cloud.png" alt="403" />
+            <img class="img-child left" src="@/assets/images/error_cloud.png" alt="403" />
+            <img class="img-child mid" src="@/assets/images/error_cloud.png" alt="403" />
+            <img class="img-child right" src="@/assets/images/error_cloud.png" alt="403" />
           </div>
           <div class="http-btn">
             <div class="btn-noauth">{{ $t('toast.noAuth403Title') }}</div>
-            <div class="btn-info">{{ $t('toast.noAuth403Info') }}</div>
+            <div class="btn-info">{{ $t('toast.noAuthInfo') }}</div>
             <router-link to="/" class="btn">{{ $t('toast.noAuthBackHome') }}</router-link>
           </div>
         </div>

@@ -25,7 +25,8 @@ export default {
   toast: {
     switchLangSuccess: '切换语言成功',
     noAuth403Title: '您没有访问权限！',
-    noAuth403Info: '请检查URL地址是否正确, 或点击回到首页。',
+    noAuth404Title: '页面不存在！',
+    noAuthInfo: '请检查URL地址是否正确, 或点击回到首页。',
     noAuthBackHome: '回到首页',
   },
   tagsView: {
