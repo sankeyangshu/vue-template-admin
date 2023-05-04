@@ -7,7 +7,9 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build:dev": "vue-tsc && vite build --mode development",
+    "build:prod": "vue-tsc && vite build --mode production",
+    "build:test": "vue-tsc && vite build --mode test",
     "preview": "vite preview",
     "prepare": "husky install"
   },
