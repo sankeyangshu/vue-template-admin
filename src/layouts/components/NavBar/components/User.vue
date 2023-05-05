@@ -7,7 +7,7 @@
         class="avatar"
         src="https://img.yzcdn.cn/vant/cat.jpeg"
       />
-      <div class="user-name">{{ $t('navBar.user') }}</div>
+      <div class="user-name">{{ userInfo.username }}</div>
       <el-icon class="up-down">
         <ArrowDown />
       </el-icon>
@@ -28,14 +28,19 @@
 </template>
 
 <script lang="ts" setup>
-import { useUserStore } from '@/store/modules/user';
+import { computed } from 'vue';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '@/store/modules/user';
+import { userInfoType } from '@/types/user';
 
 // 路由
 const router = useRouter();
 
 // store
 const userStore = useUserStore();
+
+// 获取用户信息
+const userInfo = computed(() => userStore.userInfo as userInfoType);
 
 // 用户退出登录
 const onClickLogout = async () => {

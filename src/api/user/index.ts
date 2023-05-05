@@ -1,35 +1,10 @@
 import http from '@/utils/request';
+import { loginDataType, userInfoRepType } from '@/types/user';
 
 // api接口
 const api = {
   login: '/api/auth/signin', // 用户登录接口
 };
-
-/**
- * 登录请求参数类型
- */
-export type loginDataType = {
-  username: string;
-  password: string;
-};
-
-/**
- * 登录返回参数类型
- */
-export interface userInfoRepType {
-  user: {
-    password: string;
-    id: number;
-    username: string;
-    contact: string;
-    email: string;
-    userType: number;
-    status: number;
-    createtime: string;
-    updatetime: string;
-  };
-  token: string;
-}
 
 /**
  * @description: 用户登录

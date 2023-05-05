@@ -1,12 +1,18 @@
 import { defineStore } from 'pinia';
-import { loginDataType, postLoginAPI } from '@/api/user';
+import { postLoginAPI } from '@/api/user';
+import { loginDataType, userInfoType } from '@/types/user';
+
+interface userStoreType {
+  token: string;
+  userInfo: userInfoType | {};
+}
 
 export const useUserStore = defineStore({
   // id: 必须的，在所有 Store 中唯一
   id: 'userState',
 
   // state: 返回对象的函数
-  state: () => ({
+  state: (): userStoreType => ({
     token: '', // 登录token
     userInfo: {}, // 用户信息
   }),
@@ -18,7 +24,7 @@ export const useUserStore = defineStore({
       this.token = value;
     },
     // 设置用户信息
-    setUserInfo(value: any) {
+    setUserInfo(value: userInfoType | {}) {
       this.userInfo = value;
     },
     /**
