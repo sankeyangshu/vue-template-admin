@@ -8,7 +8,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'layout',
     component: Layout,
-    meta: { title: 'home', icon: 'House' },
+    redirect: '/home',
+    meta: { title: '首页', icon: 'House' },
+    children: [
+      {
+        path: '/home',
+        name: 'home',
+        component: () => import('@/views/Home/index.vue'),
+        meta: { title: '首页', icon: 'House' },
+      },
+    ],
   },
   ...constantRoutes,
 ];
