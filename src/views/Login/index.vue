@@ -15,7 +15,7 @@
           <span class="logo-text">Vue-Admin</span>
         </div>
         <!-- 登录功能 开始 -->
-        <el-form ref="ruleFormRef" :model="loginForm">
+        <el-form ref="loginFormRef" :model="loginForm" :rules="loginRules">
           <!-- 用户名 开始 -->
           <el-form-item prop="username">
             <el-input
@@ -50,7 +50,8 @@
           <el-button
             type="primary"
             style="width: 100%; height: 47px; margin-top: 20px"
-            @click="onClickSubmit"
+            :loading="loading"
+            @click="onClickSubmit(loginFormRef)"
           >
             登录
           </el-button>
@@ -62,9 +63,65 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue';
-import { postLoginAPI } from '@/api/user';
+import { reactive, ref } from 'vue';
+import { useRouter } from 'vue-router';
+import { ElNotification, FormInstance, FormRules } from 'element-plus';
+import { getTimeStateStr } from '@/utils';
+import { useUserStore } from '@/store/modules/user';
 import SwitchDark from '@/components/SwitchDark/index.vue';
+
+// 表单校验
+const loginFormRef = ref<FormInstance>();
+
+/**
+ * @description: 登录用户名校验规则
+ * @param {any} rule 校验规则
+ * @param {string} value 用户名
+ * @param {any} callback 回调函数
+ * @return  是否通过校验
+ */
+const validateUsername = (rule: any, value: string, callback: any) => {
+  if (value === '') {
+    callback(new Error('请输入用户名'));
+  } else if (value.length < 4) {
+    callback(new Error('用户名长度不能小于4位'));
+  } else {
+    callback();
+  }
+};
+
+/**
+ * @description: 登录密码校验规则
+ * @param {any} rule 校验规则
+ * @param {string} value 密码
+ * @param {any} callback 回调函数
+ * @return  是否通过校验
+ */
+const validatePassword = (rule: any, value: string, callback: any) => {
+  if (value === '') {
+    callback(new Error('请输入密码'));
+  } else if (value.length < 4 || value.length > 16) {
+    callback(new Error('密码长度不符合规范，密码长度4-16位'));
+  } else {
+    callback();
+  }
+};
+
+// 校验规则
+const loginRules = reactive<FormRules>({
+  username: [
+    {
+      required: true,
+      validator: validateUsername,
+    },
+  ],
+  password: [
+    {
+      required: true,
+      validator: validatePassword,
+    },
+  ],
+});
 
 // 用户账户密码
 const loginForm = reactive({
@@ -72,8 +129,36 @@ const loginForm = reactive({
   password: '', // 密码
 });
 
-const onClickSubmit = async () => {
-  await postLoginAPI(loginForm);
+// 按钮加载状态
+const loading = ref(false);
+
+// 路由
+const router = useRouter();
+
+// sotre
+const userStore = useUserStore();
+
+// 用户登录
+const onClickSubmit = (formEl: FormInstance | undefined) => {
+  // 进行表单校验
+  if (!formEl) return;
+  formEl.validate(async (valid) => {
+    if (!valid) return;
+    try {
+      loading.value = true; // 按钮进入加载状态
+      // 通过验证
+      await userStore.login(loginForm);
+      router.push({ path: '/' }); // 跳转到首页
+      ElNotification({
+        title: `hi,${getTimeStateStr()}!`,
+        message: `欢迎回来`,
+        type: 'success',
+        duration: 3000,
+      });
+    } finally {
+      loading.value = false; // 关闭按钮加载状态
+    }
+  });
 };
 </script>
 

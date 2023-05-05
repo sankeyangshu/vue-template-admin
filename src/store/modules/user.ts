@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { loginDataType, postLoginAPI } from '@/api/user';
 
 export const useUserStore = defineStore({
   // id: 必须的，在所有 Store 中唯一
@@ -7,6 +8,7 @@ export const useUserStore = defineStore({
   // state: 返回对象的函数
   state: () => ({
     token: '', // 登录token
+    userInfo: {}, // 用户信息
   }),
 
   // 可以同步 也可以异步
@@ -14,6 +16,26 @@ export const useUserStore = defineStore({
     // 设置token
     setToken(value: string) {
       this.token = value;
+    },
+    // 设置用户信息
+    setUserInfo(value: any) {
+      this.userInfo = value;
+    },
+    /**
+     * 用户登录
+     */
+    login(userInfo: loginDataType) {
+      const { username, password } = userInfo;
+      return new Promise<void>(async (resolve, reject) => {
+        try {
+          const { data } = await postLoginAPI({ username: username.trim(), password: password });
+          this.setToken(data.token); // 保存用户token
+          this.setUserInfo(data.user);
+          resolve();
+        } catch (error) {
+          reject(error);
+        }
+      });
     },
   },
 
