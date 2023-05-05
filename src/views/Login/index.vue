@@ -20,7 +20,7 @@
           <el-form-item prop="username">
             <el-input
               placeholder="请输入用户名"
-              autoComplete="on"
+              autocomplete="on"
               style="position: relative"
               v-model="loginForm.username"
               type="text"
@@ -36,7 +36,7 @@
           <el-form-item prop="password">
             <el-input
               placeholder="请输入密码"
-              autoComplete="on"
+              autocomplete="on"
               v-model="loginForm.password"
               show-password
             >
@@ -226,7 +226,6 @@ const onClickSubmit = (formEl: FormInstance | undefined) => {
         border-radius: 0px;
         padding: 12px 5px 12px 15px;
         height: 47px;
-        caret-color: #ffffff;
         box-shadow: none;
       }
     }
