@@ -37,6 +37,16 @@ export const useUserStore = defineStore({
         }
       });
     },
+    /**
+     * 用户退出登录
+     */
+    logout() {
+      return new Promise((resolve) => {
+        this.token = '';
+        this.userInfo = {};
+        resolve(null);
+      });
+    },
   },
 
   // 进行持久化存储

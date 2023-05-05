@@ -18,7 +18,7 @@
           <el-icon> <Edit /> </el-icon>
           <span>{{ $t('navBar.changePassword') }}</span>
         </el-dropdown-item>
-        <el-dropdown-item divided>
+        <el-dropdown-item divided @click="onClickLogout">
           <el-icon> <SwitchButton /> </el-icon>
           <span>{{ $t('navBar.logout') }}</span>
         </el-dropdown-item>
@@ -27,7 +27,22 @@
   </el-dropdown>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { useUserStore } from '@/store/modules/user';
+import { useRouter } from 'vue-router';
+
+// 路由
+const router = useRouter();
+
+// store
+const userStore = useUserStore();
+
+// 用户退出登录
+const onClickLogout = async () => {
+  await userStore.logout();
+  router.push('/login');
+};
+</script>
 
 <style lang="scss" scoped>
 .el-dropdown-link {
