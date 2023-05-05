@@ -5,6 +5,40 @@
 @import './sidebar.scss';
 @import './transition.scss';
 
+/* 移动端的时候由于屏幕变小隐藏头部导航栏 */
+@media screen and (max-width: 540px) {
+  .breadcrumb {
+    display: none !important;
+  }
+}
+
+// 滚动条样式
+@mixin base-scrollbar {
+  &::-webkit-scrollbar {
+    width: 13px;
+    height: 13px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(0 0 0 / 10%);
+    background-clip: padding-box;
+    border: 3px solid transparent;
+    border-radius: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(0 0 0 / 30%);
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-track:hover {
+    background-color: #f8fafc;
+  }
+}
+
 html,
 body {
   height: 100%;
@@ -22,6 +56,11 @@ html {
 
 #app {
   height: 100%;
+  .layout-main {
+    .layout-main-container {
+      @include base-scrollbar;
+    }
+  }
 }
 
 .app-container {

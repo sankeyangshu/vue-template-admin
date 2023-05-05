@@ -63,6 +63,9 @@ const isCollapse = computed(() => settingStore.isCollapse);
         width: calc(100% - $side-bar-width-min);
       }
     }
+    .layout-main-container {
+      padding: 20px;
+    }
   }
 }
 </style>
