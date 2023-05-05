@@ -1,7 +1,50 @@
 import { App } from 'vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Layout from '@/layouts/index.vue';
-import { constantRoutes } from './constantRoutes';
+
+/**
+ * 公共路由
+ * path ==> 路由路径
+ * name ==> 路由名称
+ * component ==> 路由组件
+ * redirect ==> 路由重定向
+ * alwaysShow ==> 如果设置为true，将始终显示根菜单，无论其子路由长度如何
+ * hidden ==> 如果“hidden:true”不会显示在侧边栏中（默认值为false）
+ * keepAlive ==> 设为true 缓存
+ * meta ==> 路由元信息
+ * meta.title ==> 路由标题
+ * meta.icon ==> 菜单icon
+ * meta.affix ==> 如果设置为true将会出现在 标签栏中
+ * meta.breadcrumb ==> 如果设置为false，该项将隐藏在breadcrumb中（默认值为true）
+ */
+export const constantRoutes: Array<RouteRecordRaw> = [
+  {
+    path: '/login',
+    name: 'Login',
+    component: () => import('@/views/Login/index.vue'),
+  },
+  {
+    path: '/404',
+    name: '404',
+    meta: { title: '404', icon: 'House' },
+    component: () => import('@/views/ErrorPages/404.vue'),
+  },
+  {
+    path: '/403',
+    name: '403',
+    meta: { title: '403', icon: 'House' },
+    component: () => import('@/views/ErrorPages/403.vue'),
+  },
+];
+
+/**
+ * notFoundRouter(找不到路由)
+ */
+export const notFoundRouter = {
+  path: '/:pathMatch(.*)*',
+  name: 'notFound',
+  redirect: '/404',
+};
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -20,6 +63,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   ...constantRoutes,
+  notFoundRouter,
 ];
 
 // 创建一个可以被 Vue 应用程序使用的路由实例
