@@ -1,6 +1,5 @@
 <template>
   <div class="app-main">
-    <!-- <router-view> </router-view> -->
     <router-view v-slot="{ Component, route }">
       <transition name="fade-slide" mode="out-in" appear>
         <keep-alive :include="cacheRoutes" v-if="isReload">

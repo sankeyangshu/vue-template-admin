@@ -1,9 +1,9 @@
 <template>
   <div class="sidebar-container" :class="{ 'is-collapse': isCollapse }">
-    <Logo :isCollapse="isCollapse"></Logo>
+    <Logo :isCollapse="isCollapse" v-if="themeConfig.showLogo"></Logo>
     <el-scrollbar>
       <el-menu
-        :unique-opened="true"
+        :unique-opened="themeConfig.uniqueOpened"
         :default-active="activeMenu"
         background-color="#1f2d3d"
         text-color="#fff"
@@ -48,6 +48,9 @@ const settingStore = useSettingStore();
 
 // 是否折叠
 const isCollapse = computed(() => settingStore.isCollapse);
+
+// 获取主题设置
+const themeConfig = computed(() => settingStore.themeConfig);
 </script>
 
 <style lang="scss" scoped>

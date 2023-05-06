@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia';
-import { IObjectKeys } from '@/types';
 
 interface settingsStateType {
   isCollapse: boolean;
@@ -11,11 +10,25 @@ interface settingsStateType {
 /**
  * 主题设置类型
  */
-interface themeConfigType extends IObjectKeys {
+interface themeConfigType {
+  showSetting: boolean;
   isDark: boolean;
   showTag: boolean;
   fixedHeader: boolean;
+  showLogo: boolean;
+  uniqueOpened: boolean;
 }
+
+/**
+ * 主题设置key类型
+ */
+export type themeConfigKeyType =
+  | 'showSetting'
+  | 'isDark'
+  | 'showTag'
+  | 'fixedHeader'
+  | 'showLogo'
+  | 'uniqueOpened';
 
 export const useSettingStore = defineStore({
   // id: 必须的，在所有 Store 中唯一
@@ -27,9 +40,12 @@ export const useSettingStore = defineStore({
     language: 'zhCn', // 国际化-默认是zhCn
     isReload: true, // 是否刷新当前页
     themeConfig: {
+      showSetting: false, // 显示设置
       isDark: false, // 深色模式 切换暗黑模式
       showTag: true, // tagsView 是否展示 默认展示
       fixedHeader: true, // 固定header
+      showLogo: true, // 显示侧边栏Logo
+      uniqueOpened: true, // 是否只保持一个子菜单的展开
     }, // 主题设置
   }),
 
@@ -51,7 +67,7 @@ export const useSettingStore = defineStore({
       }, 50);
     },
     // 设置主题
-    setThemeConfig(key: string, val: any) {
+    setThemeConfig(key: themeConfigKeyType, val: any) {
       this.themeConfig[key] = val;
     },
   },

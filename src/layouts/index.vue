@@ -6,11 +6,17 @@
     <div class="layout-main" :class="{ 'is-collapse': isCollapse }">
       <!-- 顶部 Header -->
       <LayoutHeader />
-      <div class="layout-header fixed-header" :class="{ 'is-collapse': isCollapse }">
+      <div
+        class="layout-header"
+        :class="{
+          'fixed-header': themeConfig.fixedHeader,
+          'is-collapse': themeConfig.fixedHeader && isCollapse,
+        }"
+      >
         <!-- 操作栏 -->
         <LayoutNavBar />
         <!-- 标签 -->
-        <LayoutTagsView />
+        <LayoutTagsView v-if="themeConfig.showTag" />
       </div>
       <div class="layout-main-container">
         <!-- 内容区 Main -->
@@ -18,6 +24,9 @@
         <!-- 底部 Footer -->
       </div>
     </div>
+
+    <!-- 主题配置 -->
+    <Theme />
   </div>
 </template>
 
@@ -29,12 +38,16 @@ import LayoutSideBar from './components/Sidebar/index.vue';
 import LayoutHeader from './components/Header/index.vue';
 import LayoutNavBar from './components/NavBar/index.vue';
 import LayoutTagsView from './components/TagsView/index.vue';
+import Theme from '@/components/Theme/index.vue';
 
 // 获取全局设置
 const settingStore = useSettingStore();
 
 // 是否折叠
 const isCollapse = computed(() => settingStore.isCollapse);
+
+// 获取主题设置
+const themeConfig = computed(() => settingStore.themeConfig);
 </script>
 
 <style lang="scss" scoped>

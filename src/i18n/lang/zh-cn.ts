@@ -52,6 +52,7 @@ export default {
     lang: '国际化',
     guide: '功能引导',
     home: '首页',
+    setting: '系统设置',
     user: '用户名',
     changePassword: '修改密码',
     logout: '退出登录',
