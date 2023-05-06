@@ -2,7 +2,7 @@ import { defineStore } from 'pinia';
 import { postLoginAPI } from '@/api/user';
 import { loginDataType, userInfoType } from '@/types/user';
 
-interface userStoreType {
+interface userStateType {
   token: string;
   userInfo: userInfoType | {};
 }
@@ -12,7 +12,7 @@ export const useUserStore = defineStore({
   id: 'userState',
 
   // state: 返回对象的函数
-  state: (): userStoreType => ({
+  state: (): userStateType => ({
     token: '', // 登录token
     userInfo: {}, // 用户信息
   }),
