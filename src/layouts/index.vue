@@ -4,8 +4,10 @@
     <LayoutSideBar></LayoutSideBar>
 
     <div class="layout-main" :class="{ 'is-collapse': isCollapse }">
+      <!-- 顶部 Header -->
+      <LayoutHeader />
       <div class="layout-header fixed-header" :class="{ 'is-collapse': isCollapse }">
-        <!-- 顶部 Header -->
+        <!-- 操作栏 -->
         <LayoutNavBar />
         <!-- 标签 -->
         <LayoutTagsView />
@@ -24,6 +26,7 @@ import { computed } from 'vue';
 import { useSettingStore } from '@/store/modules/setting';
 import LayoutMain from './components/Main/index.vue';
 import LayoutSideBar from './components/Sidebar/index.vue';
+import LayoutHeader from './components/Header/index.vue';
 import LayoutNavBar from './components/NavBar/index.vue';
 import LayoutTagsView from './components/TagsView/index.vue';
 
@@ -67,7 +70,7 @@ const isCollapse = computed(() => settingStore.isCollapse);
       }
     }
     .layout-main-container {
-      padding: 20px;
+      padding: 10px 12px;
     }
   }
 }
