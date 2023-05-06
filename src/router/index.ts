@@ -51,7 +51,6 @@ const routes: Array<RouteRecordRaw> = [
     name: 'layout',
     component: Layout,
     redirect: '/home',
-    meta: { title: '首页', icon: 'House' },
     children: [
       {
         path: '/home',
