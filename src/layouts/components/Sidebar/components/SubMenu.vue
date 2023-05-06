@@ -5,7 +5,7 @@
         <el-icon>
           <component :is="subItem.meta?.icon"></component>
         </el-icon>
-        <span>{{ subItem.meta?.title }}</span>
+        <span>{{ $t(`route.${subItem.meta?.title}`) }}</span>
       </template>
       <!-- 有children递归本次组件 -->
       <SubMenu :menuList="subItem.children" />
@@ -16,7 +16,7 @@
         <component :is="subItem.meta?.icon"></component>
       </el-icon>
       <template #title>
-        <span>{{ subItem.meta?.title }}</span>
+        <span>{{ $t(`route.${subItem.meta?.title}`) }}</span>
       </template>
     </el-menu-item>
   </template>

@@ -11,7 +11,7 @@ const systemRoutes: Array<RouteRecordRaw> = [
     redirect: '/system/user',
     name: 'System',
     meta: {
-      title: '系统管理',
+      title: 'system',
       icon: 'Setting',
     },
     children: [
@@ -19,25 +19,25 @@ const systemRoutes: Array<RouteRecordRaw> = [
         path: '/system/user',
         name: 'User',
         component: () => import('@/views/System/Users/index.vue'),
-        meta: { title: '用户管理', icon: 'Menu' },
+        meta: { title: 'userManage', icon: 'Menu' },
       },
       {
         path: '/system/role',
         name: 'Roles',
         component: () => import('@/views/System/Roles/index.vue'),
-        meta: { title: '角色管理', icon: 'Menu' },
+        meta: { title: 'roleManage', icon: 'Menu' },
       },
       {
         path: '/system/menu',
         name: 'Menus',
         component: () => import('@/views/System/Menus/index.vue'),
-        meta: { title: '菜单管理', icon: 'Menu' },
+        meta: { title: 'menuManage', icon: 'Menu' },
       },
       {
         path: '/system/dept',
         name: 'dept',
         component: () => import('@/views/System/Depts/index.vue'),
-        meta: { title: '部门管理', icon: 'Menu' },
+        meta: { title: 'deptManage', icon: 'Menu' },
       },
     ],
   },

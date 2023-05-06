@@ -21,7 +21,7 @@
         <el-option
           v-for="option in searchOptions"
           :key="option.item.path"
-          :label="option.item.title.join('>')"
+          :label="option.item.title.join(' > ')"
           :value="option.item"
         >
         </el-option>

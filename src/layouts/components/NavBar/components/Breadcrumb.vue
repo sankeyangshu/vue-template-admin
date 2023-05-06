@@ -4,7 +4,7 @@
       <el-breadcrumb-item
         :to="{ path: '/' }"
         key="home"
-        v-if="breadcrumbData[0].meta.title !== '首页'"
+        v-if="breadcrumbData[0].meta.title !== 'home'"
       >
         <span class="redirect">首页</span>
       </el-breadcrumb-item>
@@ -14,11 +14,11 @@
           v-if="item.redirect === 'noRedirect' || index === breadcrumbData.length - 1"
           class="no-redirect"
         >
-          {{ item.meta.title }}
+          {{ $t(`route.${item.meta.title}`) }}
         </span>
         <!-- 可点击的面包屑 -->
         <span v-else class="redirect" @click="onClickHandleLink(item)">
-          {{ item.meta.title }}
+          {{ $t(`route.${item.meta.title}`) }}
         </span>
       </el-breadcrumb-item>
     </transition-group>
