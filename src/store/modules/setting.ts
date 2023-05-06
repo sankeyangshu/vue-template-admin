@@ -8,6 +8,7 @@ export const useSettingStore = defineStore({
   state: () => ({
     isCollapse: false, // 是否收缩左侧菜单栏
     language: 'zhCn', // 国际化-默认是zhCn
+    isReload: true, // 是否刷新当前页
     themeConfig: {
       isDark: false, // 深色模式 切换暗黑模式
     }, // 主题设置
@@ -22,6 +23,13 @@ export const useSettingStore = defineStore({
     // 设置国际化
     setLanguage(value: string) {
       this.language = value;
+    },
+    // 刷新当前页
+    setReload() {
+      this.isReload = false;
+      setTimeout(() => {
+        this.isReload = true;
+      }, 50);
     },
     // TODO设置主题
     setThemeConfig(val: any) {

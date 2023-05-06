@@ -7,6 +7,8 @@
       <div class="layout-header fixed-header" :class="{ 'is-collapse': isCollapse }">
         <!-- 顶部 Header -->
         <LayoutNavBar />
+        <!-- 标签 -->
+        <LayoutTagsView />
       </div>
       <div class="layout-main-container">
         <!-- 内容区 Main -->
@@ -23,6 +25,7 @@ import { useSettingStore } from '@/store/modules/setting';
 import LayoutMain from './components/Main/index.vue';
 import LayoutSideBar from './components/Sidebar/index.vue';
 import LayoutNavBar from './components/NavBar/index.vue';
+import LayoutTagsView from './components/TagsView/index.vue';
 
 // 获取全局设置
 const settingStore = useSettingStore();

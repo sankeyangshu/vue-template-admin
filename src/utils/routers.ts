@@ -1,4 +1,4 @@
-import { RouteRecordRaw } from 'vue-router';
+import { RouteRecordRaw, RouteRecordName } from 'vue-router';
 import path from 'path-browserify';
 
 /**
@@ -83,4 +83,25 @@ export const generateMenus = (routes: RouteRecordRaw[], basePath = '') => {
     }
   });
   return result;
+};
+
+/**
+ * @description: 过滤需要缓存的路由
+ * @param {RouteRecordRaw[]} routers 所有路由表
+ * @return 需要缓存的路由数组
+ */
+export const filterKeepAlive = (routers: RouteRecordRaw[]) => {
+  const cacheRouter: RouteRecordName[] = [];
+  const deep = (routers: RouteRecordRaw[]) => {
+    routers.forEach((item) => {
+      if (item.meta?.keepAlive && item.name) {
+        cacheRouter.push(item.name);
+      }
+      if (item.children && item.children.length) {
+        deep(item.children);
+      }
+    });
+  };
+  deep(routers);
+  return cacheRouter;
 };

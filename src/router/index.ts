@@ -45,6 +45,11 @@ export const notFoundRouter = {
   redirect: '/404',
 };
 
+/**
+ * 异步路由组件
+ */
+export const asyncRoutes = [...systemRoutes];
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -61,7 +66,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   ...constantRoutes,
-  ...systemRoutes,
+  ...asyncRoutes,
   notFoundRouter,
 ];
 

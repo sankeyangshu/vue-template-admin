@@ -45,7 +45,7 @@ $right-content-width-min: calc(100% - #{$side-bar-width-min});
 $nav-bar-height: 60px;
 
 // 顶部多标签页tabs-bar的高度
-$tabs-bar-height: 55px;
+$tabs-bar-height: 40px;
 
 // app-main的高度
 $app-main-height: calc(100vh - $nav-bar-height - $tabs-bar-height - 56px - 40px);
