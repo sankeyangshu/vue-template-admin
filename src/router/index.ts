@@ -1,6 +1,7 @@
 import { App } from 'vue';
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
 import Layout from '@/layouts/index.vue';
+import systemRoutes from './modules/system';
 
 /**
  * 公共路由
@@ -26,13 +27,11 @@ export const constantRoutes: Array<RouteRecordRaw> = [
   {
     path: '/404',
     name: '404',
-    meta: { title: '404', icon: 'House' },
     component: () => import('@/views/ErrorPages/404.vue'),
   },
   {
     path: '/403',
     name: '403',
-    meta: { title: '403', icon: 'House' },
     component: () => import('@/views/ErrorPages/403.vue'),
   },
 ];
@@ -63,6 +62,7 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   ...constantRoutes,
+  ...systemRoutes,
   notFoundRouter,
 ];
 
