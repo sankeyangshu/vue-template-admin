@@ -105,3 +105,37 @@ export const filterKeepAlive = (routers: RouteRecordRaw[]) => {
   deep(routers);
   return cacheRouter;
 };
+
+/**
+ * @description: 判断当前用户是否具有权限
+ * @param {string} roles 权限表
+ * @param {RouteRecordRaw} route 当前路由对象
+ * @return {boolean} 是否有权限
+ */
+export const hasPermission = (roles: string[], route: RouteRecordRaw): boolean => {
+  if (route.meta && route.meta.roles) {
+    return roles.some((role) => (route.meta?.roles as string[]).includes(role));
+  } else {
+    return false;
+  }
+};
+
+/**
+ * @description: 过滤异步路由表
+ * @param {RouteRecordRaw} routes 异步路由表
+ * @param {string} roles 权限表
+ * @return 过滤结果
+ */
+export const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: string[]) => {
+  const res: RouteRecordRaw[] = [];
+  routes.forEach((route) => {
+    const tmp = { ...route };
+    if (hasPermission(roles, tmp)) {
+      if (tmp.children) {
+        tmp.children = filterAsyncRoutes(tmp.children, roles);
+      }
+      res.push(tmp);
+    }
+  });
+  return res;
+};

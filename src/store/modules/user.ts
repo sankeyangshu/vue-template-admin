@@ -5,6 +5,7 @@ import { loginDataType, userInfoType } from '@/types/user';
 interface userStateType {
   token: string;
   userInfo: userInfoType | {};
+  roles: string[];
 }
 
 export const useUserStore = defineStore({
@@ -15,6 +16,7 @@ export const useUserStore = defineStore({
   state: (): userStateType => ({
     token: '', // 登录token
     userInfo: {}, // 用户信息
+    roles: [], // 权限角色
   }),
 
   // 可以同步 也可以异步

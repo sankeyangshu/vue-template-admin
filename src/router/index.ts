@@ -4,6 +4,11 @@ import Layout from '@/layouts/index.vue';
 import systemRoutes from './modules/system';
 
 /**
+ * 异步路由组件
+ */
+export const asyncRoutes = [...systemRoutes];
+
+/**
  * 公共路由
  * path ==> 路由路径
  * name ==> 路由名称
@@ -34,23 +39,6 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     name: '403',
     component: () => import('@/views/ErrorPages/403.vue'),
   },
-];
-
-/**
- * notFoundRouter(找不到路由)
- */
-export const notFoundRouter = {
-  path: '/:pathMatch(.*)*',
-  name: 'notFound',
-  redirect: '/404',
-};
-
-/**
- * 异步路由组件
- */
-export const asyncRoutes = [...systemRoutes];
-
-const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
     name: 'layout',
@@ -65,15 +53,21 @@ const routes: Array<RouteRecordRaw> = [
       },
     ],
   },
-  ...constantRoutes,
-  ...asyncRoutes,
-  notFoundRouter,
 ];
+
+/**
+ * notFoundRouter(找不到路由)
+ */
+export const notFoundRouter = {
+  path: '/:pathMatch(.*)*',
+  name: 'notFound',
+  redirect: '/404',
+};
 
 // 创建一个可以被 Vue 应用程序使用的路由实例
 export const router = createRouter({
   history: createWebHashHistory(),
-  routes,
+  routes: constantRoutes,
 });
 
 // 配置路由器
