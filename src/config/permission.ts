@@ -2,6 +2,7 @@ import { router } from '@/router';
 import { useUserStore } from '@/store/modules/user';
 import { usePermissionStore } from '@/store/modules/permission';
 import { i18n } from '@/i18n';
+import { useTitle } from 'vue-hooks-plus';
 import NProgress from 'nprogress'; // 进度条
 import 'nprogress/nprogress.css'; // 进度条样式
 
@@ -23,7 +24,8 @@ router.beforeEach(async (to, from, next) => {
 
   // 设置标题
   if (typeof to.meta.title === 'string') {
-    document.title = i18n.global.t(`route.${to.meta.title}`) || import.meta.env.VITE_APP_TITLE;
+    // document.title = i18n.global.t(`route.${to.meta.title}`) || import.meta.env.VITE_APP_TITLE;
+    useTitle(i18n.global.t(`route.${to.meta.title}`) || import.meta.env.VITE_APP_TITLE);
   }
 
   // 获取用户信息 stroe
