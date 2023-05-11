@@ -68,3 +68,38 @@ export const getQueryObject = (baseUrl: string, obj: any): string => {
   parameters = parameters.replace(/&$/, '');
   return /\?$/.test(baseUrl) ? baseUrl + parameters : baseUrl.replace(/\/?$/, '?') + parameters;
 };
+
+/**
+ * @description: 深拷贝
+ * @param {any} source 源数据
+ * @return 深拷贝后的新数据
+ */
+export const deepClone = (source: any) => {
+  // 如果不是对象或者是null，直接返回（终止条件）
+  if (typeof source !== 'object' || source === null) {
+    throw new Error('deepClone error arguments');
+  }
+
+  const targetObj: any = source.constructor === Array ? [] : {};
+  const dataKeys = Object.keys(source);
+
+  dataKeys.forEach((keys) => {
+    // 基本数据类型的值和函数直接赋值拷贝
+    if (typeof source[keys] !== 'object' || source[keys] === null) {
+      targetObj[keys] = source[keys];
+    } else if (Array.isArray(source[keys])) {
+      // 实现数组的深拷贝
+      targetObj[keys] = [...source[keys]];
+    } else if (source[keys] instanceof Set) {
+      // 实现set数据的深拷贝
+      targetObj[keys] = new Set([...source[keys]]);
+    } else if (source[keys] instanceof Map) {
+      // 实现map数据的深拷贝
+      targetObj[keys] = new Map([...source[keys]]);
+    } else {
+      // 普通对象则递归赋值
+      targetObj[keys] = deepClone(source[keys]);
+    }
+  });
+  return targetObj;
+};
