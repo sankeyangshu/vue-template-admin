@@ -34,8 +34,8 @@ export const welcome = () => {
 
 /**
  * @description 生成随机数
- * @param {Number} min 最小值
- * @param {Number} max 最大值
+ * @param {number} min 最小值
+ * @param {number} max 最大值
  * @return {number} 随机数
  */
 export const randomNum = (min: number, max: number): number => {
