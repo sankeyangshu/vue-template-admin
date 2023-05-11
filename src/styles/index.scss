@@ -4,6 +4,7 @@
 @import './theme/theme-dark.scss';
 @import './sidebar.scss';
 @import './transition.scss';
+@import './element.scss';
 
 /* 移动端的时候由于屏幕变小隐藏头部导航栏 */
 @media screen and (max-width: 540px) {
