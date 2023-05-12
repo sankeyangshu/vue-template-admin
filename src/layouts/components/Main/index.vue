@@ -31,7 +31,7 @@ const cacheRoutes = computed<any>(() => permissionStore.keepAliveRoutes);
 <style lang="scss" scoped>
 .app-main {
   width: 100%;
-  min-height: $app-main-height;
+  height: $app-main-height;
   padding: 20px;
   overflow: hidden;
   box-sizing: border-box;
