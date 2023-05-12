@@ -1,4 +1,4 @@
-#app {
+.layout-wrapper {
   .sidebar-container {
     // 重置 element-plus 的css
     .horizontal-collapse-transition {
@@ -28,7 +28,7 @@
     }
 
     a {
-      display: inline-block;
+      // display: inline-block;
       width: 100%;
       overflow: hidden;
     }
@@ -46,20 +46,29 @@
       border: none;
       height: 100%;
       width: 100% !important;
+      background: none;
     }
 
-    .is-active > .el-submenu__title {
-      color: $sub-menu-active-text !important;
+    // menu hover
+    .sub-menu-title-noDropdown,
+    .el-sub-menu__title {
+      &:hover {
+        background-color: $menu-hover !important;
+      }
     }
 
-    & .nest-menu .el-submenu > .el-submenu__title,
-    & .el-submenu .el-menu-item {
-      min-width: $side-bar-width !important;
-    }
-  }
+    & .el-menu .el-menu-item,
+    & .el-menu .el-sub-menu > .el-sub-menu__title,
+    & .el-sub-menu .el-menu-item {
+      background-color: $sub-menu-bg !important;
 
-  .el-menu--collapse .el-menu .el-submenu {
-    min-width: $side-bar-width !important;
+      &:hover {
+        background-color: $sub-menu-hover !important;
+      }
+      &.is-active {
+        background-color: $sub-menu-hover !important;
+      }
+    }
   }
 
   .withoutAnimation {

@@ -1,7 +1,7 @@
 <template>
   <div class="setting">
     <el-tooltip effect="dark" :content="$t('navBar.setting')" placement="bottom">
-      <el-icon size="24">
+      <el-icon size="24" class="header-icon">
         <Setting @click="onClickSetting" />
       </el-icon>
     </el-tooltip>

@@ -46,6 +46,7 @@ import User from './components/User.vue';
   user-select: none;
   background: #ffffff;
   box-shadow: $base-box-shadow;
+  box-sizing: border-box;
   .left-nav-bar {
     height: $nav-bar-height;
     display: flex;

@@ -65,7 +65,7 @@ const breadcrumbData = computed(() =>
   }
 
   .redirect:hover {
-    color: $sub-menu-bg;
+    color: var(--el-color-primary);
   }
 
   :deep(.no-redirect) {

@@ -7,7 +7,6 @@
         :default-active="activeMenu"
         background-color="#1f2d3d"
         text-color="#fff"
-        active-text-color="#f4f4f5"
         :collapse="isCollapse"
         router
       >

@@ -32,7 +32,6 @@ const cacheRoutes = computed<any>(() => permissionStore.keepAliveRoutes);
 .app-main {
   width: 100%;
   height: $app-main-height;
-  padding: 20px;
   overflow: hidden;
   box-sizing: border-box;
 }

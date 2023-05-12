@@ -4,7 +4,7 @@
       <div>
         <el-tooltip :content="$t('navBar.lang')" :effect="effect">
           <span id="guide-lang">
-            <svg-icon icon="language" className="lang-select-icon" />
+            <svg-icon icon="language" className="lang-select-icon header-icon" />
           </span>
         </el-tooltip>
       </div>

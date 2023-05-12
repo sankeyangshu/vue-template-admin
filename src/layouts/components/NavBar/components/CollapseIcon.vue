@@ -33,7 +33,6 @@ const onClickHandleCollapse = () => {
   }
   .icon {
     font-size: 24px;
-    color: rgb(0 0 0 / 65%);
     cursor: pointer;
   }
 }

@@ -8,7 +8,7 @@
         src="https://img.yzcdn.cn/vant/cat.jpeg"
       />
       <div class="user-name">{{ userInfo.username }}</div>
-      <el-icon class="up-down">
+      <el-icon class="up-down header-icon">
         <ArrowDown />
       </el-icon>
     </div>

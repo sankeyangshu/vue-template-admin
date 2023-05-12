@@ -22,7 +22,7 @@ defineProps({ isCollapse: Boolean });
   width: 100%;
   height: 60px;
   line-height: 60px;
-  background: $sub-menu-bg;
+  background: #2b2f3a;
   text-align: center;
   overflow: hidden;
 

@@ -7,7 +7,7 @@
     >
       <svg-icon
         :icon="isFullscreen ? 'exit-fullscreen' : 'fullscreen'"
-        className="screenful-icon"
+        className="screenful-icon header-icon"
         @click="toggle"
       ></svg-icon>
     </el-tooltip>

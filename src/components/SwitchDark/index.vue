@@ -1,7 +1,6 @@
 <template>
   <el-switch
     class="dark"
-    size="large"
     v-model="themeConfig.isDark"
     inline-prompt
     :active-icon="Sunny"

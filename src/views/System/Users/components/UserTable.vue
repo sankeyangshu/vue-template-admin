@@ -1,6 +1,6 @@
 <template>
   <div class="user-table">
-    <div class="user-table-header">
+    <div class="header">
       <el-form :inline="true" :model="userTableForm" ref="userTableFormRef">
         <el-form-item label="用户名" prop="username">
           <el-input v-model="userTableForm.username" placeholder="请输入用户名" />
@@ -11,7 +11,7 @@
         </el-form-item>
       </el-form>
     </div>
-    <div class="user-table-footer">
+    <div class="footer">
       <div class="footer-util">
         <el-button type="primary" icon="Plus"> 新增用户 </el-button>
       </div>
@@ -184,23 +184,23 @@ const handleCurrentChange = (val: number) => {
   display: flex;
   flex: 1;
   flex-direction: column;
-  .user-table-header {
+  .header {
     padding: 16px 16px 0px 16px;
     margin-bottom: 16px;
     display: flex;
     border-radius: 4px;
-    background: #ffffff;
+    background-color: #ffffff;
     box-shadow: 0 0 12px rgb(0 0 0 / 5%);
   }
-  .user-table-footer {
+  .footer {
     position: relative;
     padding: 16px;
     display: flex;
     flex: 1;
     flex-direction: column;
     overflow: hidden;
-    background: #ffffff;
     border-radius: 4px;
+    background-color: #ffffff;
     box-shadow: 0 0 12px rgb(0 0 0 / 5%);
     box-sizing: border-box;
     .footer-util {
