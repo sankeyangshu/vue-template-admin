@@ -13,7 +13,7 @@
     </div>
     <div class="footer">
       <div class="footer-util">
-        <el-button type="primary" icon="Plus"> 新增用户 </el-button>
+        <el-button type="primary" icon="Plus" @click="onClickAddUser"> 新增用户 </el-button>
       </div>
       <!-- 表格 -->
       <div class="footer-table">
@@ -72,12 +72,14 @@
         />
       </div>
     </div>
+    <UserDialog ref="userDialog" />
   </div>
 </template>
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import type { FormInstance } from 'element-plus';
+import UserDialog from './UserDialog.vue';
 
 /**
  * 表格数据类型
@@ -117,6 +119,14 @@ const onClickSearch = () => {
 const onClickResetForm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
   formEl.resetFields();
+};
+
+// 新增/编辑用户 dialog 节点
+const userDialog = ref();
+
+// 新增用户
+const onClickAddUser = () => {
+  userDialog.value.isShowDialog();
 };
 
 // 编辑
