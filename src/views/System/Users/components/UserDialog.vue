@@ -23,6 +23,9 @@
       <el-form-item label="手机号" prop="photo">
         <el-input v-model="userDialogForm.photo" placeholder="请输入手机号" />
       </el-form-item>
+      <el-form-item label="手机号" prop="photo">
+        <el-input v-model="userDialogForm.email" placeholder="请输入邮箱" />
+      </el-form-item>
       <el-form-item label="密码">
         <el-input
           v-model="userDialogForm.password"
@@ -76,6 +79,7 @@ const userDialogForm = reactive({
   sex: '男',
   role: '',
   photo: '',
+  email: '',
   password: '',
   describe: '',
   status: true,
