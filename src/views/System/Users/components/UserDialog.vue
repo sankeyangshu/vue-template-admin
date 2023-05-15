@@ -14,15 +14,15 @@
       </el-form-item>
       <el-form-item label="性别" prop="sex">
         <el-radio-group v-model="userDialogForm.sex">
-          <el-radio label="男" />
-          <el-radio label="女" />
+          <el-radio :label="1">男</el-radio>
+          <el-radio :label="2">女</el-radio>
         </el-radio-group>
       </el-form-item>
-      <el-form-item label="关联角色" prop="role">
-        <el-select v-model="userDialogForm.role" placeholder="请选择角色" style="width: 100%">
-          <el-option label="超级管理员" value="超级管理员" :key="0"></el-option>
-          <el-option label="管理员" value="管理员" :key="1"></el-option>
-          <el-option label="普通用户" value="普通用户" :key="2"></el-option>
+      <el-form-item label="关联角色" prop="userType">
+        <el-select v-model="userDialogForm.userType" placeholder="请选择角色" style="width: 100%">
+          <el-option label="超级管理员" :value="0" :key="0"></el-option>
+          <el-option label="管理员" :value="1" :key="1"></el-option>
+          <el-option label="普通用户" :value="2" :key="2"></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="手机号" prop="phone">
@@ -67,7 +67,9 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import type { FormRules, FormInstance } from 'element-plus';
+import { ElMessage } from 'element-plus';
 import { validPhone, validEmail } from '@/utils/validate';
+import { postAddUserAPI } from '@/api/user';
 
 // 是否显示dialog
 const userDialog = ref(false);
@@ -90,8 +92,8 @@ const userDialogFormRef = ref<FormInstance>();
 const userDialogForm = reactive({
   username: '', // 用户名
   nickname: '', // 昵称
-  sex: '男', // 性别
-  role: '', // 角色
+  sex: 1, // 性别
+  userType: 2, // 用户类型-角色
   phone: '', // 手机号
   email: '', // 邮箱
   password: '', // 密码
@@ -142,7 +144,7 @@ const userDialogRules = reactive<FormRules>({
     { min: 2, max: 6, message: '昵称长度在 2 - 6 个字符', trigger: 'blur' },
   ],
   sex: [{ required: true, message: '请选择性别', trigger: 'change' }],
-  role: [{ required: true, message: '请选择角色', trigger: 'change' }],
+  userType: [{ required: true, message: '请选择角色', trigger: 'change' }],
   phone: [
     { required: true, message: '请输入手机号', trigger: 'blur' },
     { validator: checkPhone, trigger: 'blur' },
@@ -160,12 +162,19 @@ const userDialogRules = reactive<FormRules>({
 // 新增/编辑用户
 const onClickConfirm = (formEl: FormInstance | undefined) => {
   if (!formEl) return;
-  formEl.validate((valid) => {
-    if (valid) {
-      console.log('submit!');
-    } else {
-      console.log('error submit!');
-      return false;
+  formEl.validate(async (valid) => {
+    if (!valid) return;
+    try {
+      // 新增用户
+      await postAddUserAPI(userDialogForm);
+      ElMessage({
+        message: '新增用户成功',
+        type: 'success',
+      });
+    } finally {
+      // 重置表单
+      formEl.resetFields();
+      userDialog.value = false;
     }
   });
 };

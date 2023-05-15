@@ -21,10 +21,25 @@ export interface userInfoType {
   password: string;
   id: number;
   username: string;
-  contact: string;
+  phone: string;
   email: string;
   userType: number;
   status: number;
   createtime: string;
   updatetime: string;
+}
+
+/**
+ * 新增用户类型
+ */
+export interface addUserType {
+  username: string;
+  nickname: string;
+  sex: number;
+  userType: number;
+  phone: string;
+  email: string;
+  password: string;
+  status: boolean;
+  description?: string;
 }
