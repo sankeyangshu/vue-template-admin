@@ -65,7 +65,8 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { ElNotification, FormInstance, FormRules } from 'element-plus';
+import { ElNotification } from 'element-plus';
+import type { FormInstance, FormRules } from 'element-plus';
 import { getTimeStateStr } from '@/utils';
 import { useUserStore } from '@/store/modules/user';
 import SwitchDark from '@/components/SwitchDark/index.vue';
@@ -73,53 +74,15 @@ import SwitchDark from '@/components/SwitchDark/index.vue';
 // 表单校验
 const loginFormRef = ref<FormInstance>();
 
-/**
- * @description: 登录用户名校验规则
- * @param {any} rule 校验规则
- * @param {string} value 用户名
- * @param {any} callback 回调函数
- * @return  是否通过校验
- */
-const validateUsername = (rule: any, value: string, callback: any) => {
-  if (value === '') {
-    callback(new Error('请输入用户名'));
-  } else if (value.length < 4) {
-    callback(new Error('用户名长度不能小于4位'));
-  } else {
-    callback();
-  }
-};
-
-/**
- * @description: 登录密码校验规则
- * @param {any} rule 校验规则
- * @param {string} value 密码
- * @param {any} callback 回调函数
- * @return  是否通过校验
- */
-const validatePassword = (rule: any, value: string, callback: any) => {
-  if (value === '') {
-    callback(new Error('请输入密码'));
-  } else if (value.length < 4 || value.length > 16) {
-    callback(new Error('密码长度不符合规范，密码长度4-16位'));
-  } else {
-    callback();
-  }
-};
-
 // 校验规则
 const loginRules = reactive<FormRules>({
   username: [
-    {
-      required: true,
-      validator: validateUsername,
-    },
+    { required: true, message: '请输入用户名', trigger: 'blur' },
+    { min: 4, message: '用户名长度不能小于4位', trigger: 'blur' },
   ],
   password: [
-    {
-      required: true,
-      validator: validatePassword,
-    },
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 4, max: 16, message: '密码长度不符合规范，密码长度 4 - 16 位', trigger: 'blur' },
   ],
 });
 
