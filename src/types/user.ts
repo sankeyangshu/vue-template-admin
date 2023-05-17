@@ -30,16 +30,60 @@ export interface userInfoType {
 }
 
 /**
- * 新增用户类型
+ * 用户基本类型
  */
-export interface addUserType {
+export interface userType {
   username: string;
   nickname: string;
-  sex: number;
-  userType: number;
   phone: string;
   email: string;
-  password: string;
   status: boolean;
   description?: string;
+}
+
+/**
+ * 新增用户类型
+ */
+export interface addUserType extends userType {
+  sex: number;
+  userType: number;
+}
+
+/**
+ * 更新用户信息类型
+ */
+export interface updateUserType extends userType {
+  sex: number;
+  userType: number;
+  password: string;
+}
+
+/**
+ * 用户列表类型
+ */
+export interface userListType extends userType {
+  id: number;
+  sex: string | number;
+  userType: string | number;
+  createtime: string;
+}
+
+/**
+ * 查询用户列表类型
+ */
+export interface getUserListType {
+  page: number;
+  limit: number;
+  username: string;
+  sex: number;
+}
+
+/**
+ * 获取用户列表返回参数类型
+ */
+export interface userListResult {
+  list: userListType[];
+  total: number;
+  pageNum: number;
+  pageSize: number;
 }

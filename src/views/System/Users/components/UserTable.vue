@@ -19,7 +19,7 @@
       <div class="footer-table">
         <el-table
           v-loading="tableLoading"
-          :data="tableData"
+          :data="tableState.tableData"
           border
           stripe
           style="width: 100%; height: 100%"
@@ -27,8 +27,9 @@
           <el-table-column prop="username" label="用户名" align="center" width="100" />
           <el-table-column prop="nickname" label="昵称" align="center" />
           <el-table-column prop="sex" label="性别" align="center" />
-          <el-table-column prop="role" label="关联角色" align="center" width="120" />
-          <el-table-column prop="photo" label="手机号" align="center" width="120" />
+          <el-table-column prop="userType" label="关联角色" align="center" width="120" />
+          <el-table-column prop="phone" label="手机号" align="center" width="120" />
+          <el-table-column prop="email" label="邮箱" align="center" width="120" />
           <el-table-column prop="status" label="用户状态" align="center">
             <template #default="scope">
               <el-switch
@@ -36,17 +37,18 @@
                 inline-prompt
                 active-text="启用"
                 inactive-text="禁用"
+                @change="onChangeStatus(scope.row)"
               />
             </template>
           </el-table-column>
           <el-table-column
-            prop="describe"
+            prop="description"
             :show-overflow-tooltip="true"
             width="180"
             label="用户描述"
             align="center"
           />
-          <el-table-column prop="createTime" label="创建时间" align="center" width="180" />
+          <el-table-column prop="createtime" label="创建时间" align="center" width="180" />
           <el-table-column prop="operator" label="操作" width="200px" align="center" fixed="right">
             <template #default="scope">
               <el-button type="primary" size="small" icon="Edit" @click="onClickEdit(scope.row)">
@@ -61,14 +63,10 @@
       </div>
       <!-- 分页 -->
       <div class="footer-pagination">
-        <el-pagination
-          v-model:currentPage="currentPage"
-          :page-size="10"
-          background
-          layout="total, sizes, prev, pager, next, jumper"
-          :total="1000"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
+        <Pagination
+          :pageable="tableState.pageable"
+          :handle-size-change="handleSizeChange"
+          :handle-current-change="handleCurrentChange"
         />
       </div>
     </div>
@@ -77,23 +75,40 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
-import type { FormInstance } from 'element-plus';
+import { onMounted, reactive, ref } from 'vue';
+import { ElMessage, ElMessageBox, FormInstance } from 'element-plus';
+import { postGetUserListAPI, deleteUserAPI } from '@/api/user';
+import { userListType, userListResult } from '@/types/user';
+import { useTable } from '@/hooks/useTable';
 import UserDialog from './UserDialog.vue';
+import Pagination from '@/components/Pagination/Pagination.vue';
 
-/**
- * 表格数据类型
- */
-interface tableDataType {
-  username: string;
-  nickname: string;
-  sex: string;
-  role: string;
-  status: boolean;
-  photo: string;
-  describe: string;
-  createTime: string;
-}
+// 格式化表格数据
+const handleTableData = (data: userListResult) => {
+  const { list } = data;
+  for (const item of list) {
+    item.sex = item.sex === 1 ? '男' : '女';
+    if (Number(item.userType) === 0) {
+      item.userType = '超级管理员';
+    } else if (Number(item.userType) === 1) {
+      item.userType = '管理员';
+    } else {
+      item.userType = '普通用户';
+    }
+  }
+  return data;
+};
+
+// 获取用户列表表格数据
+const { getTableList, tableState, searchTable, resetTable, tableChangeCurrent, tableChangeSize } =
+  useTable({
+    api: postGetUserListAPI,
+    dataCallBack: handleTableData,
+  });
+
+onMounted(async () => {
+  await getTableList();
+});
 
 // 查询条件
 const userTableForm = reactive({
@@ -107,17 +122,21 @@ const tableLoading = ref(false);
 const userTableFormRef = ref<FormInstance>();
 
 // 查询
-const onClickSearch = () => {
-  console.log('用户查询');
+const onClickSearch = async () => {
   tableLoading.value = true;
-  setTimeout(() => {
-    tableLoading.value = false;
-  }, 1000);
+
+  // 添加查询参数
+  tableState.value.searchParam = userTableForm;
+
+  // 查询表格
+  await searchTable();
+  tableLoading.value = false;
 };
 
 // 重置
-const onClickResetForm = (formEl: FormInstance | undefined) => {
+const onClickResetForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
+  await resetTable();
   formEl.resetFields();
 };
 
@@ -129,61 +148,61 @@ const onClickAddUser = () => {
   userDialog.value.isShowDialog();
 };
 
+// 修改用户状态
+const onChangeStatus = (row: userListType) => {
+  console.log(row);
+  ElMessageBox.confirm(
+    `确定要${!row.status ? '禁用' : '启用'} ${row.username} 账户吗？`,
+    '温馨提示',
+    {
+      confirmButtonText: '确定',
+      cancelButtonText: '取消',
+      type: 'warning',
+    }
+  )
+    .then(async () => {
+      console.log(true);
+    })
+    .catch(() => {
+      row.status = !row.status;
+    });
+};
+
 // 编辑
-const onClickEdit = (row: tableDataType) => {
-  console.log(`edit ${row}`);
+const onClickEdit = (row: userListType) => {
+  userDialog.value.isShowDialog(row);
 };
 
 // 删除
-const onClickDel = (row: tableDataType) => {
-  console.log(`del ${row}`);
+const onClickDel = (row: userListType) => {
+  ElMessageBox.confirm('你确定要删除当前项吗?', '温馨提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning',
+    draggable: true,
+  })
+    .then(async () => {
+      await deleteUserAPI({ id: row.id });
+      // 更新表格
+      await getTableList();
+      ElMessage({
+        message: '删除用户成功',
+        type: 'success',
+      });
+    })
+    .catch(() => {
+      console.log('用户点击了取消');
+    });
 };
 
-// TODO: 测试数据
-const tableData = [
-  {
-    username: 'zhangsan',
-    nickname: '张三',
-    sex: '男',
-    role: '超级管理员',
-    status: true,
-    photo: '15333333333',
-    describe: '超级管理员不可删除',
-    createTime: '2022-09-02 15:30:20',
-  },
-  {
-    username: 'lisi',
-    nickname: '李四',
-    sex: '男',
-    role: '管理员',
-    status: true,
-    photo: '13823456789',
-    describe: '测试账户',
-    createTime: '2022-09-02 15:30:20',
-  },
-  {
-    username: 'wangwu',
-    nickname: '王五',
-    sex: '男',
-    role: '普通用户',
-    status: false,
-    photo: '13923456789',
-    describe: '普通测试用户',
-    createTime: '2022-09-02 15:30:20',
-  },
-];
-
-// 分页-当前页数
-const currentPage = ref(1);
-
 // 改变每页显示条目个数
-const handleSizeChange = (val: number) => {
-  console.log(`${val} items per page`);
+const handleSizeChange = async (val: number) => {
+  await tableChangeSize(val);
 };
 
 // 当前页数改变
-const handleCurrentChange = (val: number) => {
-  console.log(`current page: ${val}`);
+const handleCurrentChange = async (val: number) => {
+  await tableChangeCurrent(val);
 };
 </script>
 

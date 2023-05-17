@@ -69,16 +69,27 @@ import { reactive, ref } from 'vue';
 import type { FormRules, FormInstance } from 'element-plus';
 import { ElMessage } from 'element-plus';
 import { validPhone, validEmail } from '@/utils/validate';
-import { postAddUserAPI } from '@/api/user';
+import { postAddUserAPI, patchUpdateUserAPI } from '@/api/user';
+import { userListType } from '@/types/user';
 
 // 是否显示dialog
 const userDialog = ref(false);
 
 // dialog标题
-const dialogTitle = ref('新增用户');
+const dialogTitle = ref('');
 
-// 显示dialog，新增/编辑用户
-const isShowDialog = () => {
+// TODO: 显示dialog，新增/编辑用户
+const isShowDialog = (item: userListType) => {
+  console.log('🚀 ~ file: UserDialog.vue:83 ~ isShowDialog ~ item:', item);
+  dialogTitle.value = '新增用户';
+  if (item) {
+    dialogTitle.value = '编辑用户';
+    // Object.keys(item).forEach((key) => {
+    //   if (key !== 'id') {
+    //     userDialogForm[key] = item[key];
+    //   }
+    // });
+  }
   userDialog.value = true;
 };
 
