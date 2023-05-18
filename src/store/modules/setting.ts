@@ -13,6 +13,8 @@ interface settingsStateType {
 interface themeConfigType {
   showSetting: boolean;
   isDark: boolean;
+  isGrey: boolean;
+  isWeak: boolean;
   showTag: boolean;
   fixedHeader: boolean;
   showLogo: boolean;
@@ -25,6 +27,8 @@ interface themeConfigType {
 export type themeConfigKeyType =
   | 'showSetting'
   | 'isDark'
+  | 'isGrey'
+  | 'isWeak'
   | 'showTag'
   | 'fixedHeader'
   | 'showLogo'
@@ -42,6 +46,8 @@ export const useSettingStore = defineStore({
     themeConfig: {
       showSetting: false, // 显示设置
       isDark: false, // 深色模式 切换暗黑模式
+      isGrey: false, // 灰色模式
+      isWeak: false, // 色弱模式
       showTag: true, // tagsView 是否展示 默认展示
       fixedHeader: true, // 固定header
       showLogo: true, // 显示侧边栏Logo
@@ -70,5 +76,13 @@ export const useSettingStore = defineStore({
     setThemeConfig(key: themeConfigKeyType, val: any) {
       this.themeConfig[key] = val;
     },
+  },
+
+  // 进行持久化存储
+  persist: {
+    // 本地存储的名称
+    key: 'settingState',
+    // 保存的位置
+    storage: window.localStorage, // localstorage
   },
 });

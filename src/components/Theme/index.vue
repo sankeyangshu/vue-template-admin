@@ -5,6 +5,14 @@
       <switch-dark></switch-dark>
     </div>
     <div class="theme-item">
+      <label>灰色模式</label>
+      <el-switch v-model="isGrey" @change="changeGreyOrWeak('grey', !!$event)" />
+    </div>
+    <div class="theme-item">
+      <label>色弱模式</label>
+      <el-switch v-model="isWeak" @change="changeGreyOrWeak('weak', !!$event)" />
+    </div>
+    <div class="theme-item">
       <label>标签栏</label>
       <el-switch v-model="showTag" @change="(val) => onChangeSwitch('showTag', val)" />
     </div>
@@ -26,10 +34,20 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
 import { useSettingStore, themeConfigKeyType } from '@/store/modules/setting';
+import { useTheme } from '@/hooks/useTheme';
 import SwitchDark from '@/components/SwitchDark/index.vue';
 
 // 获取全局系统设置
 const settingStore = useSettingStore();
+
+// 获取切换灰色和色弱模式hooks
+const { changeGreyOrWeak } = useTheme();
+
+// 是否是灰色模式
+const isGrey = ref(settingStore.themeConfig.isGrey);
+
+// 是否是色弱模式
+const isWeak = ref(settingStore.themeConfig.isWeak);
 
 // 是否展示tagsView
 const showTag = ref(settingStore.themeConfig.showTag);
