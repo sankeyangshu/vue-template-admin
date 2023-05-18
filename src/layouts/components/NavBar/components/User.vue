@@ -29,12 +29,8 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useRouter } from 'vue-router';
 import { useUserStore } from '@/store/modules/user';
 import { userInfoType } from '@/types/user';
-
-// 路由
-const router = useRouter();
 
 // store
 const userStore = useUserStore();
@@ -43,9 +39,8 @@ const userStore = useUserStore();
 const userInfo = computed(() => userStore.userInfo as userInfoType);
 
 // 用户退出登录
-const onClickLogout = async () => {
-  await userStore.logout();
-  router.push('/login');
+const onClickLogout = () => {
+  userStore.logout(true);
 };
 </script>
 

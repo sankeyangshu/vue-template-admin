@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia';
 import { postLoginAPI } from '@/api/user';
 import { loginDataType, userInfoType } from '@/types/user';
+import { router } from '@/router';
 
 interface userStateType {
   token: string;
@@ -48,12 +49,10 @@ export const useUserStore = defineStore({
     /**
      * 用户退出登录
      */
-    logout() {
-      return new Promise((resolve) => {
-        this.token = '';
-        this.userInfo = {};
-        resolve(null);
-      });
+    logout(goLogin = false) {
+      this.token = '';
+      this.userInfo = {};
+      goLogin && router.push('/login');
     },
   },
 
