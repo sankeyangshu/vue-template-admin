@@ -47,12 +47,12 @@ service.interceptors.response.use(
       if (data.code === 0) {
         // 接口请求结果正确
         return data;
+      } else if (data.code === 401) {
+        // 为了反正系统内部错误状态码和默认的几个状态码冲突，所以将401单独取出来
+        checkStatus(Number(`14${data.code}`), data.message);
+        return Promise.reject(data);
       } else {
-        ElMessage({
-          message: data.message || 'Error',
-          type: 'error',
-          duration: 5000,
-        });
+        checkStatus(data.code, data.message);
         return Promise.reject(data);
       }
     }

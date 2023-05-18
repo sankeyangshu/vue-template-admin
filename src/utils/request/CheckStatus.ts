@@ -6,7 +6,7 @@ import { i18n } from '@/i18n';
  * @description: 校验网络请求状态码
  * @param {number} status 状态码
  */
-export const checkStatus = (status: number): void => {
+export const checkStatus = (status: number, message?: string | Array<string>): void => {
   // user store
   const userStore = useUserStore();
 
@@ -44,6 +44,10 @@ export const checkStatus = (status: number): void => {
       ElMessage.error(i18n.global.t('api.errMsg504'));
       break;
     default:
-      ElMessage.error(i18n.global.t('api.errMsgdefault'));
+      let errMsg = '';
+      if (message) {
+        errMsg = typeof message === 'string' ? message : message[0];
+      }
+      ElMessage.error(i18n.global.t(errMsg || 'api.errMsgdefault'));
   }
 };
