@@ -22,7 +22,7 @@ const { toggle, isFullscreen } = useFullscreen();
 
 <style lang="scss" scoped>
 .screenful {
-  padding-right: 20px;
+  margin-right: 20px;
   cursor: pointer;
   transition: all 0.3s;
   .screenful-icon {

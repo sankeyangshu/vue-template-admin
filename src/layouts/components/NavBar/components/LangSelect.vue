@@ -56,7 +56,7 @@ const onHandleSetLanguage = (lang: string) => {
 
 <style lang="scss" scoped>
 .lang-select {
-  padding-right: 20px;
+  margin-right: 20px;
   cursor: pointer;
   transition: all 0.3s;
   .lang-select-icon {

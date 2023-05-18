@@ -52,6 +52,7 @@ export default {
     lang: 'Globalization',
     guide: 'Function Guide',
     home: 'Home',
+    notice: 'Notice',
     setting: 'Setting',
     user: 'User',
     changePassword: 'Change Password',

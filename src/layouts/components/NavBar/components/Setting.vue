@@ -22,7 +22,7 @@ const onClickSetting = () => {
 
 <style lang="scss" scoped>
 .setting {
-  padding-right: 20px;
+  margin-right: 20px;
   cursor: pointer;
   transition: all 0.3s;
 }

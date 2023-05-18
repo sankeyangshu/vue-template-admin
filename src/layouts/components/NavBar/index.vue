@@ -17,6 +17,8 @@
           <ScreenFull />
           <!-- 国际化 -->
           <LangSelect />
+          <!-- 通知 -->
+          <Notice />
           <!-- 设置 -->
           <Setting />
           <!-- 用户信息 -->
@@ -33,6 +35,7 @@ import Breadcrumb from './components/Breadcrumb.vue';
 import HeaderSearch from './components/HeaderSearch.vue';
 import ScreenFull from './components/ScreenFull.vue';
 import LangSelect from './components/LangSelect.vue';
+import Notice from './components/Notice.vue';
 import Setting from './components/Setting.vue';
 import User from './components/User.vue';
 </script>

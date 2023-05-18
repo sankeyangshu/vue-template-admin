@@ -120,7 +120,7 @@ const onChangeSelect = (val: filterRouteType) => {
 
 <style lang="scss" scoped>
 .header-search {
-  padding-right: 20px;
+  margin-right: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
