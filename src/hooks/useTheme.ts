@@ -1,5 +1,8 @@
 import { computed } from 'vue';
 import { useSettingStore } from '@/store/modules/setting';
+import { DEFAULT_THEMECOLOR } from '@/config';
+import { ElMessage } from 'element-plus';
+import { getDarkColor, getLightColor } from '@/utils/color';
 
 type GreyOrWeakType = 'grey' | 'weak';
 
@@ -22,6 +25,27 @@ export const useTheme = () => {
     }
   };
 
+  // 修改主题颜色
+  const changeThemeColor = (val: string | null) => {
+    if (!val) {
+      val = DEFAULT_THEMECOLOR;
+      ElMessage({ type: 'success', message: `主题颜色已重置为 ${DEFAULT_THEMECOLOR}` });
+    }
+    // 计算主题颜色变化
+    document.documentElement.style.setProperty('--el-color-primary', val);
+    document.documentElement.style.setProperty(
+      '--el-color-primary-dark-2',
+      themeConfig.value.isDark ? `${getLightColor(val, 0.2)}` : `${getDarkColor(val, 0.3)}`
+    );
+    for (let i = 1; i <= 9; i++) {
+      const primaryColor = themeConfig.value.isDark
+        ? `${getDarkColor(val, i / 10)}`
+        : `${getLightColor(val, i / 10)}`;
+      document.documentElement.style.setProperty(`--el-color-primary-light-${i}`, primaryColor);
+    }
+    settingStore.setThemeConfig('themeColor', val);
+  };
+
   // 灰色和弱色切换
   const changeGreyOrWeak = (type: GreyOrWeakType, value: boolean) => {
     const body = document.body as HTMLElement;
@@ -38,12 +62,18 @@ export const useTheme = () => {
   // 初始化主题
   const initTheme = () => {
     switchDark();
+    changeThemeColor(themeConfig.value.themeColor);
+
+    // 判断是否是灰色模式
     if (themeConfig.value.isGrey) changeGreyOrWeak('grey', true);
+
+    // 判断是否色弱模式
     if (themeConfig.value.isWeak) changeGreyOrWeak('weak', true);
   };
 
   return {
     switchDark,
+    changeThemeColor,
     changeGreyOrWeak,
     initTheme,
   };

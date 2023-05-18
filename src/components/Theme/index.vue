@@ -1,6 +1,10 @@
 <template>
   <el-drawer v-model="drawer" :title="$t('navBar.setting')" size="300px">
     <div class="theme-item">
+      <label>主题颜色</label>
+      <el-color-picker v-model="themeColor" :predefine="colorList" @change="changeThemeColor" />
+    </div>
+    <div class="theme-item">
       <label>暗黑模式</label>
       <switch-dark></switch-dark>
     </div>
@@ -35,13 +39,31 @@
 import { computed, ref } from 'vue';
 import { useSettingStore, themeConfigKeyType } from '@/store/modules/setting';
 import { useTheme } from '@/hooks/useTheme';
+import { DEFAULT_THEMECOLOR } from '@/config';
 import SwitchDark from '@/components/SwitchDark/index.vue';
+
+// 预定义主题颜色
+const colorList = [
+  DEFAULT_THEMECOLOR,
+  '#009688',
+  '#daa96e',
+  '#0c819f',
+  '#27ae60',
+  '#ff5c93',
+  '#e74c3c',
+  '#fd726d',
+  '#f39c12',
+  '#9b59b6',
+];
 
 // 获取全局系统设置
 const settingStore = useSettingStore();
 
 // 获取切换灰色和色弱模式hooks
-const { changeGreyOrWeak } = useTheme();
+const { changeGreyOrWeak, changeThemeColor } = useTheme();
+
+// 主题色
+const themeColor = ref(settingStore.themeConfig.themeColor);
 
 // 是否是灰色模式
 const isGrey = ref(settingStore.themeConfig.isGrey);

@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { DEFAULT_THEMECOLOR } from '@/config';
 
 interface settingsStateType {
   isCollapse: boolean;
@@ -12,6 +13,7 @@ interface settingsStateType {
  */
 interface themeConfigType {
   showSetting: boolean;
+  themeColor: string;
   isDark: boolean;
   isGrey: boolean;
   isWeak: boolean;
@@ -24,15 +26,7 @@ interface themeConfigType {
 /**
  * 主题设置key类型
  */
-export type themeConfigKeyType =
-  | 'showSetting'
-  | 'isDark'
-  | 'isGrey'
-  | 'isWeak'
-  | 'showTag'
-  | 'fixedHeader'
-  | 'showLogo'
-  | 'uniqueOpened';
+export type themeConfigKeyType = keyof themeConfigType;
 
 export const useSettingStore = defineStore({
   // id: 必须的，在所有 Store 中唯一
@@ -45,6 +39,7 @@ export const useSettingStore = defineStore({
     isReload: true, // 是否刷新当前页
     themeConfig: {
       showSetting: false, // 显示设置
+      themeColor: DEFAULT_THEMECOLOR, // 主题颜色
       isDark: false, // 深色模式 切换暗黑模式
       isGrey: false, // 灰色模式
       isWeak: false, // 色弱模式
@@ -73,8 +68,8 @@ export const useSettingStore = defineStore({
       }, 50);
     },
     // 设置主题
-    setThemeConfig(key: themeConfigKeyType, val: any) {
-      this.themeConfig[key] = val;
+    setThemeConfig(key: themeConfigKeyType, val: string | boolean) {
+      (this.themeConfig[key] as string | boolean) = val;
     },
   },
 
