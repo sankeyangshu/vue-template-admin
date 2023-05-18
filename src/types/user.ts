@@ -34,6 +34,7 @@ export interface userInfoType {
  */
 export interface userType {
   username: string;
+  password: string;
   nickname: string;
   phone: string;
   email: string;
@@ -47,15 +48,6 @@ export interface userType {
 export interface addUserType extends userType {
   sex: number;
   userType: number;
-}
-
-/**
- * 更新用户信息类型
- */
-export interface updateUserType extends userType {
-  sex: number;
-  userType: number;
-  password: string;
 }
 
 /**

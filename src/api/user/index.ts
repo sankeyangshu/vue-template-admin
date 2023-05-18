@@ -3,7 +3,6 @@ import {
   addUserType,
   getUserListType,
   loginDataType,
-  updateUserType,
   userInfoRepType,
   userListResult,
 } from '@/types/user';
@@ -49,7 +48,7 @@ export function postGetUserListAPI(data: Partial<getUserListType>) {
  * @param {updateUserType} data 用户信息
  * @return 更新结果
  */
-export function patchUpdateUserAPI(data: Partial<updateUserType>) {
+export function patchUpdateUserAPI(data: Partial<addUserType>) {
   return http.patch(api.updateUser, data);
 }
 

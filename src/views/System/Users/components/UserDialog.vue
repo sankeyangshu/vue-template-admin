@@ -1,5 +1,5 @@
 <template>
-  <el-dialog v-model="userDialog" :title="dialogTitle" width="50%">
+  <el-dialog v-model="userDialog" :title="dialogTitle" width="50%" @close="onCloseDialog">
     <el-form
       ref="userDialogFormRef"
       :model="userDialogForm"
@@ -78,9 +78,26 @@ const userDialog = ref(false);
 // dialog标题
 const dialogTitle = ref('');
 
+// 格式化dialog表单数据
+const handleDialogData = (item: userListType) => {
+  Object.keys(item).forEach((key) => {
+    console.log(key);
+  });
+  // for (const item in list) {
+  //   item.sex = item.sex === 1 ? '男' : '女';
+  //   if (Number(item.userType) === 0) {
+  //     item.userType = '超级管理员';
+  //   } else if (Number(item.userType) === 1) {
+  //     item.userType = '管理员';
+  //   } else {
+  //     item.userType = '普通用户';
+  //   }
+  // }
+  // return data;
+};
+
 // TODO: 显示dialog，新增/编辑用户
 const isShowDialog = (item: userListType) => {
-  console.log('🚀 ~ file: UserDialog.vue:83 ~ isShowDialog ~ item:', item);
   dialogTitle.value = '新增用户';
   if (item) {
     dialogTitle.value = '编辑用户';
@@ -89,6 +106,7 @@ const isShowDialog = (item: userListType) => {
     //     userDialogForm[key] = item[key];
     //   }
     // });
+    handleDialogData(item);
   }
   userDialog.value = true;
 };
@@ -98,6 +116,12 @@ defineExpose({ isShowDialog });
 
 // 表单节点
 const userDialogFormRef = ref<FormInstance>();
+
+// dialog 关闭事件
+const onCloseDialog = () => {
+  // 重置表单
+  userDialogFormRef.value?.resetFields();
+};
 
 // 新增/编辑用户表单
 const userDialogForm = reactive({
@@ -179,12 +203,10 @@ const onClickConfirm = (formEl: FormInstance | undefined) => {
       // 新增用户
       await postAddUserAPI(userDialogForm);
       ElMessage({
-        message: '新增用户成功',
+        message: `${dialogTitle.value}成功`,
         type: 'success',
       });
     } finally {
-      // 重置表单
-      formEl.resetFields();
       userDialog.value = false;
     }
   });
