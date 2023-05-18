@@ -5,10 +5,12 @@ import { i18n } from '@/i18n';
 /**
  * @description: 校验网络请求状态码
  * @param {number} status 状态码
+ * @param {string | string[]} message 错误提示信息
  */
 export const checkStatus = (status: number, message?: string | Array<string>): void => {
   // user store
   const userStore = useUserStore();
+  let errMsg = ''; // 错误提示信息
 
   switch (status) {
     case 400:
@@ -20,7 +22,10 @@ export const checkStatus = (status: number, message?: string | Array<string>): v
       userStore.logout(true);
       break;
     case 403:
-      ElMessage.error(i18n.global.t('api.errMsg403'));
+      if (message) {
+        errMsg = typeof message === 'string' ? message : message[0];
+      }
+      ElMessage.error(errMsg || i18n.global.t('api.errMsg403'));
       break;
     case 404:
       ElMessage.error(i18n.global.t('api.errMsg404'));
@@ -44,7 +49,6 @@ export const checkStatus = (status: number, message?: string | Array<string>): v
       ElMessage.error(i18n.global.t('api.errMsg504'));
       break;
     default:
-      let errMsg = '';
       if (message) {
         errMsg = typeof message === 'string' ? message : message[0];
       }
