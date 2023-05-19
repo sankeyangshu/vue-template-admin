@@ -21,8 +21,9 @@
       <div class="layout-main-container">
         <!-- 内容区 Main -->
         <LayoutMain />
-        <!-- 底部 Footer -->
       </div>
+      <!-- 底部 Footer -->
+      <LayoutFooter />
     </div>
 
     <!-- 主题配置 -->
@@ -38,6 +39,7 @@ import LayoutSideBar from './components/Sidebar/index.vue';
 import LayoutHeader from './components/Header/index.vue';
 import LayoutNavBar from './components/NavBar/index.vue';
 import LayoutTagsView from './components/TagsView/index.vue';
+import LayoutFooter from './components/Footer/index.vue';
 import Theme from '@/components/Theme/index.vue';
 
 // 获取全局设置
