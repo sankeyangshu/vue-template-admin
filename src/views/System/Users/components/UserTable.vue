@@ -209,7 +209,7 @@ const handleCurrentChange = async (val: number) => {
 <style lang="scss" scoped>
 .user-table {
   position: relative;
-  width: calc(100% - 230px);
+  width: 100%;
   display: flex;
   flex: 1;
   flex-direction: column;
