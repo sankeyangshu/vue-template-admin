@@ -6,7 +6,6 @@ import { asyncRoutes, constantRoutes, notFoundRouter } from '@/router';
 interface permissionStateType {
   routes: RouteRecordRaw[];
   dynamicRoutes: RouteRecordRaw[];
-  authMenuList: RouteRecordRaw[];
 }
 
 export const usePermissionStore = defineStore({
@@ -17,7 +16,6 @@ export const usePermissionStore = defineStore({
   state: (): permissionStateType => ({
     routes: [], // 路由
     dynamicRoutes: [], // 动态路由
-    authMenuList: [], // 处理之后侧边栏菜单列表
   }),
 
   getters: {

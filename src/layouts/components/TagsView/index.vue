@@ -52,7 +52,7 @@ const tagsViewStore = useTagsViewStore();
 const permissionStore = usePermissionStore();
 
 // 获取处理之后侧边栏菜单列表
-const routes = computed(() => permissionStore.authMenuList);
+const routes = computed(() => permissionStore.routes);
 
 // 选中过的路由表
 const visitedViews = computed<visitedViewsType[]>(() => tagsViewStore.visitedViews);
