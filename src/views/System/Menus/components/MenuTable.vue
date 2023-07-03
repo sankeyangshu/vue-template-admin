@@ -271,46 +271,46 @@ const onClickDel = (row: any) => {
 <style lang="scss" scoped>
 .menu-table {
   position: relative;
-  width: 100%;
   display: flex;
   flex: 1;
   flex-direction: column;
+  width: 100%;
   .header {
-    padding: 16px 16px 0px 16px;
-    margin-bottom: 16px;
     display: flex;
+    padding: 16px 16px 0;
+    margin-bottom: 16px;
+    background-color: #fff;
     border-radius: 4px;
-    background-color: #ffffff;
     box-shadow: 0 0 12px rgb(0 0 0 / 5%);
   }
   .footer {
     position: relative;
-    padding: 16px;
+    box-sizing: border-box;
     display: flex;
     flex: 1;
     flex-direction: column;
+    padding: 16px;
     overflow: hidden;
+    background-color: #fff;
     border-radius: 4px;
-    background-color: #ffffff;
     box-shadow: 0 0 12px rgb(0 0 0 / 5%);
-    box-sizing: border-box;
     .footer-util {
-      margin-bottom: 15px;
       display: flex;
-      justify-content: flex-end;
       flex-shrink: 0;
+      justify-content: flex-end;
+      margin-bottom: 15px;
     }
     .footer-table {
       position: relative;
       flex: 1;
     }
     .footer-pagination {
+      box-sizing: border-box;
+      display: flex;
+      flex-shrink: 0;
+      justify-content: flex-end;
       width: 100%;
       padding-top: 20px;
-      display: flex;
-      justify-content: flex-end;
-      flex-shrink: 0;
-      box-sizing: border-box;
     }
   }
 }

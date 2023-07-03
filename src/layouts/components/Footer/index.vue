@@ -8,13 +8,13 @@
 
 <style lang="scss" scoped>
 .footer-layout {
-  height: 40px;
-  font-size: 12px;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
-  background: #ffffff;
-  flex-shrink: 0;
-  color: rgba(0, 0, 0, 0.45);
+  height: 40px;
+  font-size: 12px;
+  color: rgb(0 0 0 / 45%);
+  background: #fff;
 }
 </style>

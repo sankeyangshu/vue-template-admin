@@ -53,9 +53,9 @@ const activeName = ref('first');
   display: flex;
   flex-direction: column;
   .message-item {
-    padding: 20px 0;
     display: flex;
     align-items: center;
+    padding: 20px 0;
     border-bottom: 1px solid var(--el-border-color-light);
     &:last-child {
       border: none;
@@ -79,12 +79,12 @@ const activeName = ref('first');
   }
 }
 .message-empty {
-  height: 260px;
-  line-height: 45px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  height: 260px;
+  line-height: 45px;
   .message-noImg {
     width: 120px;
     height: 100px;

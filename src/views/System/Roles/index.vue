@@ -10,9 +10,9 @@ import RoleTable from './components/RoleTable.vue';
 
 <style lang="scss" scoped>
 .roleManage {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
 </style>

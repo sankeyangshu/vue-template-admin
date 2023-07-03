@@ -24,12 +24,12 @@ const onClickHandleCollapse = () => {
 
 <style lang="scss" scoped>
 .hamburger-container {
-  padding: 0px 15px;
-  height: 100%;
   display: flex;
   align-items: center;
+  height: 100%;
+  padding: 0 15px;
   &:hover {
-    background: rgba(0, 0, 0, 0.025);
+    background: rgb(0 0 0 / 2.5%);
   }
   .icon {
     font-size: 24px;

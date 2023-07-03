@@ -54,20 +54,17 @@ const breadcrumbData = computed(() =>
 <style lang="scss" scoped>
 .breadcrumb {
   display: inline-block;
+  margin-left: 8px;
   font-size: 14px;
   line-height: 50px;
-  margin-left: 8px;
-
   .redirect {
-    color: #666;
     font-weight: 600;
+    color: #666;
     cursor: pointer;
   }
-
   .redirect:hover {
     color: var(--el-color-primary);
   }
-
   :deep(.no-redirect) {
     color: #97a8be;
     cursor: text;

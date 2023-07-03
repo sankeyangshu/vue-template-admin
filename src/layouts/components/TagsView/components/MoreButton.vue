@@ -62,8 +62,8 @@ const onCloseAllTab = () => {
 
 <style lang="scss" scoped>
 .more {
-  background-color: $primaryColor;
-  color: #ffffff;
+  color: #fff;
+  background-color: $primary-color;
   .tags-view-item {
     display: flex;
     align-items: center;

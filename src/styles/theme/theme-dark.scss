@@ -35,14 +35,12 @@ html.dark {
       }
     }
   }
-
   .sidebar-container {
     background: var(--el-bg-color) !important;
     & .el-menu .el-menu-item,
     & .el-menu .el-sub-menu > .el-sub-menu__title,
     & .el-sub-menu .el-menu-item {
       background-color: var(--el-bg-color) !important;
-
       &:hover {
         background-color: #060708 !important;
       }
@@ -56,15 +54,13 @@ html.dark {
       }
     }
   }
-
   .el-scrollbar {
     border: var(--zb-border-light);
     border-top: none;
   }
-
   .logo-container {
-    background: none;
     box-sizing: border-box;
+    background: none;
     border: var(--zb-border-light);
   }
   .el-drawer__header {
@@ -72,18 +68,16 @@ html.dark {
       color: var(--el-text-color-primary) !important;
     }
   }
-
   .theme-item {
     color: var(--el-text-color-primary) !important;
   }
-
   .el-table__header th {
     font-weight: bold;
     color: white;
   }
   .footer-layout {
-    background: none;
     color: white;
+    background: none;
     border-top: var(--zb-border-light);
   }
 
@@ -97,13 +91,14 @@ html.dark {
         color: #bfcbd9 !important;
       }
     }
+
     // tagviews
     .tags-view {
+      box-sizing: border-box;
       background: var(--el-bg-color) !important;
       border: var(--zb-border-light);
       border-top: none;
       border-left: none;
-      box-sizing: border-box;
       .el-tabs--card > .el-tabs__header {
         border-bottom: none !important;
       }

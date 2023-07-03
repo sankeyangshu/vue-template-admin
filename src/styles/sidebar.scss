@@ -4,49 +4,40 @@
     .horizontal-collapse-transition {
       transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
     }
-
     .scrollbar-wrapper {
       overflow-x: hidden !important;
     }
-
     .el-scrollbar__bar.is-vertical {
-      right: 0px;
+      right: 0;
     }
-
     .el-scrollbar {
       height: 100%;
     }
-
     &.has-logo {
       .el-scrollbar {
         height: calc(100% - 50px);
       }
     }
-
     .is-horizontal {
       display: none;
     }
-
     a {
       // display: inline-block;
       width: 100%;
       overflow: hidden;
     }
-
     .svg-icon {
       margin-right: 16px;
     }
-
     .sub-el-icon {
       margin-right: 12px;
       margin-left: -2px;
     }
-
     .el-menu {
-      border: none;
-      height: 100%;
       width: 100% !important;
+      height: 100%;
       background: none;
+      border: none;
     }
 
     // menu hover
@@ -56,12 +47,10 @@
         background-color: $menu-hover !important;
       }
     }
-
     & .el-menu .el-menu-item,
     & .el-menu .el-sub-menu > .el-sub-menu__title,
     & .el-sub-menu .el-menu-item {
       background-color: $sub-menu-bg !important;
-
       &:hover {
         background-color: $sub-menu-hover !important;
       }
@@ -70,7 +59,6 @@
       }
     }
   }
-
   .withoutAnimation {
     .main-container,
     .sidebar-container {
@@ -78,7 +66,6 @@
     }
   }
 }
-
 .el-menu--vertical {
   & > .el-menu {
     .svg-icon {
@@ -94,15 +81,12 @@
   > .el-menu--popup {
     max-height: 100vh;
     overflow-y: auto;
-
     &::-webkit-scrollbar-track-piece {
       background: #d3dce6;
     }
-
     &::-webkit-scrollbar {
       width: 6px;
     }
-
     &::-webkit-scrollbar-thumb {
       background: #99a9bf;
       border-radius: 20px;

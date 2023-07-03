@@ -10,9 +10,9 @@ import DeptTable from './components/DeptTable.vue';
 
 <style lang="scss" scoped>
 .deptManage {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
 </style>

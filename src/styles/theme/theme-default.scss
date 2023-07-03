@@ -1,6 +1,6 @@
 /* login container（先固定样式） */
 .login-container {
-  background-color: #eeeeee !important;
+  background-color: #eee !important;
   .login-box {
     background-color: hsl(0deg 0% 100% / 80%) !important;
     .login-form {
@@ -12,12 +12,11 @@
         }
       }
       .el-button--primary {
-        color: #ffffff !important;
+        color: #fff !important;
       }
     }
   }
 }
-
 .el-pager li:focus {
   border: none;
 }

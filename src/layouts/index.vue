@@ -67,10 +67,10 @@ const themeConfig = computed(() => settingStore.themeConfig);
   height: 100%;
   overflow: auto;
   .layout-main {
-    min-height: 100%;
-    transition: margin-left #{$side-bar-duration};
-    margin-left: $side-bar-width;
     position: relative;
+    min-height: 100%;
+    margin-left: $side-bar-width;
+    transition: margin-left #{$side-bar-duration};
     &.is-collapse {
       margin-left: $side-bar-width-min;
       border-right: 0;

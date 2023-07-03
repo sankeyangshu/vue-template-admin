@@ -120,10 +120,10 @@ const onChangeSelect = (val: filterRouteType) => {
 
 <style lang="scss" scoped>
 .header-search {
-  margin-right: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 20px;
   cursor: pointer;
   transition: all 0.3s;
   .item-info-pop {

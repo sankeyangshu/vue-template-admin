@@ -54,17 +54,17 @@ const themeConfig = computed(() => settingStore.themeConfig);
 
 <style lang="scss" scoped>
 .sidebar-container {
-  transition: width #{$side-bar-duration};
-  width: $side-bar-width;
-  height: 100%;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   z-index: $base-z-index;
+  width: $side-bar-width;
+  height: 100%;
   overflow: hidden;
   background: $menu-bg;
   box-shadow: 2px 0 6px rgb(0 21 41 / 35%);
+  transition: width #{$side-bar-duration};
   &.is-collapse {
     width: $side-bar-width-min;
     border-right: 0;

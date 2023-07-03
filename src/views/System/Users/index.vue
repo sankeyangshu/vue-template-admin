@@ -10,9 +10,9 @@ import UserTable from './components/UserTable.vue';
 
 <style lang="scss" scoped>
 .userManage {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
 </style>

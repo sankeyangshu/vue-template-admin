@@ -179,41 +179,41 @@ const onRemoveTab = async (activeTabPath: TabPaneName) => {
 <style lang="scss" scoped>
 .tags-view {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding-left: 10px;
+  justify-content: space-between;
   padding-right: 10px;
-  background: #ffffff;
+  padding-left: 10px;
+  background: #fff;
   .tags-content {
+    box-sizing: border-box;
     flex: 1;
     overflow: hidden;
-    box-sizing: border-box;
     .tabs-icon {
       font-size: 14px;
     }
     .el-tabs--card :deep(.el-tabs__header) {
+      box-sizing: border-box;
       height: $tabs-bar-height;
       padding: 0 10px;
       margin: 0;
-      box-sizing: border-box;
     }
     :deep(.el-tabs) {
       .el-tabs__nav {
         border: none;
       }
       .el-tabs__header .el-tabs__item {
+        color: #ccc;
         border: none;
-        color: #cccccc;
       }
       .el-tabs__header .el-tabs__item.is-active {
-        color: $primaryColor;
-        border-bottom: 2px solid $primaryColor;
+        color: $primary-color;
+        border-bottom: 2px solid $primary-color;
       }
     }
   }
   .tags-action {
-    height: 100%;
     flex-shrink: 0;
+    height: 100%;
   }
 }
 </style>

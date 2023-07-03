@@ -21,15 +21,13 @@ defineProps({ isCollapse: Boolean });
   position: relative;
   width: 100%;
   height: 60px;
-  line-height: 60px;
-  background: #2b2f3a;
-  text-align: center;
   overflow: hidden;
-
+  line-height: 60px;
+  text-align: center;
+  background: #2b2f3a;
   & .sidebar-logo-link {
-    height: 100%;
     width: 100%;
-
+    height: 100%;
     & .sidebar-logo {
       width: 32px;
       height: 32px;
@@ -38,11 +36,11 @@ defineProps({ isCollapse: Boolean });
     & .sidebar-title {
       display: inline-block;
       margin: 0;
-      color: #fff;
-      font-weight: 600;
       margin-left: 12px;
-      line-height: 60px;
       font-size: 14px;
+      font-weight: 600;
+      line-height: 60px;
+      color: #fff;
       vertical-align: middle;
     }
   }

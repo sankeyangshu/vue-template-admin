@@ -128,12 +128,12 @@ const onClickSubmit = (formEl: FormInstance | undefined) => {
 <style lang="scss" scoped>
 .login-container {
   position: relative;
-  min-width: 550px;
-  height: 100%;
-  min-height: 500px;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 550px;
+  height: 100%;
+  min-height: 500px;
   background-image: url('@/assets/images/login_bg.svg');
   background-position: 50%;
   background-size: 100% 100%;
@@ -144,15 +144,15 @@ const onClickSubmit = (formEl: FormInstance | undefined) => {
     right: 3.2%;
   }
   .login-box {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     width: 96%;
     height: 94%;
     padding: 0 4% 0 20px;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
     border-radius: 10px;
-    box-sizing: border-box;
     .login-welcome {
       width: 750px;
       img {
@@ -164,10 +164,10 @@ const onClickSubmit = (formEl: FormInstance | undefined) => {
       padding: 40px 45px 25px;
       border-radius: 10px;
       .login-logo {
-        margin-bottom: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 40px;
         .logo-icon {
           width: 70px;
         }
@@ -179,16 +179,16 @@ const onClickSubmit = (formEl: FormInstance | undefined) => {
         }
       }
       :deep(.el-form-item) {
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 5px;
         color: #454545;
+        background: rgb(0 0 0 / 10%);
+        border: 1px solid rgb(255 255 255 / 10%);
+        border-radius: 5px;
       }
       :deep(input) {
-        border: 0px;
-        border-radius: 0px;
-        padding: 12px 5px 12px 15px;
         height: 47px;
+        padding: 12px 5px 12px 15px;
+        border: 0;
+        border-radius: 0;
         box-shadow: none;
       }
     }

@@ -46,19 +46,19 @@ const onClickLogout = () => {
 
 <style lang="scss" scoped>
 .el-dropdown-link {
-  cursor: pointer;
-  //color: var(--el-color-primary);
+  // color: var(--el-color-primary);
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 .user {
   cursor: pointer;
   .avatar-dropdown {
-    height: 50px;
-    padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 50px;
+    padding: 0;
     .avatar {
       margin-right: 6px;
     }

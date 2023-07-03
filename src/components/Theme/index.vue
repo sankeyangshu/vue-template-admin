@@ -100,22 +100,21 @@ const onChangeSwitch = (key: themeConfigKeyType, val: any) => {
 
 <style lang="scss" scoped>
 ::v-deep(.el-drawer__header) {
-  border-bottom: 1px solid #ebeef5;
   padding: 15px 20px 14px;
   margin-bottom: 0;
+  border-bottom: 1px solid #ebeef5;
 }
-
 :deep(.el-drawer__title) {
   font-weight: bold;
   color: black;
 }
 .theme-item {
-  width: 100%;
   display: flex;
-  margin-bottom: 15px;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 15px;
   font-size: 14px;
   color: black;
-  justify-content: space-between;
 }
 </style>

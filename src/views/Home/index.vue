@@ -28,9 +28,9 @@ const userInfo = computed(() => userStore.userInfo as userInfoType);
 
 <style lang="scss" scoped>
 .home {
+  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  box-sizing: border-box;
   font-size: 14px;
   .page-header {
     display: flex;

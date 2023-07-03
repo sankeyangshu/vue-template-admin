@@ -10,9 +10,9 @@ import MenuTable from './components/MenuTable.vue';
 
 <style lang="scss" scoped>
 .menuManage {
-  width: 100%;
-  height: 100%;
   display: flex;
   flex-direction: row;
+  width: 100%;
+  height: 100%;
 }
 </style>

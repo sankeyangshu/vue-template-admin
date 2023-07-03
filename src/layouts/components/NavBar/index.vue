@@ -42,25 +42,25 @@ import User from './components/User.vue';
 
 <style lang="scss" scoped>
 .nav-bar-container {
+  box-sizing: border-box;
   height: $nav-bar-height;
   padding-right: $base-padding;
   padding-left: $base-padding;
   overflow: hidden;
   user-select: none;
-  background: #ffffff;
+  background: #fff;
   box-shadow: $base-box-shadow;
-  box-sizing: border-box;
   .left-nav-bar {
-    height: $nav-bar-height;
     display: flex;
     align-items: center;
     justify-items: center;
+    height: $nav-bar-height;
   }
   .right-nav-bar {
-    height: $nav-bar-height;
     display: flex;
-    justify-content: flex-end;
     align-items: center;
+    justify-content: flex-end;
+    height: $nav-bar-height;
   }
 }
 </style>
