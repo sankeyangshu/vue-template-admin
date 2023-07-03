@@ -4,6 +4,7 @@
     "vue.vscode-typescript-vue-plugin",
     "sdras.vue-vscode-snippets",
     "dbaeumer.vscode-eslint",
-    "esbenp.prettier-vscode"
+    "esbenp.prettier-vscode",
+    "stylelint.vscode-stylelint"
   ]
 }
