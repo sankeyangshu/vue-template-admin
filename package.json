@@ -58,6 +58,7 @@
     "@element-plus/icons-vue": "^2.1.0",
     "@vueuse/core": "^10.1.0",
     "axios": "^1.4.0",
+    "dayjs": "^1.11.9",
     "element-plus": "^2.3.4",
     "fuse.js": "^6.6.2",
     "nprogress": "^0.2.0",
@@ -103,6 +104,7 @@
     "unplugin-auto-import": "^0.11.4",
     "unplugin-vue-components": "^0.22.9",
     "vite": "^4.2.0",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-svg-icons": "^2.0.1",
     "vue-eslint-parser": "^9.1.0",
     "vue-tsc": "^1.2.0"

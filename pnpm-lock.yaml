@@ -14,6 +14,9 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
+  dayjs:
+    specifier: ^1.11.9
+    version: 1.11.9
   element-plus:
     specifier: ^2.3.4
     version: 2.3.4(vue@3.2.47)
@@ -145,6 +148,9 @@ devDependencies:
   vite:
     specifier: ^4.2.0
     version: 4.2.0(@types/node@18.16.2)(sass@1.62.1)
+  vite-plugin-compression:
+    specifier: ^0.5.1
+    version: 0.5.1(vite@4.2.0)
   vite-plugin-svg-icons:
     specifier: ^2.0.1
     version: 2.0.1(vite@4.2.0)
@@ -1901,8 +1907,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /dayjs@1.11.7:
-    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
+  /dayjs@1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
     dev: false
 
   /de-indent@1.0.2:
@@ -2127,7 +2133,7 @@ packages:
       '@types/lodash-es': 4.17.7
       '@vueuse/core': 9.13.0(vue@3.2.47)
       async-validator: 4.2.5
-      dayjs: 1.11.7
+      dayjs: 1.11.9
       escape-html: 1.0.3
       lodash: 4.17.21
       lodash-es: 4.17.21
@@ -5667,6 +5673,19 @@ packages:
   /vary@1.1.2:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
+    dev: true
+
+  /vite-plugin-compression@0.5.1(vite@4.2.0):
+    resolution: {integrity: sha512-5QJKBDc+gNYVqL/skgFAP81Yuzo9R+EAf19d+EtsMF/i8kFUpNi3J/H01QD3Oo8zBQn+NzoCIFkpPLynoOzaJg==}
+    peerDependencies:
+      vite: '>=2.0.0'
+    dependencies:
+      chalk: 4.1.2
+      debug: 4.3.4
+      fs-extra: 10.1.0
+      vite: 4.2.0(@types/node@18.16.2)(sass@1.62.1)
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /vite-plugin-svg-icons@2.0.1(vite@4.2.0):
