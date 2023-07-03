@@ -11,6 +11,10 @@
     "build:prod": "vue-tsc && vite build --mode production",
     "build:test": "vue-tsc && vite build --mode test",
     "preview": "vite preview",
+    "lint:lint-staged": "lint-staged",
+    "lint:eslint": "eslint \"{src}/**/*.{vue,ts,tsx}\" --fix",
+    "lint:prettier": "prettier --write --loglevel warn \"src/**/*.{js,ts,json,tsx,css,less,scss,vue,html,md}\"",
+    "lint:stylelint": "stylelint --fix \"**/*.{vue,less,postcss,css,scss}\" --cache --cache-location node_modules/.cache/stylelint/",
     "prepare": "husky install"
   },
   "repository": {
@@ -27,7 +31,28 @@
   },
   "homepage": "https://github.com/sankeyangshu/vue-template-admin#readme",
   "lint-staged": {
-    "*.{vue,js,ts}": "eslint --fix"
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "{!(package)*.json,*.code-snippets,.!(browserslist)*rc}": [
+      "prettier --write--parser json"
+    ],
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.{scss,less,styl}": [
+      "stylelint --fix",
+      "prettier --write"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@element-plus/icons-vue": "^2.1.0",
@@ -54,6 +79,7 @@
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.41.0",
     "@vitejs/plugin-vue": "^4.1.0",
+    "autoprefixer": "^10.4.14",
     "eslint": "^8.26.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.2",
@@ -62,8 +88,17 @@
     "eslint-plugin-vue": "^9.6.0",
     "husky": "^8.0.0",
     "lint-staged": "^13.0.3",
+    "postcss": "^8.4.24",
+    "postcss-html": "^1.5.0",
     "prettier": "^2.7.1",
     "sass": "^1.62.1",
+    "stylelint": "^15.9.0",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-recess-order": "^4.2.0",
+    "stylelint-config-recommended-scss": "^12.0.0",
+    "stylelint-config-recommended-vue": "^1.4.0",
+    "stylelint-config-standard": "^33.0.0",
+    "stylelint-config-standard-scss": "^10.0.0",
     "typescript": "^4.9.3",
     "unplugin-auto-import": "^0.11.4",
     "unplugin-vue-components": "^0.22.9",
