@@ -1,5 +1,5 @@
 <template>
-  <el-config-provider :locale="locale">
+  <el-config-provider :locale="locale" :size="componentSize">
     <router-view />
   </el-config-provider>
 </template>
@@ -22,6 +22,9 @@ const settingStore = useSettingStore();
 const language = computed(() => settingStore.language);
 
 const locale = computed(() => (language.value === 'en' ? en : zhCn));
+
+// 获取全局设置中组件尺寸默认值
+const componentSize = computed(() => settingStore.componentSize);
 </script>
 
 <style lang="scss"></style>

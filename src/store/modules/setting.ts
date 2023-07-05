@@ -1,10 +1,16 @@
 import { defineStore } from 'pinia';
 import { DEFAULT_THEMECOLOR } from '@/config';
 
+/**
+ * 组件尺寸类型
+ */
+export type componentSizeType = 'large' | 'default' | 'small';
+
 interface settingsStateType {
   isCollapse: boolean;
   language: string;
   isReload: boolean;
+  componentSize: componentSizeType;
   themeConfig: themeConfigType;
 }
 
@@ -37,6 +43,7 @@ export const useSettingStore = defineStore({
     isCollapse: false, // 是否收缩左侧菜单栏
     language: 'zhCn', // 国际化-默认是zhCn
     isReload: true, // 是否刷新当前页
+    componentSize: 'default', // 组件大小切换
     themeConfig: {
       showSetting: false, // 显示设置
       themeColor: DEFAULT_THEMECOLOR, // 主题颜色
@@ -66,6 +73,10 @@ export const useSettingStore = defineStore({
       setTimeout(() => {
         this.isReload = true;
       }, 50);
+    },
+    // 设置组件尺寸
+    setComponentSize(value: componentSizeType) {
+      this.componentSize = value;
     },
     // 设置主题
     setThemeConfig(key: themeConfigKeyType, val: string | boolean) {
