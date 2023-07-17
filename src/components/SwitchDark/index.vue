@@ -5,9 +5,6 @@
     inline-prompt
     :active-icon="Sunny"
     :inactive-icon="Moon"
-    style="
-
---el-switch-on-color: #2c2c2c"
     @change="onChangeDark"
   />
 </template>
