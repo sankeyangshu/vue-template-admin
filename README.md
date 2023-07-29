@@ -43,6 +43,11 @@
 - [Element Plus](https://element-plus.org/zh-CN/) - 熟悉 `Element Plus` 组件库基本使用
 - [Es6+](http://es6.ruanyifeng.com/) - 熟悉 `ES6` 基本语法
 
+## 配套资源
+
+- [nest-template-cms](https://github.com/sankeyangshu/nest-template-cms) - 使用 Nest + TS 构建的 CMS 开发框架
+- [react-template-admin](https://github.com/sankeyangshu/react-template-admin) - 使用 React + TS 构建的后台管理系统
+
 ## 环境准备
 
 本地环境需要安装 [pnpm7.x](https://www.pnpm.cn/)、[Node.js](http://nodejs.org/) 和 [Git](https://git-scm.com/)
