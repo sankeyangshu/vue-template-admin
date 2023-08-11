@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { postLoginAPI } from '@/api/user';
+import { postLoginAPI } from '@/api/System/user';
 import { loginDataType, userInfoType } from '@/types/user';
 import { router } from '@/router';
 

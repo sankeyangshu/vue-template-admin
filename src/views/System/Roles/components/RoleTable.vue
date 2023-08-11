@@ -19,7 +19,7 @@
       <div class="footer-table">
         <el-table
           v-loading="tableLoading"
-          :data="tableData"
+          :data="tableState.tableData"
           border
           stripe
           style="width: 100%; height: 100%"
@@ -59,14 +59,36 @@
         </el-table>
       </div>
       <!-- 分页 -->
-      <div class="footer-pagination"></div>
+      <div class="footer-pagination">
+        <Pagination
+          :pageable="tableState.pageable"
+          :handle-size-change="handleSizeChange"
+          :handle-current-change="handleCurrentChange"
+        />
+      </div>
     </div>
+    <RoleDrawer ref="roleDrawer" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { ElMessageBox, FormInstance } from 'element-plus';
-import { reactive, ref } from 'vue';
+import { ElMessage, ElMessageBox, FormInstance } from 'element-plus';
+import { onMounted, reactive, ref } from 'vue';
+import { postGetRoleListAPI, deleteRoleAPI } from '@/api/System/role';
+import { roleListType } from '@/types/role';
+import { useTable } from '@/hooks/useTable';
+import RoleDrawer from './RoleDrawer.vue';
+import Pagination from '@/components/Pagination/Pagination.vue';
+
+// 获取角色列表表格数据
+const { getTableList, tableState, searchTable, resetTable, tableChangeCurrent, tableChangeSize } =
+  useTable({
+    api: postGetRoleListAPI,
+  });
+
+onMounted(async () => {
+  await getTableList();
+});
 
 // 查询条件
 const roleTableForm = reactive({
@@ -80,53 +102,36 @@ const roleTableFormRef = ref<FormInstance>();
 const tableLoading = ref(false);
 
 // 查询
-const onClickSearch = () => {
+const onClickSearch = async () => {
   tableLoading.value = true;
-  setTimeout(() => {
-    tableLoading.value = false;
-  }, 500);
+
+  // 添加查询参数
+  tableState.value.searchParam = roleTableForm;
+
+  // 查询表格
+  await searchTable();
+  tableLoading.value = false;
 };
 
 // 重置
-const onClickResetForm = (formEl: FormInstance | undefined) => {
+const onClickResetForm = async (formEl: FormInstance | undefined) => {
   if (!formEl) return;
+  await resetTable();
   formEl.resetFields();
 };
 
+// 新增/编辑角色
+const roleDrawer = ref();
+
 // 新增角色
 const onClickAddRole = () => {
-  console.log('新增角色');
+  roleDrawer.value.isShowDrawer();
 };
 
-// TODO: 测试数据
-const tableData = [
-  {
-    roleName: '超级管理员',
-    roleType: 'admin',
-    description: '这是超级管理员，拥有一切权限',
-    createtime: '2022-09-02 15:30:20',
-    status: true,
-  },
-  {
-    roleName: '管理员',
-    roleType: 'admin',
-    description: '普通管理员',
-    createtime: '2022-09-02 15:30:20',
-    status: true,
-  },
-  {
-    roleName: '普通用户',
-    description: '测试用户',
-    roleType: 'other',
-    createtime: '2022-09-02 15:30:20',
-    status: true,
-  },
-];
-
 // 修改角色状态
-const onChangeStatus = (row: any) => {
+const onChangeStatus = (row: roleListType) => {
   ElMessageBox.confirm(
-    `确定要${!row.status ? '禁用' : '启用'} ${row.username} 角色吗？`,
+    `确定要${!row.status ? '禁用' : '启用'} ${row.roleName} 角色吗？`,
     '温馨提示',
     {
       confirmButtonText: '确定',
@@ -143,13 +148,40 @@ const onChangeStatus = (row: any) => {
 };
 
 // 编辑角色
-const onClickEdit = (row: any) => {
-  console.log(row);
+const onClickEdit = (row: roleListType) => {
+  roleDrawer.value.isShowDrawer(row);
 };
 
 // 删除角色
-const onClickDel = (row: any) => {
-  console.log(row);
+const onClickDel = (row: roleListType) => {
+  ElMessageBox.confirm(`确定要删除角色 ${row.roleName} 吗?`, '温馨提示', {
+    confirmButtonText: '确定',
+    cancelButtonText: '取消',
+    type: 'warning',
+    draggable: true,
+  })
+    .then(async () => {
+      await deleteRoleAPI({ id: row.id });
+      // 更新表格
+      await getTableList();
+      ElMessage({
+        message: '删除角色成功',
+        type: 'success',
+      });
+    })
+    .catch(() => {
+      console.log('用户点击了取消');
+    });
+};
+
+// 改变每页显示条目个数
+const handleSizeChange = async (val: number) => {
+  await tableChangeSize(val);
+};
+
+// 当前页数改变
+const handleCurrentChange = async (val: number) => {
+  await tableChangeCurrent(val);
 };
 </script>
 

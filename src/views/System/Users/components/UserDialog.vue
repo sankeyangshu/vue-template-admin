@@ -69,7 +69,7 @@ import { reactive, ref } from 'vue';
 import type { FormRules, FormInstance } from 'element-plus';
 import { ElMessage } from 'element-plus';
 import { validPhone, validEmail } from '@/utils/validate';
-import { postAddUserAPI, patchUpdateUserAPI } from '@/api/user';
+import { postAddUserAPI, patchUpdateUserAPI } from '@/api/System/user';
 import { userListType } from '@/types/user';
 
 // 是否显示dialog

@@ -77,7 +77,7 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref } from 'vue';
 import { ElMessage, ElMessageBox, FormInstance } from 'element-plus';
-import { postGetUserListAPI, deleteUserAPI } from '@/api/user';
+import { postGetUserListAPI, deleteUserAPI } from '@/api/System/user';
 import { userListType, userListResult } from '@/types/user';
 import { useTable } from '@/hooks/useTable';
 import UserDialog from './UserDialog.vue';
@@ -175,7 +175,7 @@ const onClickEdit = (row: userListType) => {
 
 // 删除
 const onClickDel = (row: userListType) => {
-  ElMessageBox.confirm('你确定要删除当前项吗?', '温馨提示', {
+  ElMessageBox.confirm(`你确定要删除用户 ${row.username} 吗?`, '温馨提示', {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
     type: 'warning',
@@ -253,3 +253,4 @@ const handleCurrentChange = async (val: number) => {
   }
 }
 </style>
+@/api/System
