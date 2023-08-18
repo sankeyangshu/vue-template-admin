@@ -32,7 +32,7 @@
             label="角色描述"
             align="center"
           />
-          <el-table-column prop="roleType" label="角色类型" align="center" width="120" />
+          <el-table-column prop="roleType" label="角色标识" align="center" width="120" />
           <el-table-column prop="status" label="角色状态" align="center">
             <template #default="scope">
               <el-switch
@@ -75,15 +75,26 @@
 import { ElMessage, ElMessageBox, FormInstance } from 'element-plus';
 import { onMounted, reactive, ref } from 'vue';
 import { postGetRoleListAPI, deleteRoleAPI } from '@/api/System/role';
-import { roleListType } from '@/types/role';
+import { roleListType, roleListResult } from '@/types/role';
 import { useTable } from '@/hooks/useTable';
 import RoleDrawer from './RoleDrawer.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
+import dayjs from 'dayjs';
+
+// 格式化表格数据
+const handleTableData = (data: roleListResult) => {
+  const { list } = data;
+  for (const item of list) {
+    item.createtime = dayjs(item.createtime).format('YYYY-MM-DD HH:mm:ss');
+  }
+  return data;
+};
 
 // 获取角色列表表格数据
 const { getTableList, tableState, searchTable, resetTable, tableChangeCurrent, tableChangeSize } =
   useTable({
     api: postGetRoleListAPI,
+    dataCallBack: handleTableData,
   });
 
 onMounted(async () => {

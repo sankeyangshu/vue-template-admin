@@ -12,6 +12,7 @@ const api = {
   login: '/api/auth/signin', // 用户登录接口
   addUser: '/api/user/create', // 新增用户
   userList: '/api/user/getAll', // 获取用户列表
+  userRoles: '/api/user/getUserRoles', // 获取用户角色
   updateUser: '/api/user/update', // 更新用户信息
   deleteUser: '/api/user/delete', // 删除用户
 };
@@ -41,6 +42,15 @@ export function postAddUserAPI(data: addUserType) {
  */
 export function postGetUserListAPI(data: Partial<getUserListType>) {
   return http.post<userListResult>(api.userList, data);
+}
+
+/**
+ * @description: 获取用户角色列表
+ * @param {object} data 用户id
+ * @return 用户角色列表
+ */
+export function getUserRolesAPI(data: { id: number }) {
+  return http.get<string[]>(api.userRoles, data);
 }
 
 /**

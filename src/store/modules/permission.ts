@@ -34,7 +34,8 @@ export const usePermissionStore = defineStore({
       return new Promise((resolve) => {
         // 在这判断是否有权限，哪些角色拥有哪些权限
         let accessedRoutes;
-        if (roles && roles.length && !roles.includes('admin')) {
+        if (roles && roles.length && roles.includes('admin')) {
+          console.log('first');
           accessedRoutes = filterAsyncRoutes(asyncRoutes, roles);
         } else {
           accessedRoutes = asyncRoutes || [];

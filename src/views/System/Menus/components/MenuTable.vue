@@ -19,16 +19,16 @@
       <div class="footer-table">
         <el-table
           v-loading="tableLoading"
-          :data="tableData"
+          :data="tableState.tableData"
           border
           stripe
           style="width: 100%; height: 100%"
           row-key="id"
         >
-          <el-table-column prop="menuName" label="菜单名称" />
-          <el-table-column prop="menuType" label="菜单类型" />
-          <el-table-column prop="menuRouter" label="菜单路由" />
-          <el-table-column prop="identification" label="菜单标识" />
+          <el-table-column prop="title" label="菜单名称" />
+          <el-table-column prop="authType" label="菜单类型" />
+          <el-table-column prop="url" label="菜单路由" />
+          <el-table-column prop="signName" label="菜单标识" />
           <el-table-column prop="status" label="操作">
             <template #default="scope">
               <el-button type="primary" size="small" icon="Edit" @click="onClickEdit(scope.row)">
@@ -49,7 +49,32 @@
 
 <script lang="ts" setup>
 import { FormInstance } from 'element-plus';
-import { reactive, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
+import { getMenuListAPI } from '@/api/System/menu';
+import { menuListType } from '@/types/menu';
+import { useTable } from '@/hooks/useTable';
+
+// 格式化表格数据
+const handleTableData = (data: menuListType[]) => {
+  for (const item of data) {
+    item.authType = item.authType === 1 ? '菜单' : '接口';
+    if (item.children) {
+      handleTableData(item.children);
+    }
+  }
+  return data;
+};
+
+// 获取菜单列表数据
+const { getTableList, tableState } = useTable({
+  api: getMenuListAPI,
+  dataCallBack: handleTableData,
+  isPageable: false,
+});
+
+onMounted(async () => {
+  await getTableList();
+});
 
 // 查询条件
 const menuTableForm = reactive({
@@ -81,181 +106,181 @@ const onClickAddMenu = () => {
   console.log('新增菜单');
 };
 
-// TODO: 测试数据
-const tableData = [
-  {
-    menuName: '首页',
-    menuType: '菜单',
-    menuRouter: '/home',
-    identification: 'menu:home',
-    parentId: 0,
-    level: 1,
-    id: 0,
-    createTime: '2022-09-02',
-  },
-  {
-    menuName: '表格',
-    menuType: '目录',
-    menuRouter: '/table',
-    identification: 'menu:table',
-    parentId: 0,
-    level: 1,
-    id: 1,
-    createTime: '2022-09-02',
-    children: [
-      {
-        menuName: '菜单1',
-        menuType: '菜单',
-        menuRouter: '/table',
-        identification: 'menu1:view',
-        parentId: 1,
-        level: 2,
-        id: 10,
-        createTime: '2022-09-02',
-        children: [
-          {
-            menuName: '按钮1',
-            menuType: '按钮',
-            menuRouter: '/table',
-            identification: 'menu1:view:btn1',
-            parentId: 10,
-            id: 20,
-            level: 3,
-            createTime: '2022-09-02',
-          },
-          {
-            menuName: '按钮2',
-            menuType: '按钮',
-            menuRouter: '/table',
-            identification: 'menu1:view:btn2',
-            parentId: 10,
-            id: 21,
-            level: 3,
-            createTime: '2022-09-02',
-          },
-          {
-            menuName: '按钮3',
-            menuType: '按钮',
-            menuRouter: '/table',
-            identification: 'menu1:view:btn2',
-            parentId: 10,
-            id: 22,
-            level: 3,
-            createTime: '2022-09-02',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    menuName: '可视化图表',
-    menuType: '目录',
-    menuRouter: '/charts',
-    identification: 'menu:charts',
-    parentId: 0,
-    level: 1,
-    id: 1,
-    createTime: '2022-09-02',
-    children: [
-      {
-        menuName: '菜单1',
-        menuType: '菜单',
-        menuRouter: '/charts',
-        identification: 'menu1:view',
-        parentId: 1,
-        level: 2,
-        id: 10,
-        createTime: '2022-09-02',
-        children: [
-          {
-            menuName: '按钮1',
-            menuType: '按钮',
-            menuRouter: '/charts',
-            identification: 'menu1:view:btn1',
-            parentId: 10,
-            id: 20,
-            level: 3,
-            createTime: '2022-09-02',
-          },
-          {
-            menuName: '按钮2',
-            menuType: '按钮',
-            menuRouter: '/charts',
-            identification: 'menu1:view:btn2',
-            parentId: 10,
-            id: 21,
-            level: 3,
-            createTime: '2022-09-02',
-          },
-          {
-            menuName: '按钮3',
-            menuType: '按钮',
-            menuRouter: '/charts',
-            identification: 'menu1:view:btn2',
-            parentId: 10,
-            id: 22,
-            level: 3,
-            createTime: '2022-09-02',
-          },
-        ],
-      },
-    ],
-  },
-  {
-    menuName: '基础组件',
-    menuType: '目录',
-    menuRouter: '/components',
-    identification: 'menu:components',
-    parentId: 0,
-    level: 1,
-    id: 1,
-    createTime: '2022-09-02',
-    children: [
-      {
-        menuName: '菜单1',
-        menuType: '菜单',
-        menuRouter: '/components',
-        identification: 'menu1:view',
-        parentId: 1,
-        level: 2,
-        id: 10,
-        createTime: '2022-09-02',
-        children: [
-          {
-            menuName: '按钮1',
-            menuType: '按钮',
-            menuRouter: '/components',
-            identification: 'menu1:view:btn1',
-            parentId: 10,
-            id: 20,
-            level: 3,
-            createTime: '2022-09-02',
-          },
-          {
-            menuName: '按钮2',
-            menuType: '按钮',
-            menuRouter: '/components',
-            identification: 'menu1:view:btn2',
-            parentId: 10,
-            id: 21,
-            level: 3,
-            createTime: '2022-09-02',
-          },
-          {
-            menuName: '按钮3',
-            menuType: '按钮',
-            menuRouter: '/components',
-            identification: 'menu1:view:btn2',
-            parentId: 10,
-            id: 22,
-            level: 3,
-            createTime: '2022-09-02',
-          },
-        ],
-      },
-    ],
-  },
-];
+// // TODO: 测试数据
+// const tableData = [
+//   {
+//     menuName: '首页',
+//     menuType: '菜单',
+//     menuRouter: '/home',
+//     identification: 'menu:home',
+//     parentId: 0,
+//     level: 1,
+//     id: 0,
+//     createTime: '2022-09-02',
+//   },
+//   {
+//     menuName: '表格',
+//     menuType: '目录',
+//     menuRouter: '/table',
+//     identification: 'menu:table',
+//     parentId: 0,
+//     level: 1,
+//     id: 1,
+//     createTime: '2022-09-02',
+//     children: [
+//       {
+//         menuName: '菜单1',
+//         menuType: '菜单',
+//         menuRouter: '/table',
+//         identification: 'menu1:view',
+//         parentId: 1,
+//         level: 2,
+//         id: 10,
+//         createTime: '2022-09-02',
+//         children: [
+//           {
+//             menuName: '按钮1',
+//             menuType: '按钮',
+//             menuRouter: '/table',
+//             identification: 'menu1:view:btn1',
+//             parentId: 10,
+//             id: 20,
+//             level: 3,
+//             createTime: '2022-09-02',
+//           },
+//           {
+//             menuName: '按钮2',
+//             menuType: '按钮',
+//             menuRouter: '/table',
+//             identification: 'menu1:view:btn2',
+//             parentId: 10,
+//             id: 21,
+//             level: 3,
+//             createTime: '2022-09-02',
+//           },
+//           {
+//             menuName: '按钮3',
+//             menuType: '按钮',
+//             menuRouter: '/table',
+//             identification: 'menu1:view:btn2',
+//             parentId: 10,
+//             id: 22,
+//             level: 3,
+//             createTime: '2022-09-02',
+//           },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     menuName: '可视化图表',
+//     menuType: '目录',
+//     menuRouter: '/charts',
+//     identification: 'menu:charts',
+//     parentId: 0,
+//     level: 1,
+//     id: 1,
+//     createTime: '2022-09-02',
+//     children: [
+//       {
+//         menuName: '菜单1',
+//         menuType: '菜单',
+//         menuRouter: '/charts',
+//         identification: 'menu1:view',
+//         parentId: 1,
+//         level: 2,
+//         id: 10,
+//         createTime: '2022-09-02',
+//         children: [
+//           {
+//             menuName: '按钮1',
+//             menuType: '按钮',
+//             menuRouter: '/charts',
+//             identification: 'menu1:view:btn1',
+//             parentId: 10,
+//             id: 20,
+//             level: 3,
+//             createTime: '2022-09-02',
+//           },
+//           {
+//             menuName: '按钮2',
+//             menuType: '按钮',
+//             menuRouter: '/charts',
+//             identification: 'menu1:view:btn2',
+//             parentId: 10,
+//             id: 21,
+//             level: 3,
+//             createTime: '2022-09-02',
+//           },
+//           {
+//             menuName: '按钮3',
+//             menuType: '按钮',
+//             menuRouter: '/charts',
+//             identification: 'menu1:view:btn2',
+//             parentId: 10,
+//             id: 22,
+//             level: 3,
+//             createTime: '2022-09-02',
+//           },
+//         ],
+//       },
+//     ],
+//   },
+//   {
+//     menuName: '基础组件',
+//     menuType: '目录',
+//     menuRouter: '/components',
+//     identification: 'menu:components',
+//     parentId: 0,
+//     level: 1,
+//     id: 1,
+//     createTime: '2022-09-02',
+//     children: [
+//       {
+//         menuName: '菜单1',
+//         menuType: '菜单',
+//         menuRouter: '/components',
+//         identification: 'menu1:view',
+//         parentId: 1,
+//         level: 2,
+//         id: 10,
+//         createTime: '2022-09-02',
+//         children: [
+//           {
+//             menuName: '按钮1',
+//             menuType: '按钮',
+//             menuRouter: '/components',
+//             identification: 'menu1:view:btn1',
+//             parentId: 10,
+//             id: 20,
+//             level: 3,
+//             createTime: '2022-09-02',
+//           },
+//           {
+//             menuName: '按钮2',
+//             menuType: '按钮',
+//             menuRouter: '/components',
+//             identification: 'menu1:view:btn2',
+//             parentId: 10,
+//             id: 21,
+//             level: 3,
+//             createTime: '2022-09-02',
+//           },
+//           {
+//             menuName: '按钮3',
+//             menuType: '按钮',
+//             menuRouter: '/components',
+//             identification: 'menu1:view:btn2',
+//             parentId: 10,
+//             id: 22,
+//             level: 3,
+//             createTime: '2022-09-02',
+//           },
+//         ],
+//       },
+//     ],
+//   },
+// ];
 
 // 编辑菜单
 const onClickEdit = (row: any) => {

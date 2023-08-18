@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { postLoginAPI } from '@/api/System/user';
+import { postLoginAPI, getUserRolesAPI } from '@/api/System/user';
 import { loginDataType, userInfoType } from '@/types/user';
 import { router } from '@/router';
 
@@ -40,10 +40,20 @@ export const useUserStore = defineStore({
           const { data } = await postLoginAPI({ username: username.trim(), password: password });
           this.setToken(data.token); // 保存用户token
           this.setUserInfo(data.user);
+          await this.getRoles(data.user.id);
           resolve();
         } catch (error) {
           reject(error);
         }
+      });
+    },
+    // 获取用户授权角色信息
+    getRoles(id: number) {
+      return new Promise<string[]>(async (resolve) => {
+        // 获取权限列表
+        const { data } = await getUserRolesAPI({ id });
+        this.roles = data;
+        resolve(this.roles);
       });
     },
     /**

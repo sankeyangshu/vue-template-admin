@@ -82,12 +82,14 @@ import { userListType, userListResult } from '@/types/user';
 import { useTable } from '@/hooks/useTable';
 import UserDialog from './UserDialog.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
+import dayjs from 'dayjs';
 
 // 格式化表格数据
 const handleTableData = (data: userListResult) => {
   const { list } = data;
   for (const item of list) {
     item.sex = item.sex === 1 ? '男' : '女';
+    item.createtime = dayjs(item.createtime).format('YYYY-MM-DD HH:mm:ss');
     if (Number(item.userType) === 0) {
       item.userType = '超级管理员';
     } else if (Number(item.userType) === 1) {
