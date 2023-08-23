@@ -44,6 +44,7 @@
       <!-- 分页 -->
       <div class="footer-pagination"></div>
     </div>
+    <MenuDialog ref="menuDialog" v-model="tableState.tableData" />
   </div>
 </template>
 
@@ -53,11 +54,20 @@ import { onMounted, reactive, ref } from 'vue';
 import { getMenuListAPI } from '@/api/System/menu';
 import { menuListType } from '@/types/menu';
 import { useTable } from '@/hooks/useTable';
+import MenuDialog from './MenuDialog.vue';
 
 // 格式化表格数据
 const handleTableData = (data: menuListType[]) => {
   for (const item of data) {
-    item.authType = item.authType === 1 ? '菜单' : '接口';
+    const authType = Number(item.authType);
+    if (authType === 1) {
+      item.authType = '菜单';
+    } else if (authType === 2) {
+      item.authType = '接口';
+    } else if (authType === 3) {
+      item.authType = '权限';
+    }
+
     if (item.children) {
       handleTableData(item.children);
     }
@@ -101,186 +111,13 @@ const onClickResetForm = (formEl: FormInstance | undefined) => {
   formEl.resetFields();
 };
 
+// 新增/编辑菜单 dialog 节点
+const menuDialog = ref();
+
 // 新增菜单
 const onClickAddMenu = () => {
-  console.log('新增菜单');
+  menuDialog.value.isShowDialog();
 };
-
-// // TODO: 测试数据
-// const tableData = [
-//   {
-//     menuName: '首页',
-//     menuType: '菜单',
-//     menuRouter: '/home',
-//     identification: 'menu:home',
-//     parentId: 0,
-//     level: 1,
-//     id: 0,
-//     createTime: '2022-09-02',
-//   },
-//   {
-//     menuName: '表格',
-//     menuType: '目录',
-//     menuRouter: '/table',
-//     identification: 'menu:table',
-//     parentId: 0,
-//     level: 1,
-//     id: 1,
-//     createTime: '2022-09-02',
-//     children: [
-//       {
-//         menuName: '菜单1',
-//         menuType: '菜单',
-//         menuRouter: '/table',
-//         identification: 'menu1:view',
-//         parentId: 1,
-//         level: 2,
-//         id: 10,
-//         createTime: '2022-09-02',
-//         children: [
-//           {
-//             menuName: '按钮1',
-//             menuType: '按钮',
-//             menuRouter: '/table',
-//             identification: 'menu1:view:btn1',
-//             parentId: 10,
-//             id: 20,
-//             level: 3,
-//             createTime: '2022-09-02',
-//           },
-//           {
-//             menuName: '按钮2',
-//             menuType: '按钮',
-//             menuRouter: '/table',
-//             identification: 'menu1:view:btn2',
-//             parentId: 10,
-//             id: 21,
-//             level: 3,
-//             createTime: '2022-09-02',
-//           },
-//           {
-//             menuName: '按钮3',
-//             menuType: '按钮',
-//             menuRouter: '/table',
-//             identification: 'menu1:view:btn2',
-//             parentId: 10,
-//             id: 22,
-//             level: 3,
-//             createTime: '2022-09-02',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     menuName: '可视化图表',
-//     menuType: '目录',
-//     menuRouter: '/charts',
-//     identification: 'menu:charts',
-//     parentId: 0,
-//     level: 1,
-//     id: 1,
-//     createTime: '2022-09-02',
-//     children: [
-//       {
-//         menuName: '菜单1',
-//         menuType: '菜单',
-//         menuRouter: '/charts',
-//         identification: 'menu1:view',
-//         parentId: 1,
-//         level: 2,
-//         id: 10,
-//         createTime: '2022-09-02',
-//         children: [
-//           {
-//             menuName: '按钮1',
-//             menuType: '按钮',
-//             menuRouter: '/charts',
-//             identification: 'menu1:view:btn1',
-//             parentId: 10,
-//             id: 20,
-//             level: 3,
-//             createTime: '2022-09-02',
-//           },
-//           {
-//             menuName: '按钮2',
-//             menuType: '按钮',
-//             menuRouter: '/charts',
-//             identification: 'menu1:view:btn2',
-//             parentId: 10,
-//             id: 21,
-//             level: 3,
-//             createTime: '2022-09-02',
-//           },
-//           {
-//             menuName: '按钮3',
-//             menuType: '按钮',
-//             menuRouter: '/charts',
-//             identification: 'menu1:view:btn2',
-//             parentId: 10,
-//             id: 22,
-//             level: 3,
-//             createTime: '2022-09-02',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-//   {
-//     menuName: '基础组件',
-//     menuType: '目录',
-//     menuRouter: '/components',
-//     identification: 'menu:components',
-//     parentId: 0,
-//     level: 1,
-//     id: 1,
-//     createTime: '2022-09-02',
-//     children: [
-//       {
-//         menuName: '菜单1',
-//         menuType: '菜单',
-//         menuRouter: '/components',
-//         identification: 'menu1:view',
-//         parentId: 1,
-//         level: 2,
-//         id: 10,
-//         createTime: '2022-09-02',
-//         children: [
-//           {
-//             menuName: '按钮1',
-//             menuType: '按钮',
-//             menuRouter: '/components',
-//             identification: 'menu1:view:btn1',
-//             parentId: 10,
-//             id: 20,
-//             level: 3,
-//             createTime: '2022-09-02',
-//           },
-//           {
-//             menuName: '按钮2',
-//             menuType: '按钮',
-//             menuRouter: '/components',
-//             identification: 'menu1:view:btn2',
-//             parentId: 10,
-//             id: 21,
-//             level: 3,
-//             createTime: '2022-09-02',
-//           },
-//           {
-//             menuName: '按钮3',
-//             menuType: '按钮',
-//             menuRouter: '/components',
-//             identification: 'menu1:view:btn2',
-//             parentId: 10,
-//             id: 22,
-//             level: 3,
-//             createTime: '2022-09-02',
-//           },
-//         ],
-//       },
-//     ],
-//   },
-// ];
 
 // 编辑菜单
 const onClickEdit = (row: any) => {

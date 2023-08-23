@@ -16,7 +16,7 @@ const api = {
  * @param {menuType} data 菜单信息
  * @return 新增结果
  */
-export function postAddRoleAPI(data: menuType) {
+export function postAddMenuAPI(data: menuType) {
   return http.post(api.addMenu, data);
 }
 
@@ -39,10 +39,11 @@ export function getMenuDetailsAPI(data: { id: number }) {
 
 /**
  * @description: 获取用户菜单列表
+ * @param {object} data 用户id
  * @return 菜单详情
  */
-export function getUserMenuAPI() {
-  return http.get<menuListType[]>(api.userMenu);
+export function getUserMenuAPI(data: { userID: number }) {
+  return http.get<menuListType[]>(api.userMenu, data);
 }
 
 /**
