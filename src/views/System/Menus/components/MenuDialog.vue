@@ -149,8 +149,11 @@ const menuDialog = ref(false);
 const dialogTitle = ref('');
 
 // 显示dialog，新增/编辑菜单
-const isShowDialog = () => {
+const isShowDialog = (item: menuListType) => {
   dialogTitle.value = '新增菜单';
+  if (item) {
+    dialogTitle.value = '编辑菜单';
+  }
   menuDialog.value = true;
 };
 
@@ -177,6 +180,9 @@ const menuDialogForm = reactive<menuType>({
   status: true, // 资源状态
 });
 
+// 新增/编辑菜单后更新表格
+const emits = defineEmits(['updateModelValue']);
+
 // 处理新增/编辑菜单数据
 const handleAddMenuPerm = (row: menuType) => {
   let obj: menuType = { ...row };
@@ -191,7 +197,10 @@ const onClickConfirm = (formEl: FormInstance | undefined) => {
   formEl.validate(async (valid) => {
     if (!valid) return;
     try {
+      // 新增菜单
       await postAddMenuAPI(handleAddMenuPerm(menuDialogForm));
+      // 更新表格
+      emits('updateModelValue');
       ElMessage({
         message: `${dialogTitle.value}成功`,
         type: 'success',

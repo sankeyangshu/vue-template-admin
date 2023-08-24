@@ -24,8 +24,8 @@ export function postAddMenuAPI(data: menuType) {
  * @description: 获取菜单列表
  * @return 菜单列表
  */
-export function getMenuListAPI() {
-  return http.get<menuListType[]>(api.menuList);
+export function getMenuListAPI(data?: { title?: string }) {
+  return http.get<menuListType[]>(api.menuList, data);
 }
 
 /**
