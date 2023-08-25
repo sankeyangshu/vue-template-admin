@@ -14,7 +14,7 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, ref, watchEffect } from 'vue';
+import { inject, nextTick, ref, watch } from 'vue';
 import { ElTree } from 'element-plus';
 import type { PropType, Ref } from 'vue';
 import { menuListType } from '@/types/menu';
@@ -41,9 +41,17 @@ const props = defineProps({
 });
 
 // 监听用户菜单数据-获取并设置用户菜单数据
-watchEffect(() => {
-  roleMenuTreeRef.value?.setCheckedKeys(props.menuData, true);
-});
+watch(
+  () => props.menuData,
+  () => {
+    // 在父组件渲染完成后，等待下一个 DOM 更新周期
+    nextTick(() => {
+      // 在回调函数中处理数据变化的逻辑
+      roleMenuTreeRef.value?.setCheckedKeys(props.menuData, true);
+    });
+  },
+  { immediate: true }
+);
 
 // 选中菜单
 const emit = defineEmits(['updateMenuData']);
