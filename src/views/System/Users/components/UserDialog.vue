@@ -19,10 +19,19 @@
         </el-radio-group>
       </el-form-item>
       <el-form-item label="关联角色" prop="userType">
-        <el-select v-model="userDialogForm.userType" placeholder="请选择角色" style="width: 100%">
-          <el-option label="超级管理员" :value="0" :key="0"></el-option>
-          <el-option label="管理员" :value="1" :key="1"></el-option>
-          <el-option label="普通用户" :value="2" :key="2"></el-option>
+        <el-select
+          v-model="userDialogForm.roleIds"
+          placeholder="请选择角色"
+          multiple
+          clearable
+          style="width: 100%"
+        >
+          <el-option
+            v-for="item in roleList"
+            :key="item.id"
+            :label="item.roleName"
+            :value="item.id"
+          ></el-option>
         </el-select>
       </el-form-item>
       <el-form-item label="手机号" prop="phone">
@@ -65,12 +74,27 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
+import { onMounted, reactive, ref } from 'vue';
 import type { FormRules, FormInstance } from 'element-plus';
 import { ElMessage } from 'element-plus';
 import { validPhone, validEmail } from '@/utils/validate';
-import { postAddUserAPI, patchUpdateUserAPI } from '@/api/System/user';
+import { postAddUserAPI } from '@/api/System/user';
 import { userListType } from '@/types/user';
+import { postGetRoleListAPI } from '@/api/System/role';
+import { roleResultType } from '@/types/role';
+
+// 角色列表
+const roleList = ref<roleResultType[]>([]);
+
+// 获取角色列表
+const getRoleList = async () => {
+  const { data } = await postGetRoleListAPI({ isNotPage: true });
+  roleList.value = data as roleResultType[];
+};
+
+onMounted(async () => {
+  await getRoleList();
+});
 
 // 是否显示dialog
 const userDialog = ref(false);
@@ -96,7 +120,7 @@ const handleDialogData = (item: userListType) => {
   // return data;
 };
 
-// TODO: 显示dialog，新增/编辑用户
+// 显示dialog，新增/编辑用户
 const isShowDialog = (item: userListType) => {
   dialogTitle.value = '新增用户';
   if (item) {
@@ -134,6 +158,7 @@ const userDialogForm = reactive({
   password: '', // 密码
   description: '', // 用户描述
   status: true, // 用户状态
+  roleIds: [], // 角色列表
 });
 
 /**

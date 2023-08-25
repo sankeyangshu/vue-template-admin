@@ -27,7 +27,21 @@
           <el-table-column prop="username" label="用户名" align="center" width="100" />
           <el-table-column prop="nickname" label="昵称" align="center" />
           <el-table-column prop="sex" label="性别" align="center" />
-          <el-table-column prop="userType" label="关联角色" align="center" width="120" />
+          <el-table-column prop="roleList" label="关联角色" align="center" width="120">
+            <template #default="scope">
+              <div style="display: flex; flex-wrap: wrap">
+                <el-tag
+                  v-for="item in scope.row.roleList"
+                  :key="item.id"
+                  effect="dark"
+                  disable-transitions
+                  style="margin-right: 6px; margin-bottom: 6px"
+                >
+                  {{ item.roleName }}
+                </el-tag>
+              </div>
+            </template>
+          </el-table-column>
           <el-table-column prop="phone" label="手机号" align="center" width="120" />
           <el-table-column prop="email" label="邮箱" align="center" width="120" />
           <el-table-column prop="status" label="用户状态" align="center">
@@ -48,7 +62,7 @@
             label="用户描述"
             align="center"
           />
-          <el-table-column prop="createtime" label="创建时间" align="center" width="180" />
+          <el-table-column prop="updatetime" label="更新时间" align="center" width="180" />
           <el-table-column prop="operator" label="操作" width="200px" align="center" fixed="right">
             <template #default="scope">
               <el-button type="primary" size="small" icon="Edit" @click="onClickEdit(scope.row)">
@@ -86,16 +100,16 @@ import dayjs from 'dayjs';
 
 // 格式化表格数据
 const handleTableData = (data: userListResult) => {
-  const { list } = data;
+  const { list } = data as unknown as {
+    list: Array<userListType & { roleList: { roleName: string; id: number }[] }>;
+  };
   for (const item of list) {
     item.sex = item.sex === 1 ? '男' : '女';
-    item.createtime = dayjs(item.createtime).format('YYYY-MM-DD HH:mm:ss');
-    if (Number(item.userType) === 0) {
-      item.userType = '超级管理员';
-    } else if (Number(item.userType) === 1) {
-      item.userType = '管理员';
-    } else {
-      item.userType = '普通用户';
+    item.updatetime = dayjs(item.updatetime).format('YYYY-MM-DD HH:mm:ss');
+    if (item.roles) {
+      item.roleList = item.roles.map((res) => {
+        return { roleName: res.roleName, id: res.id };
+      });
     }
   }
   return data;

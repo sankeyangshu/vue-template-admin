@@ -1,3 +1,5 @@
+import { roleResultType } from './role';
+
 /**
  * 登录请求参数类型
  */
@@ -58,6 +60,8 @@ export interface userListType extends userType {
   sex: string | number;
   userType: string | number;
   createtime: string;
+  updatetime: string;
+  roles: roleResultType[];
 }
 
 /**
