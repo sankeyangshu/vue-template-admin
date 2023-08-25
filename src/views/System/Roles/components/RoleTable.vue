@@ -73,10 +73,13 @@
 
 <script lang="ts" setup>
 import { ElMessage, ElMessageBox, FormInstance } from 'element-plus';
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, provide, reactive, ref } from 'vue';
 import { postGetRoleListAPI, deleteRoleAPI } from '@/api/System/role';
 import { roleListType, roleListResult } from '@/types/role';
+import { getMenuListAPI } from '@/api/System/menu';
+import { menuListType } from '@/types/menu';
 import { useTable } from '@/hooks/useTable';
+import { MENU_LIST } from '@/config/constant';
 import RoleDrawer from './RoleDrawer.vue';
 import Pagination from '@/components/Pagination/Pagination.vue';
 import dayjs from 'dayjs';
@@ -97,8 +100,25 @@ const { getTableList, tableState, searchTable, resetTable, tableChangeCurrent, t
     dataCallBack: handleTableData,
   });
 
+// 全部菜单列表
+const menuList = ref<menuListType[]>([]);
+
+// 获取全部菜单信息
+const getMenuList = async () => {
+  try {
+    const { data } = await getMenuListAPI();
+    menuList.value = data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 依赖注入全部菜单列表
+provide(MENU_LIST, menuList);
+
 onMounted(async () => {
   await getTableList();
+  await getMenuList();
 });
 
 // 查询条件

@@ -4,9 +4,10 @@
 export interface roleType {
   roleName: string;
   description?: string;
-  roleType?: number;
+  roleType: string;
   status?: boolean;
   sort?: number;
+  resourceIds?: number[];
 }
 
 /**
@@ -25,4 +26,18 @@ export interface roleListResult {
   total: number;
   pageNum: number;
   pageSize: number;
+}
+
+/**
+ * 获取角色返回类型
+ */
+export interface roleResultType {
+  id: number;
+  roleName: string;
+  status: boolean;
+  createtime: string;
+  updatetime: string;
+  description: string;
+  roleType: string;
+  sort: number;
 }

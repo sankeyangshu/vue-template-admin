@@ -1,8 +1,11 @@
 <template>
   <el-drawer v-model="drawerVisible" :title="drawerTitle" size="50%" @close="onCloseDrawer">
     <el-form ref="roleFormRef" :model="roleDrawerForm" :rules="roleDrawerRules" label-width="100px">
-      <el-form-item label="角色名称" prop="roleName">
+      <el-form-item label="角色名称" prop="roleName" required>
         <el-input v-model="roleDrawerForm.roleName" placeholder="请输入角色名称" />
+      </el-form-item>
+      <el-form-item label="角色标识" prop="roleType" required>
+        <el-input v-model="roleDrawerForm.roleType" placeholder="请输入角色标识，标识唯一" />
       </el-form-item>
       <el-form-item label="角色状态">
         <el-switch
@@ -19,6 +22,12 @@
           placeholder="请输入角色描述"
         />
       </el-form-item>
+      <el-form-item label="排序值" prop="sort">
+        <el-input v-model="roleDrawerForm.sort" placeholder="请输入排序值" />
+      </el-form-item>
+      <el-form-item label="菜单权限">
+        <RoleMenuTree v-model:menuData="menuData" @update-menu-data="onUpdateMenuData" />
+      </el-form-item>
     </el-form>
     <template #footer>
       <span class="dialog-footer">
@@ -33,7 +42,38 @@
 import { reactive, ref } from 'vue';
 import type { FormRules, FormInstance } from 'element-plus';
 import { ElMessage } from 'element-plus';
-import { postAddRoleAPI } from '@/api/System/role';
+import { postAddRoleAPI, getRoleMenuAPI } from '@/api/System/role';
+import { roleType as roleParamsType } from '@/types/role';
+import { menuListType } from '@/types/menu';
+import RoleMenuTree from './RoleMenuTree.vue';
+
+// 用户菜单列表
+const menuData = ref<number[]>([]);
+
+/**
+ * @description: 格式化用户菜单列表id
+ * @param {*} list 菜单列表
+ * @return 列表id
+ */
+const handleUserMenuData = (list: menuListType[]) => {
+  const menuIds: number[] = [];
+
+  for (let i = 0; i < list.length; i++) {
+    const children = list[i].children;
+    if (children) {
+      handleUserMenuData(children);
+    }
+    menuIds.push(list[i].id);
+  }
+
+  return menuIds;
+};
+
+// 获取用户菜单列表
+const getUserRoleMenuData = async (roleID: number) => {
+  const { data } = await getRoleMenuAPI({ roleID });
+  menuData.value = handleUserMenuData(data);
+};
 
 // 是否显示drawer
 const drawerVisible = ref(false);
@@ -41,10 +81,14 @@ const drawerVisible = ref(false);
 // drawer标题
 const drawerTitle = ref('');
 
-const isShowDrawer = (item: object) => {
-  drawerTitle.value = '新增用户';
+const isShowDrawer = async (item: any) => {
+  // 重置菜单列表
+  menuData.value = [];
+
+  drawerTitle.value = '新增角色';
   if (item) {
-    drawerTitle.value = '编辑用户';
+    drawerTitle.value = '编辑角色';
+    item.id && (await getUserRoleMenuData(item.id));
   }
   drawerVisible.value = true;
 };
@@ -62,16 +106,25 @@ const onCloseDrawer = () => {
 };
 
 // 新增/编辑角色
-const roleDrawerForm = reactive({
+const roleDrawerForm = reactive<roleParamsType>({
   roleName: '', // 角色名称
+  roleType: '', // 角色标识
   description: '', // 角色描述
   status: true, // 角色状态
+  sort: 10, // 排序值
+  resourceIds: [], // 资源权限id
 });
 
 // 校验规则
 const roleDrawerRules = reactive<FormRules>({
   roleName: [{ required: true, message: '请输入角色名称', trigger: 'blur' }],
+  roleType: [{ required: true, message: '请输入角色标识', trigger: 'blur' }],
 });
+
+// 角色菜单权限
+const onUpdateMenuData = (data: number[]) => {
+  roleDrawerForm.resourceIds = data;
+};
 
 // 新增/编辑角色
 const onClickConfirm = (formEl: FormInstance | undefined) => {

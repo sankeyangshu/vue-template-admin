@@ -1,10 +1,12 @@
 import http from '@/utils/request';
-import { roleType } from '@/types/role';
+import { roleListResult, roleResultType, roleType } from '@/types/role';
+import { menuListType } from '@/types/menu';
 
 // api接口
 const api = {
   addRole: '/api/roles/create', // 创建角色
   rolesList: '/api/roles/getAll', // 获取角色列表
+  getRoleMenus: '/api/roles/getRoleMenu', // 获取角色菜单
   updateRole: '/api/roles/update', // 更新角色
   deleteRole: '/api/roles/delete', // 删除角色
 };
@@ -18,6 +20,7 @@ export type rolePageSizeType = {
   status: boolean;
   pageNum: number;
   pageSize: number;
+  isNotPage?: boolean;
 };
 
 /**
@@ -35,7 +38,17 @@ export function postAddRoleAPI(data: roleType) {
  * @return 角色信息列表
  */
 export function postGetRoleListAPI(data: Partial<rolePageSizeType>) {
-  return http.post(api.rolesList, data);
+  return http.post<roleResultType[] | roleListResult>(api.rolesList, data);
+}
+
+/**
+ * @description: 获取角色菜单
+ * @param {object} data 角色id
+ * @param {number} data.roleID 角色id
+ * @return 角色菜单
+ */
+export function getRoleMenuAPI(data: { roleID: number }) {
+  return http.get<menuListType[]>(api.getRoleMenus, data);
 }
 
 /**
