@@ -1,4 +1,5 @@
 import { RouteRecordRaw, RouteRecordName } from 'vue-router';
+import { roleResultType } from '@/types/role';
 import path from 'path-browserify';
 
 /**
@@ -108,13 +109,14 @@ export const filterKeepAlive = (routers: RouteRecordRaw[]) => {
 
 /**
  * @description: 判断当前用户是否具有权限
- * @param {string} roles 权限表
+ * @param {roleResultType[]} roles 权限表
  * @param {RouteRecordRaw} route 当前路由对象
  * @return {boolean} 是否有权限
  */
-export const hasPermission = (roles: string[], route: RouteRecordRaw): boolean => {
+export const hasPermission = (roles: roleResultType[], route: RouteRecordRaw): boolean => {
   if (route.meta && route.meta.roles) {
-    return roles.some((role) => (route.meta?.roles as string[]).includes(role));
+    const roleName = roles.map((item) => item.roleType);
+    return roleName.some((role) => (route.meta?.roles as string[]).includes(role));
   } else {
     return false;
   }
@@ -123,10 +125,10 @@ export const hasPermission = (roles: string[], route: RouteRecordRaw): boolean =
 /**
  * @description: 过滤异步路由表
  * @param {RouteRecordRaw} routes 异步路由表
- * @param {string} roles 权限表
+ * @param {roleResultType[]} roles 权限表
  * @return 过滤结果
  */
-export const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: string[]) => {
+export const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: roleResultType[]) => {
   const res: RouteRecordRaw[] = [];
   routes.forEach((route) => {
     const tmp = { ...route };

@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import { RouteRecordRaw } from 'vue-router';
 import { filterAsyncRoutes, filterKeepAlive } from '@/utils/routers';
 import { asyncRoutes, constantRoutes, notFoundRouter } from '@/router';
+import { roleResultType } from '@/types/role';
 
 interface permissionStateType {
   routes: RouteRecordRaw[];
@@ -30,15 +31,12 @@ export const usePermissionStore = defineStore({
   // 可以同步 也可以异步
   actions: {
     // 生成路由
-    generateRoutes(roles: string[]): Promise<RouteRecordRaw[]> {
+    generateRoutes(roles: roleResultType[]): Promise<RouteRecordRaw[]> {
       return new Promise((resolve) => {
         // 在这判断是否有权限，哪些角色拥有哪些权限
-        let accessedRoutes;
-        if (roles && roles.length && roles.includes('admin')) {
-          console.log('first');
+        let accessedRoutes: RouteRecordRaw[] = [];
+        if (roles && roles.length) {
           accessedRoutes = filterAsyncRoutes(asyncRoutes, roles);
-        } else {
-          accessedRoutes = asyncRoutes || [];
         }
         accessedRoutes = accessedRoutes.concat(notFoundRouter);
         this.routes = constantRoutes.concat(accessedRoutes);

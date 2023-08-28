@@ -5,6 +5,7 @@ import {
   loginDataType,
   userInfoRepType,
   userListResult,
+  userRoleAndMenuType,
 } from '@/types/user';
 
 // api接口
@@ -50,7 +51,7 @@ export function postGetUserListAPI(data: Partial<getUserListType>) {
  * @return 用户角色列表
  */
 export function getUserRolesAPI(data: { id: number }) {
-  return http.get<string[]>(api.userRoles, data);
+  return http.get<userRoleAndMenuType>(api.userRoles, data);
 }
 
 /**

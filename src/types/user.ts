@@ -1,3 +1,4 @@
+import { menuListType } from './menu';
 import { roleResultType } from './role';
 
 /**
@@ -82,4 +83,12 @@ export interface userListResult {
   total: number;
   pageNum: number;
   pageSize: number;
+}
+
+/**
+ * 用户角色和菜单类型
+ */
+export interface userRoleAndMenuType {
+  roles: roleResultType[];
+  menus: menuListType[];
 }

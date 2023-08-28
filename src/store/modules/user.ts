@@ -2,11 +2,14 @@ import { defineStore } from 'pinia';
 import { postLoginAPI, getUserRolesAPI } from '@/api/System/user';
 import { loginDataType, userInfoType } from '@/types/user';
 import { router } from '@/router';
+import { roleResultType } from '@/types/role';
+import { menuListType } from '@/types/menu';
 
 interface userStateType {
   token: string;
   userInfo: userInfoType | {};
-  roles: string[];
+  roles: roleResultType[];
+  menus: menuListType[];
 }
 
 export const useUserStore = defineStore({
@@ -18,6 +21,7 @@ export const useUserStore = defineStore({
     token: '', // 登录token
     userInfo: {}, // 用户信息
     roles: [], // 权限角色
+    menus: [], // 菜单
   }),
 
   // 可以同步 也可以异步
@@ -49,11 +53,12 @@ export const useUserStore = defineStore({
     },
     // 获取用户授权角色信息
     getRoles(id: number) {
-      return new Promise<string[]>(async (resolve) => {
+      return new Promise<void>(async (resolve) => {
         // 获取权限列表
         const { data } = await getUserRolesAPI({ id });
-        this.roles = data;
-        resolve(this.roles);
+        this.roles = data.roles;
+        this.menus = data.menus;
+        resolve();
       });
     },
     /**
