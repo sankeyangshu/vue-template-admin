@@ -1,5 +1,6 @@
 import { RouteRecordRaw, RouteRecordName } from 'vue-router';
 import { roleResultType } from '@/types/role';
+import { menuListType } from '@/types/menu';
 import path from 'path-browserify';
 
 /**
@@ -140,4 +141,28 @@ export const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: roleResultTyp
     }
   });
   return res;
+};
+
+/**
+ * @description: 获取用户按钮权限列表
+ * @param {menuListType} menuList 菜单列表
+ * @param {string} path 当前路由
+ * @return 按钮权限列表
+ */
+export const getAuthButtonsList = (menuList: menuListType[], path: string) => {
+  let menus: string[] = [];
+  menuList.forEach((item) => {
+    // 检查当前菜单的 rul 属性是否等于目标值
+    if (item.url === path) {
+      if (item.children) {
+        menus = item.children.map((res) => res.signName);
+      }
+    }
+    // 如果当前对象有 children 属性且是一个数组，则递归调用 authButtonsList 进行进一步筛选
+    if (item.children) {
+      getAuthButtonsList(item.children, path);
+    }
+  });
+
+  return menus;
 };

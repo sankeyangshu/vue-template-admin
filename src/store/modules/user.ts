@@ -10,6 +10,7 @@ interface userStateType {
   userInfo: userInfoType | {};
   roles: roleResultType[];
   menus: menuListType[];
+  routeName: string;
 }
 
 export const useUserStore = defineStore({
@@ -22,6 +23,7 @@ export const useUserStore = defineStore({
     userInfo: {}, // 用户信息
     roles: [], // 权限角色
     menus: [], // 菜单
+    routeName: '', // 当前页面的 router name，用来做按钮权限筛选
   }),
 
   // 可以同步 也可以异步
@@ -60,6 +62,10 @@ export const useUserStore = defineStore({
         this.menus = data.menus;
         resolve();
       });
+    },
+    // 设置当前页面的 RouteName
+    setRouteName(name: string) {
+      this.routeName = name;
     },
     /**
      * 用户退出登录
