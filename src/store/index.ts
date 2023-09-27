@@ -1,6 +1,6 @@
-import { App } from 'vue';
 import { createPinia } from 'pinia';
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'; // 引入持久化插件
+import { App } from 'vue';
 
 // 创建pinia实例
 const store = createPinia();

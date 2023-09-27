@@ -1,7 +1,7 @@
-import { computed } from 'vue';
-import { useSettingStore } from '@/store/modules/setting';
-import { DEFAULT_THEMECOLOR } from '@/config';
 import { ElMessage } from 'element-plus';
+import { computed } from 'vue';
+import { DEFAULT_THEMECOLOR } from '@/config';
+import { useSettingStore } from '@/store/modules/setting';
 import { getDarkColor, getLightColor } from '@/utils/color';
 
 type GreyOrWeakType = 'grey' | 'weak';

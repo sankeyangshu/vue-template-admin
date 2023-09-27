@@ -1,6 +1,6 @@
 import { ElMessage } from 'element-plus';
-import { useUserStore } from '@/store/modules/user';
 import { i18n } from '@/i18n';
+import { useUserStore } from '@/store/modules/user';
 
 /**
  * @description: 校验网络请求状态码

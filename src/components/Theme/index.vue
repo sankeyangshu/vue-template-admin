@@ -37,10 +37,10 @@
 
 <script lang="ts" setup>
 import { computed, ref } from 'vue';
-import { useSettingStore, themeConfigKeyType } from '@/store/modules/setting';
-import { useTheme } from '@/hooks/useTheme';
-import { DEFAULT_THEMECOLOR } from '@/config';
 import SwitchDark from '@/components/SwitchDark/index.vue';
+import { DEFAULT_THEMECOLOR } from '@/config';
+import { useTheme } from '@/hooks/useTheme';
+import { themeConfigKeyType, useSettingStore } from '@/store/modules/setting';
 
 // 预定义主题颜色
 const colorList = [

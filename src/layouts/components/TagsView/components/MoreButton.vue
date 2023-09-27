@@ -24,9 +24,9 @@
 </template>
 
 <script lang="ts" setup>
+import { useRoute } from 'vue-router';
 import { useSettingStore } from '@/store/modules/setting';
 import { useTagsViewStore } from '@/store/modules/tagsView';
-import { useRoute } from 'vue-router';
 
 // 路由
 const route = useRoute();

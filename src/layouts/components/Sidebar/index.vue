@@ -19,8 +19,8 @@
 <script lang="ts" setup>
 import { computed } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { filterRoutes, generateMenus } from '@/utils/routers';
 import { useSettingStore } from '@/store/modules/setting';
+import { filterRoutes, generateMenus } from '@/utils/routers';
 import Logo from './components/Logo.vue';
 import SubMenu from './components/SubMenu.vue';
 

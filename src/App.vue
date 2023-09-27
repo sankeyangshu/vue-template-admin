@@ -5,11 +5,11 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useSettingStore } from '@/store/modules/setting';
-import { useTheme } from '@/hooks/useTheme';
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'; // 导入 Element Plus 语言包
 import en from 'element-plus/lib/locale/lang/en'; // 导入 Element Plus 语言包
+import zhCn from 'element-plus/lib/locale/lang/zh-cn'; // 导入 Element Plus 语言包
+import { computed } from 'vue';
+import { useTheme } from '@/hooks/useTheme';
+import { useSettingStore } from '@/store/modules/setting';
 
 // 初始化主题
 const { initTheme } = useTheme();

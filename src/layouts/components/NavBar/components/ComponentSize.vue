@@ -27,7 +27,7 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useSettingStore, componentSizeType } from '@/store/modules/setting';
+import { componentSizeType, useSettingStore } from '@/store/modules/setting';
 
 // 获取父组件传递的值
 defineProps({

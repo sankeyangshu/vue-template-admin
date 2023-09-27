@@ -32,13 +32,13 @@
 </template>
 
 <script lang="ts" setup>
-import CollapseIcon from './components/CollapseIcon.vue';
 import Breadcrumb from './components/Breadcrumb.vue';
-import HeaderSearch from './components/HeaderSearch.vue';
-import ScreenFull from './components/ScreenFull.vue';
+import CollapseIcon from './components/CollapseIcon.vue';
 import ComponentSize from './components/ComponentSize.vue';
+import HeaderSearch from './components/HeaderSearch.vue';
 import LangSelect from './components/LangSelect.vue';
 import Notice from './components/Notice.vue';
+import ScreenFull from './components/ScreenFull.vue';
 import Setting from './components/Setting.vue';
 import User from './components/User.vue';
 </script>

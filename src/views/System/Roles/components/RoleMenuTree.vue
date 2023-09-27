@@ -14,11 +14,11 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, nextTick, ref, watch } from 'vue';
 import { ElTree } from 'element-plus';
 import type { PropType, Ref } from 'vue';
-import { menuListType } from '@/types/menu';
+import { inject, nextTick, ref, watch } from 'vue';
 import { MENU_LIST } from '@/config/constant';
+import { menuListType } from '@/types/menu';
 
 // 获取全部菜单列表
 const menuList = inject<Ref<menuListType[]>>(MENU_LIST, ref([]));

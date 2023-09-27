@@ -39,12 +39,12 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref } from 'vue';
-import type { FormRules, FormInstance } from 'element-plus';
+import type { FormInstance, FormRules } from 'element-plus';
 import { ElMessage } from 'element-plus';
-import { postAddRoleAPI, getRoleMenuAPI } from '@/api/System/role';
-import { roleType as roleParamsType } from '@/types/role';
+import { reactive, ref } from 'vue';
+import { getRoleMenuAPI, postAddRoleAPI } from '@/api/System/role';
 import { menuListType } from '@/types/menu';
+import { roleType as roleParamsType } from '@/types/role';
 import RoleMenuTree from './RoleMenuTree.vue';
 
 // 用户菜单列表

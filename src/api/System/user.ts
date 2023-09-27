@@ -1,4 +1,3 @@
-import http from '@/utils/request';
 import {
   addUserType,
   getUserListType,
@@ -7,6 +6,7 @@ import {
   userListResult,
   userRoleAndMenuType,
 } from '@/types/user';
+import http from '@/utils/request';
 
 // api接口
 const api = {

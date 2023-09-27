@@ -81,12 +81,12 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive, ref, watch } from 'vue';
-import type { PropType } from 'vue';
 import type { FormInstance } from 'element-plus';
 import { ElMessage } from 'element-plus';
-import { menuType, menuListType } from '@/types/menu';
+import type { PropType } from 'vue';
+import { reactive, ref, watch } from 'vue';
 import { postAddMenuAPI } from '@/api/System/menu';
+import { menuListType, menuType } from '@/types/menu';
 
 /**
  * 菜单权限节点类型

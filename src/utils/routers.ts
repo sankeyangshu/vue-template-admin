@@ -1,7 +1,7 @@
-import { RouteRecordRaw, RouteRecordName } from 'vue-router';
-import { roleResultType } from '@/types/role';
-import { menuListType } from '@/types/menu';
 import path from 'path-browserify';
+import { RouteRecordName, RouteRecordRaw } from 'vue-router';
+import { menuListType } from '@/types/menu';
+import { roleResultType } from '@/types/role';
 
 /**
  * @description: 返回所有子路由

@@ -32,12 +32,12 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, onMounted, ref, watch } from 'vue';
-import { useTagsViewStore } from '@/store/modules/tagsView';
-import { usePermissionStore } from '@/store/modules/permission';
-import { RouteRecordRaw, useRoute, useRouter } from 'vue-router';
-import { TabsPaneContext, TabPaneName } from 'element-plus';
+import { TabPaneName, TabsPaneContext } from 'element-plus';
 import path from 'path-browserify';
+import { computed, onMounted, ref, watch } from 'vue';
+import { RouteRecordRaw, useRoute, useRouter } from 'vue-router';
+import { usePermissionStore } from '@/store/modules/permission';
+import { useTagsViewStore } from '@/store/modules/tagsView';
 import MoreButton from './components/MoreButton.vue';
 
 // 选中过的路由表类型

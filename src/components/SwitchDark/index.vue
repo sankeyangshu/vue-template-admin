@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts" setup>
+import { Moon, Sunny } from '@element-plus/icons-vue';
 import { computed } from 'vue';
-import { Sunny, Moon } from '@element-plus/icons-vue';
-import { useSettingStore } from '@/store/modules/setting';
 import { useTheme } from '@/hooks/useTheme';
+import { useSettingStore } from '@/store/modules/setting';
 
 // 获取全局状态管理仓库中系统设置状态
 const settingStore = useSettingStore();

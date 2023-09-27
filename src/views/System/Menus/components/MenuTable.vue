@@ -66,13 +66,13 @@
 </template>
 
 <script lang="ts" setup>
-import { type FormInstance, ElMessage, ElMessageBox } from 'element-plus';
-import { onMounted, reactive, ref } from 'vue';
-import { getMenuListAPI, deleteMenuAPI } from '@/api/System/menu';
-import { menuListType } from '@/types/menu';
-import { useTable } from '@/hooks/useTable';
-import MenuDialog from './MenuDialog.vue';
 import dayjs from 'dayjs';
+import { ElMessage, ElMessageBox, type FormInstance } from 'element-plus';
+import { onMounted, reactive, ref } from 'vue';
+import { deleteMenuAPI, getMenuListAPI } from '@/api/System/menu';
+import { useTable } from '@/hooks/useTable';
+import { menuListType } from '@/types/menu';
+import MenuDialog from './MenuDialog.vue';
 
 // 格式化表格数据
 const handleTableData = (data: menuListType[]) => {

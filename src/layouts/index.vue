@@ -33,14 +33,14 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useSettingStore } from '@/store/modules/setting';
-import LayoutMain from './components/Main/index.vue';
-import LayoutSideBar from './components/Sidebar/index.vue';
-import LayoutHeader from './components/Header/index.vue';
-import LayoutNavBar from './components/NavBar/index.vue';
-import LayoutTagsView from './components/TagsView/index.vue';
-import LayoutFooter from './components/Footer/index.vue';
 import Theme from '@/components/Theme/index.vue';
+import { useSettingStore } from '@/store/modules/setting';
+import LayoutFooter from './components/Footer/index.vue';
+import LayoutHeader from './components/Header/index.vue';
+import LayoutMain from './components/Main/index.vue';
+import LayoutNavBar from './components/NavBar/index.vue';
+import LayoutSideBar from './components/Sidebar/index.vue';
+import LayoutTagsView from './components/TagsView/index.vue';
 
 // 获取全局设置
 const settingStore = useSettingStore();

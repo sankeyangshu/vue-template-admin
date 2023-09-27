@@ -1,6 +1,6 @@
-import http from '@/utils/request';
-import { roleListResult, roleResultType, roleType } from '@/types/role';
 import { menuListType } from '@/types/menu';
+import { roleListResult, roleResultType, roleType } from '@/types/role';
+import http from '@/utils/request';
 
 // api接口
 const api = {

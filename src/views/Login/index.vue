@@ -63,13 +63,13 @@
 </template>
 
 <script lang="ts" setup>
+import type { FormInstance, FormRules } from 'element-plus';
+import { ElNotification } from 'element-plus';
 import { reactive, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { ElNotification } from 'element-plus';
-import type { FormInstance, FormRules } from 'element-plus';
-import { getTimeStateStr } from '@/utils';
-import { useUserStore } from '@/store/modules/user';
 import SwitchDark from '@/components/SwitchDark/index.vue';
+import { useUserStore } from '@/store/modules/user';
+import { getTimeStateStr } from '@/utils';
 
 // 表单校验
 const loginFormRef = ref<FormInstance>();

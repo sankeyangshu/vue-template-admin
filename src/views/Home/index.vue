@@ -16,9 +16,9 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
+import { useUserStore } from '@/store/modules/user';
 import { userInfoType } from '@/types/user';
 import { getTimeStateStr, welcome } from '@/utils';
-import { useUserStore } from '@/store/modules/user';
 
 const userStore = useUserStore();
 

@@ -1,6 +1,6 @@
+import type { Directive, DirectiveBinding } from 'vue';
 import { useUserStore } from '@/store/modules/user';
 import { getAuthButtonsList } from '@/utils/routers';
-import type { Directive, DirectiveBinding } from 'vue';
 
 /**
  * @description: v-auth 按钮权限指令

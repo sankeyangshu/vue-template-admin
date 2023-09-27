@@ -74,14 +74,14 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive, ref } from 'vue';
-import type { FormRules, FormInstance } from 'element-plus';
+import type { FormInstance, FormRules } from 'element-plus';
 import { ElMessage } from 'element-plus';
-import { validPhone, validEmail } from '@/utils/validate';
-import { postAddUserAPI } from '@/api/System/user';
-import { userListType } from '@/types/user';
+import { onMounted, reactive, ref } from 'vue';
 import { postGetRoleListAPI } from '@/api/System/role';
+import { postAddUserAPI } from '@/api/System/user';
 import { roleResultType } from '@/types/role';
+import { userListType } from '@/types/user';
+import { validEmail, validPhone } from '@/utils/validate';
 
 // 角色列表
 const roleList = ref<roleResultType[]>([]);

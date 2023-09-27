@@ -72,17 +72,17 @@
 </template>
 
 <script lang="ts" setup>
+import dayjs from 'dayjs';
 import { ElMessage, ElMessageBox, FormInstance } from 'element-plus';
 import { onMounted, provide, reactive, ref } from 'vue';
-import { postGetRoleListAPI, deleteRoleAPI } from '@/api/System/role';
-import { roleListType, roleListResult } from '@/types/role';
 import { getMenuListAPI } from '@/api/System/menu';
-import { menuListType } from '@/types/menu';
-import { useTable } from '@/hooks/useTable';
-import { MENU_LIST } from '@/config/constant';
-import RoleDrawer from './RoleDrawer.vue';
+import { deleteRoleAPI, postGetRoleListAPI } from '@/api/System/role';
 import Pagination from '@/components/Pagination/Pagination.vue';
-import dayjs from 'dayjs';
+import { MENU_LIST } from '@/config/constant';
+import { useTable } from '@/hooks/useTable';
+import { menuListType } from '@/types/menu';
+import { roleListResult, roleListType } from '@/types/role';
+import RoleDrawer from './RoleDrawer.vue';
 
 // 格式化表格数据
 const handleTableData = (data: roleListResult) => {

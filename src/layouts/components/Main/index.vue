@@ -12,8 +12,8 @@
 
 <script lang="ts" setup>
 import { computed } from 'vue';
-import { useSettingStore } from '@/store/modules/setting';
 import { usePermissionStore } from '@/store/modules/permission';
+import { useSettingStore } from '@/store/modules/setting';
 
 // 获取系统设置 store
 const settingStore = useSettingStore();

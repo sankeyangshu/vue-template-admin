@@ -1,4 +1,4 @@
-import { menuType, menuListType } from '@/types/menu';
+import { menuListType, menuType } from '@/types/menu';
 import http from '@/utils/request';
 
 // api接口

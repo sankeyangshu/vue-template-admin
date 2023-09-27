@@ -1,6 +1,6 @@
+import path from 'path-browserify';
 import { RouteRecordRaw } from 'vue-router';
 import { i18n } from '@/i18n';
-import path from 'path-browserify';
 
 /**
  * 筛选完路由对象类型

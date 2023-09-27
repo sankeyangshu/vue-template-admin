@@ -19,10 +19,10 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-import { useSettingStore } from '@/store/modules/setting';
-import { useI18n } from 'vue-i18n';
 import { ElMessage } from 'element-plus';
+import { computed } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useSettingStore } from '@/store/modules/setting';
 
 // 获取父组件传递的值
 defineProps({

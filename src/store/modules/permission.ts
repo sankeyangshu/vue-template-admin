@@ -1,8 +1,8 @@
 import { defineStore } from 'pinia';
 import { RouteRecordRaw } from 'vue-router';
-import { filterAsyncRoutes, filterKeepAlive } from '@/utils/routers';
 import { asyncRoutes, constantRoutes, notFoundRouter } from '@/router';
 import { roleResultType } from '@/types/role';
+import { filterAsyncRoutes, filterKeepAlive } from '@/utils/routers';
 
 interface permissionStateType {
   routes: RouteRecordRaw[];

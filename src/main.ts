@@ -1,14 +1,14 @@
 import { createApp } from 'vue';
-import { setupStore } from '@/store';
+import { setupDirectives } from '@/directives'; // 导入自定义指令
+import { setupI18n } from '@/i18n'; // 导入i18n
+import setupElementPlus from '@/plugins/element'; // 导入element plus
+import setupSvgIcons from '@/plugins/icons'; // 导入svg图标组件
 import { setupRouter } from '@/router';
+import { setupStore } from '@/store';
 import App from './App.vue';
 import './styles/index.scss'; // 导入默认样式
 import 'virtual:svg-icons-register'; // svg-icons注册导入
-import setupSvgIcons from '@/plugins/icons'; // 导入svg图标组件
-import setupElementPlus from '@/plugins/element'; // 导入element plus
 import './config/permission'; // 导入路由鉴权-加载异步路由
-import { setupI18n } from '@/i18n'; // 导入i18n
-import { setupDirectives } from '@/directives'; // 导入自定义指令
 
 function bootstrap() {
   // 创建实例

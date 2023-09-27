@@ -31,11 +31,11 @@
 </template>
 
 <script lang="ts" setup>
+import Fuse from 'fuse.js'; // https://fusejs.io/ fuse.js文档
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
+import { filterRouteType, generateRoutes } from '@/utils/FuseData';
 import { filterRoutes } from '@/utils/routers';
-import { generateRoutes, filterRouteType } from '@/utils/FuseData';
-import Fuse from 'fuse.js'; // https://fusejs.io/ fuse.js文档
 
 // 是否显示搜索弹出框
 const isShowSearchDialog = ref(false);

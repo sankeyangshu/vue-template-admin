@@ -1,9 +1,9 @@
-import { router } from '@/router';
-import { useUserStore } from '@/store/modules/user';
-import { usePermissionStore } from '@/store/modules/permission';
-import { i18n } from '@/i18n';
-import { useTitle } from 'vue-hooks-plus';
 import NProgress from 'nprogress'; // 进度条
+import { useTitle } from 'vue-hooks-plus';
+import { i18n } from '@/i18n';
+import { router } from '@/router';
+import { usePermissionStore } from '@/store/modules/permission';
+import { useUserStore } from '@/store/modules/user';
 import 'nprogress/nprogress.css'; // 进度条样式
 
 // 进度条配置

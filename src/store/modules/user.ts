@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia';
-import { postLoginAPI, getUserRolesAPI } from '@/api/System/user';
-import { loginDataType, userInfoType } from '@/types/user';
+import { getUserRolesAPI, postLoginAPI } from '@/api/System/user';
 import { router } from '@/router';
-import { roleResultType } from '@/types/role';
 import { menuListType } from '@/types/menu';
+import { roleResultType } from '@/types/role';
+import { loginDataType, userInfoType } from '@/types/user';
 
 interface userStateType {
   token: string;

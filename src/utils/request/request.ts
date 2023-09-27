@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from 'axios';
-import { useUserStore } from '@/store/modules/user';
 import { ElMessage } from 'element-plus';
+import { useUserStore } from '@/store/modules/user';
 import { checkStatus } from './CheckStatus';
 
 // 创建新的axios实例

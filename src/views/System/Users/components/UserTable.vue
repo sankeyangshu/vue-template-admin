@@ -89,14 +89,14 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, reactive, ref } from 'vue';
-import { ElMessage, ElMessageBox, FormInstance } from 'element-plus';
-import { postGetUserListAPI, deleteUserAPI } from '@/api/System/user';
-import { userListType, userListResult } from '@/types/user';
-import { useTable } from '@/hooks/useTable';
-import UserDialog from './UserDialog.vue';
-import Pagination from '@/components/Pagination/Pagination.vue';
 import dayjs from 'dayjs';
+import { ElMessage, ElMessageBox, FormInstance } from 'element-plus';
+import { onMounted, reactive, ref } from 'vue';
+import { deleteUserAPI, postGetUserListAPI } from '@/api/System/user';
+import Pagination from '@/components/Pagination/Pagination.vue';
+import { useTable } from '@/hooks/useTable';
+import { userListResult, userListType } from '@/types/user';
+import UserDialog from './UserDialog.vue';
 
 // 格式化表格数据
 const handleTableData = (data: userListResult) => {
