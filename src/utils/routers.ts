@@ -152,7 +152,7 @@ export const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: roleResultTyp
 export const getAuthButtonsList = (menuList: menuListType[], path: string) => {
   let menus: string[] = [];
   menuList.forEach((item) => {
-    // 检查当前菜单的 rul 属性是否等于目标值
+    // 检查当前菜单的 url 属性是否等于目标值
     if (item.url === path) {
       if (item.children) {
         menus = item.children.map((res) => res.signName);
