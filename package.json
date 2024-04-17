@@ -7,9 +7,9 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build:dev": "vue-tsc && vite build --mode development",
-    "build:prod": "vue-tsc && vite build --mode production",
-    "build:test": "vue-tsc && vite build --mode test",
+    "build:dev": "vite build --mode development",
+    "build:prod": "vite build --mode production",
+    "build:test": "vite build --mode test",
     "preview": "vite preview",
     "lint:lint-staged": "lint-staged",
     "lint:eslint": "eslint \"src/**/*.{vue,ts,tsx}\" --fix",

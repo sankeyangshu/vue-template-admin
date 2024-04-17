@@ -1,22 +1,22 @@
 <template>
   <el-dropdown trigger="hover">
     <el-button size="small" type="primary">
-      <span>更多</span>
+      <span>{{ $t('tagsView.more') }}</span>
       <el-icon class="el-icon--right"><ArrowDown /></el-icon>
     </el-button>
     <template #dropdown>
       <el-dropdown-menu>
         <el-dropdown-item @click="onClickRefresh">
-          <el-icon :size="14"><Refresh /></el-icon> 刷新
+          <el-icon :size="14"><Refresh /></el-icon> {{ $t('tagsView.refresh') }}
         </el-dropdown-item>
         <el-dropdown-item @click="onCloseCurrentTab">
-          <el-icon :size="14"><FolderRemove /></el-icon> 关闭当前
+          <el-icon :size="14"><FolderRemove /></el-icon> {{ $t('tagsView.closeCurrent') }}
         </el-dropdown-item>
         <el-dropdown-item @click="onCloseOtherTab">
-          <el-icon :size="14"><Close /></el-icon>关闭其他
+          <el-icon :size="14"><Close /></el-icon> {{ $t('tagsView.closeOther') }}
         </el-dropdown-item>
         <el-dropdown-item @click="onCloseAllTab">
-          <el-icon :size="14"><FolderDelete /></el-icon>关闭所有
+          <el-icon :size="14"><FolderDelete /></el-icon> {{ $t('tagsView.closeAll') }}
         </el-dropdown-item>
       </el-dropdown-menu>
     </template>

@@ -6,7 +6,7 @@
         key="home"
         v-if="breadcrumbData[0].meta.title !== 'home'"
       >
-        <span class="redirect">首页</span>
+        <span class="redirect">{{ $t('route.home') }}</span>
       </el-breadcrumb-item>
       <el-breadcrumb-item v-for="(item, index) in breadcrumbData" :key="item.path">
         <!-- 不可点击的面包屑 -->
