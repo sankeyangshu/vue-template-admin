@@ -20,6 +20,7 @@ export const asyncRoutes = [...systemRoutes];
  * meta ==> 路由元信息
  * meta.title ==> 路由标题
  * meta.icon ==> 菜单icon
+ * meta.full ==> 菜单是否全屏 (示例：数据大屏页面)
  * meta.affix ==> 如果设置为true将会出现在 标签栏中
  * meta.breadcrumb ==> 如果设置为false，该项将隐藏在breadcrumb中（默认值为true）
  */
@@ -64,13 +65,18 @@ export const notFoundRouter = {
   redirect: '/404',
 };
 
-// 创建一个可以被 Vue 应用程序使用的路由实例
+/**
+ * 创建一个可以被 Vue 应用程序使用的路由实例
+ */
 export const router = createRouter({
   history: createWebHashHistory(),
-  routes: constantRoutes,
+  routes: [...constantRoutes, ...asyncRoutes],
 });
 
-// 配置路由器
+/**
+ * 配置路由器
+ * @param app vue实例
+ */
 export function setupRouter(app: App<Element>) {
   app.use(router);
 }

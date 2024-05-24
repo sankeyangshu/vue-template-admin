@@ -1,92 +1,40 @@
 <template>
-  <div class="layout-wrapper">
-    <!-- 左侧 SubMenu -->
-    <LayoutSideBar></LayoutSideBar>
+  <component :is="LayoutComponent[themeConfig.layout]" />
 
-    <div class="layout-main" :class="{ 'is-collapse': isCollapse }">
-      <!-- 顶部 Header -->
-      <LayoutHeader />
-      <div
-        class="layout-header"
-        :class="{
-          'fixed-header': themeConfig.fixedHeader,
-          'is-collapse': themeConfig.fixedHeader && isCollapse,
-        }"
-      >
-        <!-- 操作栏 -->
-        <LayoutNavBar />
-        <!-- 标签 -->
-        <LayoutTagsView v-if="themeConfig.showTag" />
-      </div>
-      <div class="layout-main-container">
-        <!-- 内容区 Main -->
-        <LayoutMain />
-      </div>
-      <!-- 底部 Footer -->
-      <LayoutFooter />
-    </div>
-
-    <!-- 主题配置 -->
-    <Theme />
-  </div>
+  <!-- 主题配置 -->
+  <ThemeDrawer />
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-import Theme from '@/components/Theme/index.vue';
+import { computed, watch } from 'vue';
 import { useSettingStore } from '@/store/modules/setting';
-import LayoutFooter from './components/Footer/index.vue';
-import LayoutHeader from './components/Header/index.vue';
-import LayoutMain from './components/Main/index.vue';
-import LayoutNavBar from './components/NavBar/index.vue';
-import LayoutSideBar from './components/Sidebar/index.vue';
-import LayoutTagsView from './components/TagsView/index.vue';
+import ThemeDrawer from './components/ThemeDrawer/index.vue';
+import LayoutClassic from './LayoutClassic/index.vue';
+import LayoutColumns from './LayoutColumns/index.vue';
+import LayoutTransverse from './LayoutTransverse/index.vue';
+import LayoutVertical from './LayoutVertical/index.vue';
 
-// 获取全局设置
+// 布局组件
+const LayoutComponent = {
+  vertical: LayoutVertical,
+  classic: LayoutClassic,
+  transverse: LayoutTransverse,
+  columns: LayoutColumns,
+};
+
+// 获取全局状态管理仓库中系统设置状态
 const settingStore = useSettingStore();
-
-// 是否折叠
-const isCollapse = computed(() => settingStore.isCollapse);
-
-// 获取主题设置
 const themeConfig = computed(() => settingStore.themeConfig);
+
+// 监听布局变化，在 body 上添加相对应的 layout class
+watch(
+  () => themeConfig.value.layout,
+  () => {
+    const body = document.body as HTMLElement;
+    body.setAttribute('class', themeConfig.value.layout);
+  },
+  { immediate: true }
+);
 </script>
 
-<style lang="scss" scoped>
-@mixin fix-header {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: $base-z-index - 2;
-  width: calc(100% - $side-bar-width);
-  transition: width #{$side-bar-duration};
-}
-.layout-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  .layout-main {
-    position: relative;
-    min-height: 100%;
-    margin-left: $side-bar-width;
-    transition: margin-left #{$side-bar-duration};
-    &.is-collapse {
-      margin-left: $side-bar-width-min;
-      border-right: 0;
-    }
-    .layout-header {
-      box-shadow: 0 1px 4px rgb(0 21 41 / 8%);
-      &.fixed-header {
-        @include fix-header;
-      }
-      &.is-collapse {
-        width: calc(100% - $side-bar-width-min);
-      }
-    }
-    .layout-main-container {
-      padding: 10px 12px;
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>

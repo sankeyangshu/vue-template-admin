@@ -9,6 +9,7 @@
 import { computed } from 'vue';
 import { useSettingStore } from '@/store/modules/setting';
 
+// TODO: 此处代码需要优化-可能不需要该组件
 // 获取全局设置
 const settingStore = useSettingStore();
 

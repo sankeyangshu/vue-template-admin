@@ -4,7 +4,19 @@ import { menuListType } from '@/types/menu';
 import { roleResultType } from '@/types/role';
 
 /**
- * @description: 返回所有子路由
+ * 判断数据是否为空值
+ * @param {any} data 数据
+ * @return 判断结果-是否为空
+ */
+const isNull = (data: any) => {
+  if (!data) return true;
+  if (JSON.stringify(data) === '{}') return true;
+  if (JSON.stringify(data) === '[]') return true;
+  return false;
+};
+
+/**
+ * 返回所有子路由
  * @param {RouteRecordRaw[]} routes 路由数组
  * @return 子路由数组
  */
@@ -19,19 +31,7 @@ const getChildrenRoutes = (routes: RouteRecordRaw[]) => {
 };
 
 /**
- * @description: 判断数据是否为空值
- * @param {any} data 数据
- * @return 判断结果-是否为空
- */
-const isNull = (data: any) => {
-  if (!data) return true;
-  if (JSON.stringify(data) === '{}') return true;
-  if (JSON.stringify(data) === '[]') return true;
-  return false;
-};
-
-/**
- * @description: 处理脱离层级的路由：某个一级路由为其他子路由，则剔除该一级路由，保留路由层级
+ * 处理脱离层级的路由：某个一级路由为其他子路由，则剔除该一级路由，保留路由层级
  * @param {RouteRecordRaw[]} routes
  * @return 符合条件的路由
  */
@@ -45,7 +45,7 @@ export const filterRoutes = (routes: RouteRecordRaw[]) => {
 };
 
 /**
- * @description: 根据routes数据，返回对应的menu规则数据
+ * 根据routes数据，返回对应的menu规则数据
  * @param {RouteRecordRaw[]} routes
  * @param {string} basePath 基础路径
  * @return 对应的menu规则数据
@@ -88,7 +88,7 @@ export const generateMenus = (routes: RouteRecordRaw[], basePath = '') => {
 };
 
 /**
- * @description: 过滤需要缓存的路由
+ * 过滤需要缓存的路由
  * @param {RouteRecordRaw[]} routers 所有路由表
  * @return 需要缓存的路由数组
  */
@@ -109,7 +109,7 @@ export const filterKeepAlive = (routers: RouteRecordRaw[]) => {
 };
 
 /**
- * @description: 判断当前用户是否具有权限
+ * 判断当前用户是否具有权限
  * @param {roleResultType[]} roles 权限表
  * @param {RouteRecordRaw} route 当前路由对象
  * @return {boolean} 是否有权限
@@ -124,7 +124,7 @@ export const hasPermission = (roles: roleResultType[], route: RouteRecordRaw): b
 };
 
 /**
- * @description: 过滤异步路由表
+ * 过滤异步路由表
  * @param {RouteRecordRaw} routes 异步路由表
  * @param {roleResultType[]} roles 权限表
  * @return 过滤结果
@@ -144,7 +144,7 @@ export const filterAsyncRoutes = (routes: RouteRecordRaw[], roles: roleResultTyp
 };
 
 /**
- * @description: 获取用户按钮权限列表
+ * 获取用户按钮权限列表
  * @param {menuListType} menuList 菜单列表
  * @param {string} path 当前路由
  * @return 按钮权限列表

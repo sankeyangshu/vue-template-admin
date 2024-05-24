@@ -5,8 +5,8 @@
 </template>
 
 <script lang="ts" setup>
-import en from 'element-plus/lib/locale/lang/en'; // 导入 Element Plus 语言包
-import zhCn from 'element-plus/lib/locale/lang/zh-cn'; // 导入 Element Plus 语言包
+import en from 'element-plus/es/locale/lang/en'; // 导入 Element Plus 语言包
+import zhCn from 'element-plus/es/locale/lang/zh-cn'; // 导入 Element Plus 语言包
 import { computed } from 'vue';
 import { useTheme } from '@/hooks/useTheme';
 import { useSettingStore } from '@/store/modules/setting';

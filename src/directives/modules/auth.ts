@@ -3,7 +3,7 @@ import { useUserStore } from '@/store/modules/user';
 import { getAuthButtonsList } from '@/utils/routers';
 
 /**
- * @description: v-auth 按钮权限指令
+ * v-auth 按钮权限指令
  */
 const auth: Directive = {
   mounted(el: HTMLElement, binding: DirectiveBinding) {

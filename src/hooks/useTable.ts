@@ -50,8 +50,9 @@ interface tableParamsType {
    */
   requestError?: (error: any) => void;
 }
+
 /**
- * @description table 页面操作方法封装
+ * table 页面操作方法封装
  * @param {tableParamsType} option 配置参数
  * @return 表格处理函数
  * */
@@ -88,7 +89,7 @@ export const useTable = (option: tableParamsType) => {
   }));
 
   /**
-   * @description: 获取表格数据
+   * 获取表格数据
    */
   const getTableList = async () => {
     // 判断获取表格数据api方法是否存在
@@ -119,7 +120,7 @@ export const useTable = (option: tableParamsType) => {
   };
 
   /**
-   * @description 更新分页信息
+   * 更新分页信息
    * @param {pageableType} resPageable 后台返回的分页数据
    * */
   const updatePageable = (resPageable: pageableType) => {
@@ -127,7 +128,7 @@ export const useTable = (option: tableParamsType) => {
   };
 
   /**
-   * @description 更新查询参数
+   * 更新查询参数
    */
   const updatedTotalParam = () => {
     // 清空上一次查询的参数
@@ -149,7 +150,7 @@ export const useTable = (option: tableParamsType) => {
   };
 
   /**
-   * @description 表格数据查询
+   * 表格数据查询
    */
   const searchTable = async () => {
     // 重置分页数据
@@ -159,7 +160,7 @@ export const useTable = (option: tableParamsType) => {
   };
 
   /**
-   * @description 表格数据重置
+   * 表格数据重置
    */
   const resetTable = async () => {
     // 重置分页数据
@@ -174,7 +175,7 @@ export const useTable = (option: tableParamsType) => {
   };
 
   /**
-   * @description 每页条数改变
+   * 每页条数改变
    * @param {Number} val 当前条数
    */
   const tableChangeSize = async (val: number) => {
@@ -184,7 +185,7 @@ export const useTable = (option: tableParamsType) => {
   };
 
   /**
-   * @description 当前页改变
+   * 当前页改变
    * @param {Number} val 当前页
    */
   const tableChangeCurrent = async (val: number) => {

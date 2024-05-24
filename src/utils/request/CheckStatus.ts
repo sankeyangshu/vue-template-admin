@@ -3,7 +3,7 @@ import { i18n } from '@/i18n';
 import { useUserStore } from '@/store/modules/user';
 
 /**
- * @description: 校验网络请求状态码
+ * 校验网络请求状态码
  * @param {number} status 状态码
  * @param {string | string[]} message 错误提示信息
  */

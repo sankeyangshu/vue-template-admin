@@ -1,7 +1,7 @@
 <template>
   <div class="header-search">
     <el-tooltip effect="dark" :content="$t('navBar.headerSearch')" placement="bottom">
-      <el-icon size="22px" class="bell header-icon" @click="onClickShowSearch">
+      <el-icon size="22px" class="header-icon" @click="onClickShowSearch">
         <Search />
       </el-icon>
     </el-tooltip>
@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts" setup>
-import Fuse from 'fuse.js'; // https://fusejs.io/ fuse.js文档
+import Fuse, { FuseResult } from 'fuse.js'; // https://fusejs.io/ fuse.js文档
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { filterRouteType, generateRoutes } from '@/utils/FuseData';
@@ -62,7 +62,7 @@ let searchPool = computed(() => {
 let fuse: Fuse<filterRouteType>;
 
 /**
- * @description: 初始化fuse模糊搜索配置
+ * 初始化fuse模糊搜索配置
  * @param {filterRouteType[]} searchPool 搜索的数据源
  */
 const initFuse = (searchPool: filterRouteType[]) => {
@@ -91,10 +91,10 @@ const initFuse = (searchPool: filterRouteType[]) => {
 initFuse(searchPool.value);
 
 // 搜索结果
-const searchOptions = ref<Fuse.FuseResult<filterRouteType>[]>([]);
+const searchOptions = ref<FuseResult<filterRouteType>[]>([]);
 
 /**
- * @description: 搜索方法
+ * 搜索方法
  * @param {string} query 搜索值
  */
 const querySearch = (query: string) => {
@@ -109,12 +109,13 @@ const querySearch = (query: string) => {
 const search = ref('');
 
 /**
- * @description: 选中搜索结果-并跳转到具体页面
+ * 选中搜索结果-并跳转到具体页面
  * @param {filterRouteType} val 路由对象
  */
 const onChangeSelect = (val: filterRouteType) => {
-  search.value = val.title.join('>');
+  search.value = '';
   router.push(val.path);
+  onClickShowSearch();
 };
 </script>
 
@@ -126,28 +127,12 @@ const onChangeSelect = (val: filterRouteType) => {
   margin-right: 20px;
   cursor: pointer;
   transition: all 0.3s;
-  .item-info-pop {
-    display: flex;
-    align-items: center;
-  }
-  .bell {
-    color: black;
-  }
-  .item-child {
-    display: flex;
-    align-items: center;
-    font-size: 13px;
-  }
-}
-.transverseMenu {
-  .bell {
-    color: white;
-  }
 }
 
 /* 菜单搜索样式 */
 .header-search {
   :deep(.el-dialog) {
+    padding: 0;
     .el-dialog__header {
       display: none;
     }
@@ -157,7 +142,7 @@ const onChangeSelect = (val: filterRouteType) => {
   }
   .header-search-select {
     height: 50px;
-    :deep(.el-input__wrapper) {
+    :deep(.el-select__wrapper) {
       height: 50px;
     }
   }

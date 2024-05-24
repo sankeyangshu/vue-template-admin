@@ -8,7 +8,7 @@ import { setupStore } from '@/store';
 import App from './App.vue';
 import './styles/index.scss'; // 导入默认样式
 import 'virtual:svg-icons-register'; // svg-icons注册导入
-import './config/permission'; // 导入路由鉴权-加载异步路由
+// import './config/permission'; // 导入路由鉴权-加载异步路由
 
 function bootstrap() {
   // 创建实例

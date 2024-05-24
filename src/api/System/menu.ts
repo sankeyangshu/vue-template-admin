@@ -12,7 +12,7 @@ const api = {
 };
 
 /**
- * @description: 创建菜单
+ * 创建菜单
  * @param {menuType} data 菜单信息
  * @return 新增结果
  */
@@ -21,7 +21,7 @@ export function postAddMenuAPI(data: menuType) {
 }
 
 /**
- * @description: 获取菜单列表
+ * 获取菜单列表
  * @return 菜单列表
  */
 export function getMenuListAPI(data?: { title?: string }) {
@@ -29,7 +29,7 @@ export function getMenuListAPI(data?: { title?: string }) {
 }
 
 /**
- * @description: 获取菜单详情
+ * 获取菜单详情
  * @param {object} data 菜单id
  * @return 菜单详情
  */
@@ -38,7 +38,7 @@ export function getMenuDetailsAPI(data: { id: number }) {
 }
 
 /**
- * @description: 获取用户菜单列表
+ * 获取用户菜单列表
  * @param {object} data 用户id
  * @return 菜单详情
  */
@@ -47,7 +47,7 @@ export function getUserMenuAPI(data: { userID: number }) {
 }
 
 /**
- * @description: 更新菜单信息
+ * 更新菜单信息
  * @param {menuType} data 菜单信息
  * @return 更新结果
  */
@@ -56,7 +56,7 @@ export function patchUpdateMenuAPI(data: Partial<menuType>) {
 }
 
 /**
- * @description: 删除菜单
+ * 删除菜单
  * @param {object} data 删除角色信息
  * @return 删除结果
  */

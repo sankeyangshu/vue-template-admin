@@ -13,7 +13,7 @@ NProgress.configure({ showSpinner: false });
 const whiteList = ['/login'];
 
 /**
- * @description: 路由前置守卫
+ * 路由前置守卫
  * @param to 要到哪里去
  * @param from 从哪里来
  * @param next 是否要去

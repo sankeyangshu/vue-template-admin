@@ -1,10 +1,13 @@
 <template>
   <div class="footer-layout">
-    <span> 2023 © VUE-TEMPLATE-ADMIN By sankeyangshu </span>
+    <span> 2023 - {{ currentYear }} © VUE-TEMPLATE-ADMIN By sankeyangshu </span>
   </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+// 获取当年年份
+const currentYear = new Date().getFullYear();
+</script>
 
 <style lang="scss" scoped>
 .footer-layout {
@@ -13,8 +16,9 @@
   align-items: center;
   justify-content: center;
   height: 40px;
-  font-size: 12px;
-  color: rgb(0 0 0 / 45%);
-  background: #fff;
+  font-size: 14px;
+  color: var(--el-text-color-secondary);
+  background-color: var(--el-bg-color);
+  border-top: 1px solid var(--el-border-color-light);
 }
 </style>

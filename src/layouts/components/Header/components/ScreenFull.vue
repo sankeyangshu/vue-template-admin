@@ -8,16 +8,29 @@
       <svg-icon
         :icon="isFullscreen ? 'exit-fullscreen' : 'fullscreen'"
         className="screenful-icon header-icon"
-        @click="toggle"
+        @click="handleFullScreen"
       ></svg-icon>
     </el-tooltip>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useFullscreen } from '@vueuse/core';
+import { ElMessage } from 'element-plus';
+import { useFullscreen } from 'vue-hooks-plus';
 
-const { toggle, isFullscreen } = useFullscreen();
+const [isFullscreen, { toggleFullscreen, isEnabled }] = useFullscreen();
+
+/**
+ * 切换全屏
+ */
+const handleFullScreen = () => {
+  // 判断浏览器是否支持全屏
+  if (!isEnabled) {
+    ElMessage.warning('当前您的浏览器不支持全屏 ❌');
+  } else {
+    toggleFullscreen();
+  }
+};
 </script>
 
 <style lang="scss" scoped>

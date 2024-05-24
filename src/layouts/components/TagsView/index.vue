@@ -40,6 +40,7 @@ import { usePermissionStore } from '@/store/modules/permission';
 import { useTagsViewStore } from '@/store/modules/tagsView';
 import MoreButton from './components/MoreButton.vue';
 
+// TODO: 此处的 visitedViews 有待改造
 // 选中过的路由表类型
 type visitedViewsType = RouteRecordRaw & {
   title?: string;
@@ -61,7 +62,7 @@ const visitedViews = computed<visitedViewsType[]>(() => tagsViewStore.visitedVie
 let affixTags = ref<RouteRecordRaw[]>([]);
 
 /**
- * @description: 过滤要出现在标签栏上的标签
+ * 过滤要出现在标签栏上的标签
  * @param {RouteRecordRaw[]} routes 路由表
  * @param {string} basePath 基础路径
  * @return {any} 标签数据
@@ -90,7 +91,7 @@ const filterAffixTags = (routes: RouteRecordRaw[], basePath = '/'): any => {
 };
 
 /**
- * @description: 拿到需要固定的路由表，添加进 store
+ * 拿到需要固定的路由表，添加进 store
  */
 const initTags = () => {
   let newRoutes = routes.value as RouteRecordRaw[];
@@ -107,7 +108,7 @@ const route = useRoute();
 const router = useRouter();
 
 /**
- * @description: 添加当前路由到标签也
+ * 添加当前路由到标签
  */
 const addTags = () => {
   const { name } = route;
@@ -141,7 +142,7 @@ const activeTabsValue = computed({
 });
 
 /**
- * @description: 删除以后切换到下一个
+ * 删除以后切换到下一个
  * @param {string} activeTabPath 选中的标签路径
  */
 const toLastView = (activeTabPath: string) => {
@@ -159,7 +160,7 @@ const onTabClick = (tabItem: TabsPaneContext) => {
 };
 
 /**
- * @description: 判断标签页是否选中
+ * 判断标签页是否选中
  * @param {string} path 标签路径
  * @return {boolean} 选中结果
  */
@@ -183,7 +184,8 @@ const onRemoveTab = async (activeTabPath: TabPaneName) => {
   justify-content: space-between;
   padding-right: 10px;
   padding-left: 10px;
-  background: #fff;
+  background-color: var(--el-bg-color);
+  border-bottom: 1px solid var(--el-border-color-light);
   .tags-content {
     box-sizing: border-box;
     flex: 1;
@@ -196,6 +198,7 @@ const onRemoveTab = async (activeTabPath: TabPaneName) => {
       height: $tabs-bar-height;
       padding: 0 10px;
       margin: 0;
+      border: none;
     }
     :deep(.el-tabs) {
       .el-tabs__nav {
@@ -210,10 +213,6 @@ const onRemoveTab = async (activeTabPath: TabPaneName) => {
         border-bottom: 2px solid $primary-color;
       }
     }
-  }
-  .tags-action {
-    flex-shrink: 0;
-    height: 100%;
   }
 }
 </style>

@@ -34,7 +34,7 @@ const router = useRouter();
 const route = useRoute();
 
 /**
- * @description: 点击面包屑跳转路由
+ * 点击面包屑跳转路由
  * @param {RouteRecordRaw} item 路由信息
  */
 const onClickHandleLink = (item: RouteRecordRaw) => {

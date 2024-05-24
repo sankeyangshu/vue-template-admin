@@ -6,6 +6,11 @@ import { DEFAULT_THEMECOLOR } from '@/config';
  */
 export type componentSizeType = 'large' | 'default' | 'small';
 
+/**
+ * 布局类型
+ */
+export type layoutType = 'vertical' | 'classic' | 'transverse' | 'columns';
+
 interface settingsStateType {
   isCollapse: boolean;
   language: string;
@@ -18,6 +23,7 @@ interface settingsStateType {
  * 主题设置类型
  */
 interface themeConfigType {
+  layout: layoutType;
   showSetting: boolean;
   themeColor: string;
   isDark: boolean;
@@ -45,6 +51,7 @@ export const useSettingStore = defineStore({
     isReload: true, // 是否刷新当前页
     componentSize: 'default', // 组件大小切换
     themeConfig: {
+      layout: 'classic', // 布局模式 (纵向：vertical | 经典：classic | 横向：transverse | 分栏：columns)
       showSetting: false, // 显示设置
       themeColor: DEFAULT_THEMECOLOR, // 主题颜色
       isDark: false, // 深色模式 切换暗黑模式

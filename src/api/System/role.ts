@@ -24,7 +24,7 @@ export type rolePageSizeType = {
 };
 
 /**
- * @description: 创建角色
+ * 创建角色
  * @param {roleType} data 角色信息
  * @return 新增结果
  */
@@ -33,7 +33,7 @@ export function postAddRoleAPI(data: roleType) {
 }
 
 /**
- * @description: 获取角色信息列表
+ * 获取角色信息列表
  * @param {rolePageSizeType} data 分页信息
  * @return 角色信息列表
  */
@@ -42,7 +42,7 @@ export function postGetRoleListAPI(data: Partial<rolePageSizeType>) {
 }
 
 /**
- * @description: 获取角色菜单
+ * 获取角色菜单
  * @param {object} data 角色id
  * @param {number} data.roleID 角色id
  * @return 角色菜单
@@ -52,7 +52,7 @@ export function getRoleMenuAPI(data: { roleID: number }) {
 }
 
 /**
- * @description: 更新角色信息
+ * 更新角色信息
  * @param {roleType} data 角色信息
  * @return 更新结果
  */
@@ -61,7 +61,7 @@ export function patchUpdateRoleAPI(data: Partial<roleType>) {
 }
 
 /**
- * @description: 删除角色
+ * 删除角色
  * @param {object} data 删除角色信息
  * @return 删除结果
  */

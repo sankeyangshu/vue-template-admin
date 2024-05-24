@@ -13,7 +13,10 @@ const directives = {
   },
 };
 
-// 配置directives
+/**
+ * 配置directives
+ * @param app vue实例
+ */
 export function setupDirectives(app: App<Element>) {
   app.use(directives);
 }

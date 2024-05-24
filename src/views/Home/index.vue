@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="home card">
     <el-card shadow="hover">
       <div class="page-header">
         <el-avatar :size="60" src="https://img.yzcdn.cn/vant/cat.jpeg" />

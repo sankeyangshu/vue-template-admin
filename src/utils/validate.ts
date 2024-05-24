@@ -1,5 +1,5 @@
 /**
- * @description: 校验是否是合法邮箱
+ * 校验是否是合法邮箱
  * @param {string} email 邮箱
  * @return 校验结果
  */
@@ -9,7 +9,7 @@ export function validEmail(email: string): boolean {
 }
 
 /**
- * @description: 校验是否是合法Url
+ * 校验是否是合法Url
  * @param {string} url Url地址
  * @return 校验结果
  */
@@ -20,7 +20,7 @@ export function validURL(url: string): boolean {
 }
 
 /**
- * @description: 判断是否是合法手机号
+ * 判断是否是合法手机号
  * @param {string} phone 手机号
  * @return 校验结果
  */

@@ -51,7 +51,7 @@ import RoleMenuTree from './RoleMenuTree.vue';
 const menuData = ref<number[]>([]);
 
 /**
- * @description: 格式化用户菜单列表id
+ * 格式化用户菜单列表id
  * @param {*} list 菜单列表
  * @return 列表id
  */

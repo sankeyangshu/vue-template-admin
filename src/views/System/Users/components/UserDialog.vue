@@ -162,7 +162,7 @@ const userDialogForm = reactive({
 });
 
 /**
- * @description: 手机号校验规则
+ * 手机号校验规则
  * @param {any} rule 校验规则
  * @param {string} value 手机号
  * @param {any} callback 回调函数
@@ -178,7 +178,7 @@ const checkPhone = (rule: any, value: string, callback: any) => {
 };
 
 /**
- * @description: 邮箱校验规则
+ * 邮箱校验规则
  * @param {any} rule 校验规则
  * @param {string} value 邮箱
  * @param {any} callback 回调函数

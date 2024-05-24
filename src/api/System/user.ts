@@ -19,7 +19,7 @@ const api = {
 };
 
 /**
- * @description: 用户登录
+ * 用户登录
  * @param {loginDataType} data 登录参数
  * @return 返回请求登录接口的结果
  */
@@ -28,7 +28,7 @@ export function postLoginAPI(data: loginDataType) {
 }
 
 /**
- * @description: 新增用户
+ * 新增用户
  * @param {addUserType} data 用户信息
  * @return 新增结果
  */
@@ -37,7 +37,7 @@ export function postAddUserAPI(data: addUserType) {
 }
 
 /**
- * @description: 获取用户列表
+ * 获取用户列表
  * @param {getUserListType} data 分页信息
  * @return 用户列表
  */
@@ -46,7 +46,7 @@ export function postGetUserListAPI(data: Partial<getUserListType>) {
 }
 
 /**
- * @description: 获取用户角色列表
+ * 获取用户角色列表
  * @param {object} data 用户id
  * @return 用户角色列表
  */
@@ -55,7 +55,7 @@ export function getUserRolesAPI(data: { id: number }) {
 }
 
 /**
- * @description: 更新用户信息
+ * 更新用户信息
  * @param {updateUserType} data 用户信息
  * @return 更新结果
  */
@@ -64,7 +64,7 @@ export function patchUpdateUserAPI(data: Partial<addUserType>) {
 }
 
 /**
- * @description: 删除用户
+ * 删除用户
  * @param {object} data 删除用户信息
  * @return 删除结果
  */

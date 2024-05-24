@@ -13,7 +13,7 @@ interface CustomSuccessData<T> {
 }
 
 /**
- * @description: 封装get请求方法
+ * 封装get请求方法
  * @param {string} url url 请求地址
  * @param {string | object} params 请求参数
  * @param {AxiosRequestConfig} config 请求配置
@@ -36,7 +36,7 @@ const get = <T>(
 };
 
 /**
- * @description: 封装post请求方法
+ * 封装post请求方法
  * @param {string} url url 请求地址
  * @param {string | object} data 请求参数
  * @param {AxiosRequestConfig} config 请求配置
@@ -59,7 +59,7 @@ const post = <T>(
 };
 
 /**
- * @description: 封装patch请求方法
+ * 封装patch请求方法
  * @param {string} url url 请求地址
  * @param {string | object} data 请求参数
  * @param {AxiosRequestConfig} config 请求配置
@@ -82,7 +82,7 @@ const patch = <T>(
 };
 
 /**
- * @description: 封装delete请求方法
+ * 封装delete请求方法
  * @param {string} url url 请求地址
  * @param {string | object} params 请求参数
  * @param {AxiosRequestConfig} config 请求配置

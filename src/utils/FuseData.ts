@@ -11,7 +11,7 @@ export interface filterRouteType {
 }
 
 /**
- * @description: 筛选出可供搜索的路由对象
+ * 筛选出可供搜索的路由对象
  * @param {RouteRecordRaw[]} routes 路由表
  * @param {string} basePath 基础路由，默认为 /
  * @param {string[]} prefixTitle 路由名称

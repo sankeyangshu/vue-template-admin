@@ -4,7 +4,7 @@ import { useUserStore } from '@/store/modules/user';
 import { getAuthButtonsList } from '@/utils/routers';
 
 /**
- * @description: 页面按钮权限
+ * 页面按钮权限
  */
 export const useAuthButton = () => {
   // 获取用户菜单权限

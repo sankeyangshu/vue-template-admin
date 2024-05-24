@@ -1,5 +1,3 @@
-@use 'element-plus/theme-chalk/src/dark/css-vars.scss' as *;
-
 /* 自定义暗黑模式样式 */
 html.dark {
   $dark-main-bg-color: #141414;
@@ -32,87 +30,6 @@ html.dark {
         .el-button--primary {
           color: $dark-text-color !important;
         }
-      }
-    }
-  }
-  .sidebar-container {
-    background: var(--el-bg-color) !important;
-    & .el-menu .el-menu-item,
-    & .el-menu .el-sub-menu > .el-sub-menu__title,
-    & .el-sub-menu .el-menu-item {
-      background-color: var(--el-bg-color) !important;
-      &:hover {
-        background-color: #060708 !important;
-      }
-      &.is-active {
-        background-color: #060708 !important;
-      }
-    }
-    .el-sub-menu__title {
-      &:hover {
-        background-color: var(--el-bg-color) !important;
-      }
-    }
-  }
-  .el-scrollbar {
-    border: var(--zb-border-light);
-    border-top: none;
-  }
-  .logo-container {
-    box-sizing: border-box;
-    background: none;
-    border: var(--zb-border-light);
-  }
-  .el-drawer__header {
-    span {
-      color: var(--el-text-color-primary) !important;
-    }
-  }
-  .theme-item {
-    color: var(--el-text-color-primary) !important;
-  }
-  .el-table__header th {
-    font-weight: bold;
-    color: white;
-  }
-  .footer-layout {
-    color: white;
-    background: none;
-    border-top: var(--zb-border-light);
-  }
-
-  // header
-  .layout-header {
-    color: var(--el-text-color-primary) !important;
-    .nav-bar-container {
-      background-color: var(--el-bg-color) !important;
-      border-bottom: var(--zb-border-light);
-      .header-icon {
-        color: #bfcbd9 !important;
-      }
-    }
-
-    // tagviews
-    .tags-view {
-      box-sizing: border-box;
-      background: var(--el-bg-color) !important;
-      border: var(--zb-border-light);
-      border-top: none;
-      border-left: none;
-      .el-tabs--card > .el-tabs__header {
-        border-bottom: none !important;
-      }
-    }
-  }
-
-  /* layout */
-  .layout-main-container {
-    .app-main {
-      .header {
-        background: none;
-      }
-      .footer {
-        background: none;
       }
     }
   }

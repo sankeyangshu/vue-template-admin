@@ -34,4 +34,56 @@ defineProps({
 });
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss">
+.el-sub-menu .el-sub-menu__title:hover {
+  color: var(--el-menu-hover-text-color) !important;
+  background-color: transparent !important;
+}
+.el-menu--collapse {
+  .is-active {
+    .el-sub-menu__title {
+      color: #fff !important;
+      background-color: var(--el-color-primary) !important;
+    }
+  }
+}
+.el-menu-item {
+  &:hover {
+    color: var(--el-menu-hover-text-color);
+  }
+  &.is-active {
+    color: var(--el-menu-active-color) !important;
+    background-color: var(--el-menu-active-bg-color) !important;
+
+    // border-left: 4px solid var(--el-color-primary) !important;
+    &::before {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      content: '';
+      background-color: var(--el-color-primary);
+    }
+  }
+}
+.vertical,
+.classic,
+.transverse {
+  .el-menu-item {
+    &.is-active {
+      &::before {
+        left: 0;
+      }
+    }
+  }
+}
+.columns {
+  .el-menu-item {
+    &.is-active {
+      &::before {
+        right: 0;
+      }
+    }
+  }
+}
+</style>

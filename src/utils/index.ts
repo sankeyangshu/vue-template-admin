@@ -1,5 +1,5 @@
 /**
- * @description: 通过时间返回对应的欢迎语
+ * 通过时间返回对应的欢迎语
  * @return {string} 欢迎语
  */
 export const getTimeStateStr = (): string => {
@@ -33,7 +33,7 @@ export const welcome = () => {
 };
 
 /**
- * @description 生成随机数
+ * 生成随机数
  * @param {number} min 最小值
  * @param {number} max 最大值
  * @return {number} 随机数
@@ -44,7 +44,7 @@ export const randomNum = (min: number, max: number): number => {
 };
 
 /**
- * @description 判断数据类型
+ * 判断数据类型
  * @param {any} val 需要判断类型的数据
  * @return {string} 数据类型
  */
@@ -55,7 +55,7 @@ export const isType = (val: any): string => {
 };
 
 /**
- * @description: 将对象作为参数添加到URL
+ * 将对象作为参数添加到URL
  * @param {string} baseUrl url路径
  * @param {any} obj 对象
  * @return {string} 拼接好的URL路径
@@ -70,7 +70,7 @@ export const getQueryObject = (baseUrl: string, obj: any): string => {
 };
 
 /**
- * @description: 深拷贝
+ * 深拷贝
  * @param {any} source 源数据
  * @return 深拷贝后的新数据
  */
