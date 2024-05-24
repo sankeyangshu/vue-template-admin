@@ -1,15 +1,15 @@
 import vue from '@vitejs/plugin-vue';
 import type { PluginOption } from 'vite';
-import { configSvgIconsPlugin } from './svgPlugin';
-import { configVueI18nPlugin } from './i18nPlugin';
 import { configCompressPlugin } from './compress';
+import { configVueI18nPlugin } from './i18nPlugin';
+import { configSvgIconsPlugin } from './svgPlugin';
 // 按需加载 Element Plus
 // import AutoImport from 'unplugin-auto-import/vite';
 // import Components from 'unplugin-vue-components/vite';
 // import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 /**
- * @description: 配置 vite 插件
+ * 配置 vite 插件
  * @param {ViteEnv} viteEnv vite 环境变量配置文件键值队 object
  */
 export const createVitePlugins = (viteEnv: ViteEnv): (PluginOption | PluginOption[])[] => {

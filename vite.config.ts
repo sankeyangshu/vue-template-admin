@@ -1,10 +1,10 @@
-import { ConfigEnv, UserConfig, defineConfig, loadEnv } from 'vite';
-import { wrapperEnv } from './build/getEnv';
-import { createProxy } from './build/proxy';
-import { createVitePlugins } from './build/plugins';
-import path from 'path';
-import pkg from './package.json';
 import dayjs from 'dayjs';
+import path from 'path';
+import { ConfigEnv, defineConfig, loadEnv, UserConfig } from 'vite';
+import { wrapperEnv } from './build/getEnv';
+import { createVitePlugins } from './build/plugins';
+import { createProxy } from './build/proxy';
+import pkg from './package.json';
 
 function resolve(dir: string) {
   return path.join(__dirname, '.', dir);

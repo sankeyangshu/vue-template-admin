@@ -9,7 +9,7 @@ type ProxyTargetList = Record<string, ProxyOptions>;
 const httpsRE = /^https:\/\//;
 
 /**
- * @description: 创建代理，用于解析 .env.development 代理配置
+ * 创建代理，用于解析 .env.development 代理配置
  * @param {ProxyList} list 代理地址列表
  */
 export function createProxy(list: ProxyList = []) {

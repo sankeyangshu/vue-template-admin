@@ -1,8 +1,8 @@
-import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 import path from 'path';
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
 
 /**
- * @description: 配置svg vite 插件
+ * 配置svg vite 插件
  */
 export function configSvgIconsPlugin() {
   // 使用 svg 图标
